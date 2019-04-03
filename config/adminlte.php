@@ -199,7 +199,18 @@ return [
                     'url'  => '#',
                     'icon' => 'line-chart',
                 ],
-            ]
+            ],
+        ],
+        [
+            'text' => 'OS',
+            'icon' => 'list-alt',
+            'submenu' => [
+                [
+                    'text' => 'Buscar',
+                    'url'  => '#',
+                    'icon' => 'search',
+                ],
+            ],
         ],
     ],
 
