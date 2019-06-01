@@ -1,0 +1,79 @@
+.inputName{
+    width: 450px;
+    padding: .200rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    display: block;
+}
+.selectOffice{
+    width: 180px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    display: block;
+}
+.inputEmail{
+    width: 400px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    display: block;
+}
+.inputPassword{
+    width: 300px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    display: block;
+}
+.pai{
+    display: flex;
+    justify-content: center;
+}
+.pai, form, button{
+    text-align: center;
+}
+.register-box-body{
+    border-radius: 3px;
+}
+.office{
+    float: left;
+}
+@media screen and (max-width: 600px) {
+    .selectOffice{
+        width: 100%;
+    }
+    .inputName{
+        width: 100%;
+    }
+    .inputEmail{
+        width: 100%;
+    }
+    .inputPassword{
+        width: 100%;
+    }
+}

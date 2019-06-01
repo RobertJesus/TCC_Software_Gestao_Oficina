@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Soflware de Gestão                                              ',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>S</b>F',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>S</b>F',
 
     /*
     |--------------------------------------------------------------------------
@@ -251,3 +251,4 @@ return [
         'chartjs'    => true,
     ],
 ];
+
