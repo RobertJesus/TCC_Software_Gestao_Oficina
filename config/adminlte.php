@@ -116,13 +116,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Novo',
-                    'url'  => 'users',
+                    'url'  => 'register',
                     'icon' => 'user-plus',
                 ],
                 [
-                    'text' => 'Editar',
-                    'url'  => '#',
-                    'icon' => 'edit',
+                    'text' => 'Lista',
+                    'url'  => 'users',
+                    'icon' => 'list',
                 ],
                 [
                     'text' => 'Excluir',

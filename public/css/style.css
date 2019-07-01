@@ -1,6 +1,6 @@
 .inputName{
     width: 450px;
-    padding: .200rem .75rem;
+    padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     color: #495057;
@@ -62,6 +62,9 @@
 }
 .office{
     float: left;
+}
+.error{
+    margin-right: 100px;
 }
 @media screen and (max-width: 600px) {
     .selectOffice{
