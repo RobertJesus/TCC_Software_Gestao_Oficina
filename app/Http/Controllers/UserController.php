@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Auth;
+use App\user;
 
 class UserController extends Controller
 {
@@ -12,6 +14,7 @@ class UserController extends Controller
     }
 
     public function index(){
-        return view('users.add');
+        $list = auth()->user()->get();
+        return view('users.add', compact('list'));
     }
 }

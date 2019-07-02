@@ -10,16 +10,22 @@
             <thead>
                 <tr>
                     <th>Usuario</th>
-                    <th>hjfdda</th>
+                    <th>nome</th>
                     <th>email</th>
+                    <th>data</th>
+                    <th>Excluir</th>
+                    <th>Recuperar Senha</th>
                 </tr>
             </thead>
             <tbody>
+            <?php foreach($list as $user){ ?>
                 <tr>
-                    <td>shasda</td>
-                    <td>gyadasa</td>
-                    <td>gsadsadas</td>
+                    <td><?=$user->id?></td>
+                    <td><?=$user->name?></td>
+                    <td><?=$user->email?></td>
+                    <td><?=date("d/m/Y", strtotime($user->created_at))?></td>
                 </tr>
+            <?php } ?>
             </tbody>
         </table>
     </div>
