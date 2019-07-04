@@ -14,7 +14,11 @@ class UserController extends Controller
     }
 
     public function index(){
+        $id = auth()->user()->id;
         $list = auth()->user()->get();
-        return view('users.add', compact('list'));
+        $list = where("user['id'] =='".$id."'");
+        dd($list);
+        
+        return view('users.add', compact('list', 'id'));
     }
 }
