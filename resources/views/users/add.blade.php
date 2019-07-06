@@ -5,6 +5,11 @@
 @section('content')
     
 <div class="register-box-body">
+    @if(session('success'))
+        <div class="alert alert-info" role="alert">
+            {{session('success')}}
+        </div>
+    @endif
     <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
     <div class="pai">
         <table class="table table-striped">
@@ -15,6 +20,7 @@
                     <th scope="col">Data</th>
                     <th scope="col">Excluir</th>
                     <th scope="col">Recuperar Senha</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +29,7 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{date("d/m/Y", strtotime($user->created_at))}}</td>
-                    <td><a href="#" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
+                    <td><a href="{{ route('destroy', $user->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     <td><a href="{{ url('/password/reset') }}" class="text-success"><i class="fa fa-lock"></i></a></td>
                 </tr>
             <?php } ?>

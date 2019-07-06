@@ -15,10 +15,20 @@ class UserController extends Controller
 
     public function index(){
         $id = auth()->user()->id;
-        $list = auth()->user()->get();
-        $list = where("user['id'] =='".$id."'");
-        dd($list);
-        
-        return view('users.add', compact('list', 'id'));
+        $list = User::where('id', '<>', $id)->get();
+        return view('users.add', compact('list'));
+    }
+    public function edit($id){
+        $idEdit = DB::table('user')->where('id', $id)->get();
+        return view::make('register.blade', compact($idEdit));
+    }
+    public function update($id){
+        $idUp = User::where('id', '=', $id);
+
+    }
+    public function destroy($id){
+        $users = User::findOrFail($id);
+        $users->delete();
+        return redirect()->route('users')->withSuccess('Usuário deletado com sucesso!');
     }
 }
