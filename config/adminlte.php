@@ -125,9 +125,9 @@ return [
                     'icon' => 'list',
                 ],
                 [
-                    'text' => 'Excluir',
-                    'url'  => '#',
-                    "icon" => 'trash-o',
+                    'text' => 'Editar',
+                    'url'  => 'userEdit',
+                    "icon" => 'edit',
                 ],
                 [
                     'text' => 'Recuperar Senha',

@@ -31,4 +31,24 @@ class UserController extends Controller
         $users->delete();
         return redirect()->route('users')->withSuccess('Usuário deletado com sucesso!');
     }
+    public function userEdit(){
+        $id = auth()->user()->id;
+        $user = User::where('id', '=', $id)->get();
+        return view('users.edit', compact('user'));
+
+    }
+
+    public function userUpdate(Request $request){
+        $data = $request->all();
+        $id = auth()->user()->id;
+        $user = User::where('id', '=', $id)->get();
+        $user->update($data);
+        return redirect()->route('users.edit')->withSuccess('Usuário atualizado com sucesso!');
+        /*if($data['id'] = $id){
+            $user->update($data);
+            return redirect()->route('users.edit')->withSuccess('Usuário atualizado com sucesso!');
+        }else{
+            return redirect()->route('users.edit')->withSuccess('deu merdao!');
+        }*/
+    }
 }
