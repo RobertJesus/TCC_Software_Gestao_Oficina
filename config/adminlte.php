@@ -126,14 +126,10 @@ return [
                 ],
                 [
                     'text' => 'Editar',
-                    'url'  => 'userEdit',
+                    'url'  => 'edit',
                     "icon" => 'edit',
                 ],
-                [
-                    'text' => 'Recuperar Senha',
-                    'url'  => '#',
-                    'icon' => 'lock',
-                ],
+
             ],
         ],
         [

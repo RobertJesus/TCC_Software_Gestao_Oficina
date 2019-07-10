@@ -20,8 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/userEdit', 'UserController@userEdit')->name('userEdit');
-Route::post('/userUpdate', 'UserController@userUpdate')->name('userUpdate');
-
+Route::get('/edit', 'UserController@edit')->name('edit');
+Route::post('/update', 'UserController@update')->name('update');
 Route::get('/destroy/{id}', 'UserController@destroy')->name('destroy');
 Auth::routes();
