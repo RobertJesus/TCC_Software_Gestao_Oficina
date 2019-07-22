@@ -48,7 +48,7 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @if ($errors->has('password'))
                     <span class="help-block">
-                        <strong class="error">{{ $errors->first('password') }}</strong>
+                        <strong class="errorPassword">{{ $errors->first('password') }}</strong>
                     </span>
                 @endif
             </div>

@@ -23,4 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/edit', 'UserController@edit')->name('edit');
 Route::post('/update', 'UserController@update')->name('update');
 Route::get('/destroy/{id}', 'UserController@destroy')->name('destroy');
+Route::get('/new', 'UserController@indexx')->name('new');
 Auth::routes();

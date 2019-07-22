@@ -66,6 +66,9 @@
 .error{
     margin-right: 100px;
 }
+.errorPassword{
+    margin-right: 300px;
+}
 @media screen and (max-width: 600px) {
     .selectOffice{
         width: 100%;
@@ -79,4 +82,11 @@
     .inputPassword{
         width: 100%;
     }
+    .errorPassword{
+        margin-right: 0px;
+    }
+    .error{
+        margin-right: 0px;
+    }
+    
 }

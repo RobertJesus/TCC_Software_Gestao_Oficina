@@ -143,7 +143,7 @@ return [
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => '#',
+                    'url'  => 'new',
                     'icon' => 'user-plus',
                     ],
                 [
