@@ -22,10 +22,6 @@ class UserController extends Controller
         $list = User::where('id', '<>', $id)->get();
         return view('users.add', compact('list'));
     }
-    public function indexx()
-    {
-        return view('users.new');
-    }
     public function destroy($id)
     {
         $users = User::findOrFail($id);
