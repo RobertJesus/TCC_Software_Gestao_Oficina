@@ -64,10 +64,10 @@
     float: left;
 }
 .error{
-    margin-right: 100px;
+    float: left;
 }
 .errorPassword{
-    margin-right: 300px;
+    float: left;
 }
 label{
     float: left;
