@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label>Sexo</label>
-                            <select class="form-control">
+                            <select class="form-control" name="sexo">
                                 <option selected>Feminino</option>
                                 <option>Masculino</option>
                             </select>
@@ -78,22 +78,22 @@
                         @endif
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="inputTel">Celular 2</label>
+                        <label name="celular2">Celular 2</label>
                         <input type="tel" class="form-control" placeholder="19-99121-0699">
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="inputTel">Telefone</label>
+                        <label name="telefone">Telefone</label>
                         <input type="tel" class="form-control" placeholder="19-3866-0000">
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-5 has-feedback {{$errors->has('endereço') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-5 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
                         <label for="inputCity">Endereço</label>
-                        <input type="text" name="endereço" class="form-control" id="inputCity" placeholder="Endereço">
+                        <input type="text" name="endereco" class="form-control" id="inputCity" placeholder="Endereço">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('endereço'))
                             <span class="help-block">
-                                <strong class="error">{{ $errors->first('endereço') }}</strong>
+                                <strong class="error">{{ $errors->first('endereco') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -108,7 +108,7 @@
                         @endif
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputCom">Complemento</label>
+                        <label name="complemento">Complemento</label>
                         <input type="text" class="form-control" placeholder="Complemento">
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="form-group col-md-3 has-feedback {{$errors->has('uf') ? 'has-error' : '' }}">
                         <label for="inputState">Estado</label>
-                        <select id="inputState" class="form-control">
+                        <select id="inputState" name="state" class="form-control">
                             <option selected>Acre</option>
                             <option>Alagoas</option>
                             <option>Amapá</option>
