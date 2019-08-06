@@ -65,9 +65,11 @@
 }
 .error{
     float: left;
+    font-size: 12px;
 }
 .errorPassword{
     float: left;
+    font-size: 12px;
 }
 label{
     float: left;
@@ -91,5 +93,54 @@ label{
     .error{
         margin-right: 0px;
     }
-    
+}
+@media screen and (max-width: 690px){
+    .nameClient{
+        margin-top: 35px;
+        width: 450px;
+    }
+    .dateClient{
+        margin-top: 35px;
+        width: 170px;
+    }
+    .idenClient{
+        margin-top: 35px;
+        width: 200px;
+    }
+    .sexoClient{
+        margin-top: 35px;
+        width: 120px;
+    }
+    .emailClient{
+        margin-top: 35px;
+        width: 265px;
+    }
+    .celClient{
+        margin-top: 35px;
+        width: 150px;
+    }
+    .endClient{
+        margin-top: 35px;
+        width: 350px;
+    }
+    .numClient{
+        margin-top: 35px;
+        width: 100px;
+    }
+    .compClient{
+        margin-top: 35px;
+        width: 150px;
+    }
+    .cityClient{
+        margin-top: 35px;
+        width: 200px;
+    }
+    .stateClient{
+        margin-top: 35px;
+        width: 150px;
+    }
+    .cepClient{
+        margin-top: 35px;
+        width: 100px;
+    }
 }
