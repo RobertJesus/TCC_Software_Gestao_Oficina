@@ -17,11 +17,18 @@ class CreateClientTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->date('date');
-            $table->string('record');
+            $table->integer('record')->unique();
             $table->string('sex');
-            $table->tel('cell');
             $table->string('email');
+            $table->integer('phoneP');
+            $table->integer('phoneS')->nullable();
+            $table->integer('tell')->nullable();
             $table->string('address');
+            $table->integer('numberHouse');
+            $table->string('comp', 50)->nullable();
+            $table->string('city');
+            $table->string('state');
+            $table->integer('cep');
             $table->timestamps();
         });
     }
