@@ -24,5 +24,5 @@ Route::get('/edit', 'UserController@edit')->name('edit');
 Route::post('/update', 'UserController@update')->name('update');
 Route::get('/destroy/{id}', 'UserController@destroy')->name('destroy');
 Route::get('/new', 'ClientController@index')->name('new');
-Route::post('/insert', 'ClientController@insert')->name('insert');
+Route::post('/store', 'ClientController@store')->name('store');
 Auth::routes();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateClientTable extends Migration
      */
     public function up()
     {
-        Schema::create('client', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->date('date');
-            $table->integer('record')->unique();
+            $table->string('record');
             $table->string('sex');
             $table->string('email');
-            $table->integer('phoneP');
-            $table->integer('phoneS')->nullable();
-            $table->integer('tell')->nullable();
+            $table->string('phoneP');
+            $table->string('phoneS')->nullable();
+            $table->string('tell')->nullable();
             $table->string('address');
-            $table->integer('numberHouse');
-            $table->string('comp', 50)->nullable();
+            $table->string('numberHouse');
+            $table->string('comp')->nullable();
             $table->string('city');
             $table->string('state');
-            $table->integer('cep');
+            $table->string('cep');
             $table->timestamps();
         });
     }
@@ -40,6 +40,6 @@ class CreateClientTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client');
+        Schema::dropIfExists('clients');
     }
 }
