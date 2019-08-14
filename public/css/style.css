@@ -74,6 +74,12 @@
 label{
     float: left;
 }
+.float-left{
+    width: 100%;
+}
+.form-inline{
+    display: flow-root!important; 
+}
 @media screen and (max-width: 600px) {
     .selectOffice{
         width: 100%;
