@@ -138,7 +138,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'search',
+                    'url'  => 'home',
                     'icon' => 'search',
                 ],
                 [

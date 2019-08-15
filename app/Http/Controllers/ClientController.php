@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ClientController;
 use App\Models\client;
+
 class ClientController extends Controller
 {
     public function __construct()
@@ -15,7 +16,7 @@ class ClientController extends Controller
     }
     public function index()
     {
-        return view('client.new');
+        return view('client.search');
     }
 
     public function create(){
@@ -40,13 +41,15 @@ class ClientController extends Controller
 
         $insert = $client->create($request->all());
 
-        if($insert)
+        if($insert){
             return redirect()
                     ->route('new')
                     ->with('success', 'Usuário Cadastrado com sucesso!');
+        }else{
         return redirect()
                     ->back()
                     ->with('error', 'Falha ao inserir');
+        }
     }
 
     public function edit($id){
@@ -55,37 +58,50 @@ class ClientController extends Controller
         return view('client.edit', compact('client'));
     }
 
-    public function update(Request $request){
-        $id = $request['id'];
+    public function update(Request $request, $id){ 
+        
         $client = Client::find($id);
+        
+        $result = $client->update($request->all());
 
-        $result = $client->save();
-
-        if($result)
+        if($result){
             return redirect()
-                    ->route('view')
+                    ->route('search')
                     ->with('success', 'Cliente atualizado com sucesso!');
-        return redirect()
+        }else{
+            return redirect()
                     ->back()
                     ->with('error', 'Falha ao atualizar!');
+        }
     }
     public function destroy($id){
         $users = Client::findOrFail($id);
         $result = $users->delete();
-        if($result)
+        if($result){
             return redirect()
                     ->route('search')
                     ->with('success', 'Cliente excluido com sucesso!');
-        return redirect()
+        }else{
+            return redirect()
                     ->back()
                     ->with('error', 'Falha ao excluir');
+        }
     }
     public function view($id){
         $list = Client::where('id','=', $id)->get();
         return view('client.view', compact('list'));
     }
-    public function search(){
-        $list = Client::all();
-        return view('client.search', compact('list'));
+    public function search(Request $request){
+
+        $list = Client::where('name', 'like', '%'.$request['name'].'%')->get();
+        
+        $result = $list;
+        if($result){
+               return view('client.search', compact('list'));
+        }else{
+            return redirect()
+                        ->back()
+                        ->with('error', 'Não foi possivel encontrar registro');
+        }
     }
 }

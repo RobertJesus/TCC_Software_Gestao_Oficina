@@ -18,9 +18,10 @@
         @endif
         <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
         <div class="pai">
-            <form action="{{ url(config('adminlte.client', 'update')) }}" method="post">
+        <?php foreach($client as $data){ ?>
+            <form action="{{ route('Clientupdate', $data->id) }}" method="post">
                 {!! csrf_field() !!}
-                <?php foreach($client as $data){ ?>
+                
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label>Nome/Razão Social</label>
