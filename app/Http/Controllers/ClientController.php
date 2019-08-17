@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ClientController;
 use App\Models\client;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class ClientController extends Controller
 {
@@ -65,8 +66,8 @@ class ClientController extends Controller
         $result = $client->update($request->all());
 
         if($result){
-            return redirect()
-                    ->route('search')
+            return 
+                    view('client.search')
                     ->with('success', 'Cliente atualizado com sucesso!');
         }else{
             return redirect()
@@ -75,6 +76,7 @@ class ClientController extends Controller
         }
     }
     public function destroy($id){
+        
         $users = Client::findOrFail($id);
         $result = $users->delete();
         if($result){
@@ -93,15 +95,37 @@ class ClientController extends Controller
     }
     public function search(Request $request){
 
-        $list = Client::where('name', 'like', '%'.$request['name'].'%')->get();
-        
+        $list = Client::where('name', 'like', '%'.$request['name'].'%')
+                    ->Orwhere('record', 'like', '%'.$request['name'].'%')->get();
+                    
         $result = $list;
+        
         if($result){
-               return view('client.search', compact('list'));
+            return view('client.search', compact('list'));
         }else{
             return redirect()
-                        ->back()
-                        ->with('error', 'Não foi possivel encontrar registro');
+                    ->route('search')
+                    ->with('error', 'Não foi possivel encontrar registro');
+        }
+    }
+
+    public function msg(Request $request){
+        
+        $id = $request->id;
+            
+        $result = Nexmo::message()->send([
+            'to'   => $request->num,
+            'from' => '16105552344',
+            'text' => $request->msg,
+        ]);
+        if($result){
+            return redirect()
+                    ->route('view', $id)
+                    ->with('success', 'Mensagem enviada com sucesso!!!');
+        }else{
+            return redirect()
+                    ->back()
+                    ->with('error', 'Erro ao enviar mensagem');
         }
     }
 }

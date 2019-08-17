@@ -20,16 +20,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/edit', 'UserController@edit')->name('edit');
+Route::get('/editUser', 'UserController@edit')->name('editUser');
+// Rotas User
 Route::post('/update', 'UserController@update')->name('update');
-Route::get('/destroy/{id}', 'UserController@destroy')->name('destroy');
+Route::get('/destroyUser/{id}', 'UserController@destroy')->name('destroyUser');
+// Rotas Client
 Route::get('/new', 'ClientController@create')->name('new');
-Route::get('/home', 'ClientController@index')->name('home');
+Route::get('/index', 'ClientController@index')->name('index');
 Route::post('/store', 'ClientController@store')->name('store');
 ROute::get('/store', 'ClientController@stote')->name('store');
 Route::get('/view/{id}', 'ClientController@view')->name('view');
 Route::post('/search', 'ClientController@search')->name('search');
-Route::get('/destroy/{id}', 'ClientController@destroy')->name('destroy');
+Route::get('/destroyCli/{id}', 'ClientController@destroy')->name('destroyCli');
 Route::get('/edit/{id}', 'ClientController@edit')->name('edit');
-Route::post('/{id}', 'ClientController@update')->name('Clientupdate');
+Route::post('/Clientupdate/{id}', 'ClientController@update')->name('Clientupdate');
+Route::post('/{id}', 'ClientController@msg')->name('msg');
 Auth::routes();

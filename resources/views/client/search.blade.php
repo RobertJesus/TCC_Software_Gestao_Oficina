@@ -35,9 +35,10 @@
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
+                    <th scope="col">OS</th>
                 </tr>
             </thead>
-            <?php if(is_array($list)){ ?>
+            <?php if(empty($list) == null){ ?>
                 <?php foreach($list as $client){ ?>
                     <tr>
                         <td>{{$client->name}}</td>
@@ -46,7 +47,8 @@
                         <td>{{$client->phoneP}}</td>
                         <td><a href="{{ route('view', $client->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
                         <td><a href="{{ route('edit', $client->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('destroy', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="{{ route('destroyCli', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="" class="text-danger"><i class="fa fa-file-text-o"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

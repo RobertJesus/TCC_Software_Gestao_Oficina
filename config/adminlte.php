@@ -126,7 +126,7 @@ return [
                 ],
                 [
                     'text' => 'Editar',
-                    'url'  => 'edit',
+                    'url'  => 'editUser',
                     "icon" => 'edit',
                 ],
 
@@ -138,7 +138,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'home',
+                    'url'  => 'index',
                     'icon' => 'search',
                 ],
                 [

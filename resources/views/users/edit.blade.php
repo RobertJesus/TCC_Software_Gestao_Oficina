@@ -5,11 +5,17 @@
 @section('content')
 
     <div class="register-box-body">
-        @if(session('success'))
-            <div class="alert alert-info" role="alert">
-                {{session('success')}}
-            </div>
-        @endif
+    @if(session('success'))
+        <div class="alert alert-info">
+            {{ session('success') }}
+        </div>
+    @endif
+ 
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
         <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
         <div class="pai">
         <form action="{{ url(config('adminlte.user', 'update')) }}" method="post">

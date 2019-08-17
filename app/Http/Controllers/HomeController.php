@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
+use App\Models\client;
+use App\user;
 
 class HomeController extends Controller
 {
@@ -22,7 +26,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   $client = Client::all()->count();
+        $user = User::all()->count();
+        return view('home', compact('user', 'client'));
     }
 }

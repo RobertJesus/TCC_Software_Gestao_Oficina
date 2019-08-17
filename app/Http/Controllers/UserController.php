@@ -58,6 +58,8 @@ class UserController extends Controller
         $user->password = hash::make($request->password);
         $user->save();
         
-        return redirect()->route('edit')->withSuccess('Usuário atualizado com sucesso!');
+        return redirect()
+                ->route('editUser')
+                ->with('success', 'Usuário atualizado com sucesso!');
     }
 }

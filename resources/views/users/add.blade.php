@@ -29,7 +29,7 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{date("d/m/Y", strtotime($user->created_at))}}</td>
-                    <td><a href="{{ route('destroy', $user->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
+                    <td><a href="{{ route('destroyUser', $user->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     <td><a href="{{ url('/password/reset') }}" class="text-success"><i class="fa fa-lock"></i></a></td>
                 </tr>
             <?php } ?>
