@@ -67,7 +67,7 @@ class ClientController extends Controller
 
         if($result){
             return 
-                    view('client.search')
+                    view('')
                     ->with('success', 'Cliente atualizado com sucesso!');
         }else{
             return redirect()
@@ -81,7 +81,7 @@ class ClientController extends Controller
         $result = $users->delete();
         if($result){
             return redirect()
-                    ->route('search')
+                    ->route('indexCli')
                     ->with('success', 'Cliente excluido com sucesso!');
         }else{
             return redirect()

@@ -160,12 +160,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => '#',
+                    'url'  => 'indexPro',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => '#',
+                    'url'  => 'newPro',
                     'icon' => 'plus',
                 ],
                 [
@@ -187,7 +187,7 @@ return [
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => '#',
+                    'url'  => 'newProd',
                     'icon' => 'plus',
                 ],
                 [

@@ -5,7 +5,7 @@
 @section('content')
     
 <div class="register-box-body">
-    <p class="login-box-msg">Lista de Clientes</p>
+    <p class="login-box-msg">Lista de Fornecedores</p>
     @if(session('success'))
         <div class="alert alert-info">
             {{ session('success') }}
@@ -17,10 +17,10 @@
             {{ session('error') }}
         </div>
     @endif
-    <form class="form-inline" action="{{ url(config('adminlte.client', 'search')) }}" method="post">
+    <form class="form-inline" action="{{ url(config('adminlte.provider', 'search')) }}" method="post">
     {!! csrf_field() !!}
         <div class="form-row float-right" style="margin-bottom: 10px">
-            <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar cliente" name="name">
+            <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar fornecedor" name="name">
             <button type="submit" class="btn btn-primary my-1">Buscar</button>
         </div>
     </form><hr>
@@ -28,27 +28,25 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
+                    <th scope="col">Razão Social</th>
                     <th scope="col">Email</th>
                     <th scope="col">Endereço</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
-                    <th scope="col">OS</th>
                 </tr>
             </thead>
             <?php if(empty($list) == null){ ?>
-                <?php foreach($list as $client){ ?>
+                <?php foreach($list as $provider){ ?>
                     <tr>
-                        <td>{{$client->name}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->address}}</td>
-                        <td>{{$client->phoneP}}</td>
-                        <td><a href="{{ route('view', $client->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                        <td><a href="{{ route('edit', $client->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('destroyCli', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
-                        <td><a href="" class="text-danger"><i class="fa fa-file-text-o"></i></a></td>
+                        <td>{{$provider->name}}</td>
+                        <td>{{$provider->email}}</td>
+                        <td>{{$provider->address}}</td>
+                        <td>{{$provider->phoneP}}</td>
+                        <td><a href="{{ route('viewPro', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('editPro', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="{{ route('destroyPro', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

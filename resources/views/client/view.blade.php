@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                                        <button type="submit" class="btn btn-primary" onclick="return confirm('Tem certeza que deseja enviar um SMS para o cliente?')">Enviar SMS</button>
                                     </div>
                                     </form>
                                     </div>
