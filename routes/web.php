@@ -46,6 +46,9 @@ Route::get('/editPro/{id}', 'ProviderController@edit')->name('editPro');
 Route::post('/updatePro/{id}', 'ProviderController@update')->name('updatePro');
 Route::get('/viewPro/{id}', 'ProviderController@view')->name('viewPro');
 
+// Rotas mecanico
+Route::get('/newMe', 'MechanicalController@create')->name('newMe');
+Route::post('/store', 'MechanicalController@store')->name('store');
 // Rotas Produtos
 Route::get('newProd', 'ProductController@index')->name('newProd');
 Auth::routes();

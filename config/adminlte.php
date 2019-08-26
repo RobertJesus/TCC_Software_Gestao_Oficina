@@ -154,6 +154,27 @@ return [
             ],
         ],
         [
+            'text'    => 'Mecanico',
+            'icon'    => 'wrench',
+            'submenu' => [
+                [
+                    'text' => 'Buscar',
+                    'url'  => 'index',
+                    'icon' => 'search',
+                ],
+                [
+                    'text' => 'Novo',
+                    'url'  => 'newMe',
+                    'icon' => 'user-plus',
+                    ],
+                [
+                    'text' => 'Relatorio',
+                    'url'  => '#',
+                    'icon' => 'line-chart',
+                ],
+            ],
+        ],
+        [
             'text' => 'Fornecedor',
             'url'  => '#',
             'icon' => 'truck',
