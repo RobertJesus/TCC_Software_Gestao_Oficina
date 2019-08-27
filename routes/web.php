@@ -28,7 +28,7 @@ Route::get('/destroyUser/{id}', 'UserController@destroy')->name('destroyUser');
 Route::get('/new', 'ClientController@create')->name('new');
 Route::get('/indexCli', 'ClientController@index')->name('indexCli');
 Route::get('/index', 'ClientController@index')->name('index');
-Route::post('/store', 'ClientController@store')->name('store');
+Route::post('/storeC', 'ClientController@store')->name('storeC');
 ROute::get('/store', 'ClientController@stote')->name('store');
 Route::get('/view/{id}', 'ClientController@view')->name('view');
 Route::post('/search', 'ClientController@search')->name('search');
@@ -50,5 +50,8 @@ Route::get('/viewPro/{id}', 'ProviderController@view')->name('viewPro');
 Route::get('/newMe', 'MechanicalController@create')->name('newMe');
 Route::post('/store', 'MechanicalController@store')->name('store');
 // Rotas Produtos
-Route::get('newProd', 'ProductController@index')->name('newProd');
+Route::get('indexP', 'ProductController@index')->name('indexP');
+Route::get('newProd', 'ProductController@create')->name('newProd');
+Route::post('store', 'ProductController@store')->name('store');
+Route::post('/search', 'ProductController@search')->name('search');
 Auth::routes();

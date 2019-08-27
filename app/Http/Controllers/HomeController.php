@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Models\client;
 use App\user;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,7 @@ class HomeController extends Controller
     public function index()
     {   $client = Client::all()->count();
         $user = User::all()->count();
-        return view('home', compact('user', 'client'));
+        $product = Product::all()->count();
+        return view('home', compact('user', 'client', 'product'));
     }
 }

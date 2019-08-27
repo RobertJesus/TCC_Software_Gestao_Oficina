@@ -37,14 +37,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px"></sup></h3>
+              <h3>{{$product}}<sup style="font-size: 20px"></sup></h3>
 
               <p>Produtos Registrados</p>
             </div>
             <div class="icon">
               <i class="ion ion-ios-barcode"></i>
             </div>
-            <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('indexP')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

@@ -18,7 +18,7 @@
         @endif
         <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
         <div class="pai">
-            <form action="{{ url(config('adminlte.client', 'store')) }}" method="post">
+            <form action="{{ url(config('adminlte.client', 'storeC')) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

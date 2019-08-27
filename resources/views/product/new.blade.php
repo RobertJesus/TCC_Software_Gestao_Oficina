@@ -18,12 +18,12 @@
         @endif
         <p class="login-box-msg">Cadastrar Produto</p>
         <div class="pai">
-            <form action="{{ url(config('adminlte.provider', 'store')) }}" method="post">
+            <form action="{{ url(config('adminlte.product', 'store')) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
-                    <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
-                        <label>Razão Social</label>
-                        <input type="text" name="name" class="form-control nameClient">
+                    <div class="form-group col-md-2 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
+                        <label>Codigo do Produto</label>
+                        <input type="text" name="description" class="form-control nameClient">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -32,8 +32,8 @@
                         @endif
                     </div>
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
-                        <label>Nome Fantasia</label>
-                        <input type="text" name="nameFant" class="form-control nameClient">
+                        <label>Descrição</label>
+                        <input type="text" name="cod" class="form-control nameClient">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('data'))
                             <span class="help-block">
@@ -41,9 +41,9 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group col-md-3 has-feedback {{ $errors->has('CPF/CNPJ') ? 'has-error' : '' }}">
-                        <label>CNPJ</label>
-                        <input for="text" name="record" class="form-control idenClient">
+                    <div class="form-group col-md-2 has-feedback {{ $errors->has('CPF/CNPJ') ? 'has-error' : '' }}">
+                        <label>Marca</label>
+                        <input for="text" name="brand" class="form-control idenClient">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('CPF/CNPJ'))
                             <span class="help-block">
@@ -53,35 +53,9 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                        <label>E-mail</label>
-                        <input type="text" name="email" class="form-control emailClient">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong class="error">{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="form-group col-md-2 has-feedback {{ $errors->has('celular') ? 'has-error' : '' }}">
-                        <label>Celular 1</label>
-                        <input type="text" name="phoneP" class="form-control celClient">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        @if ($errors->has('celular'))
-                            <span class="help-block">
-                                <strong class="error">{{ $errors->first('celular') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label name="telefone">Telefone</label>
-                        <input type="text" name="tell" class="form-control celClient">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
-                        <label for="inputCity">Endereço</label>
-                        <input type="text" name="address" class="form-control endClient" id="inputCity">
+                    <div class="form-group col-md-2 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
+                        <label for="inputCity">Preço Entrada</label>
+                        <input type="text" name="priceNew" class="form-control endClient" id="inputCity">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('endereco'))
                             <span class="help-block">
@@ -90,8 +64,8 @@
                         @endif
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('bairro') ? 'has-error' : '' }}">
-                        <label>Bairro</label>
-                        <input type="text" name="bai" class="form-control bairroClient" id="inputCity">
+                        <label>Preço Venda</label>
+                        <input type="text" name="priceOld" class="form-control bairroClient" id="inputCity">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('bairro'))
                             <span class="help-block">
@@ -100,8 +74,8 @@
                         @endif
                     </div>
                     <div class="form-group col-md-2 {{$errors->has('numero') ? 'has-error' : '' }}">
-                        <label>Numero</label>
-                        <input type="text" name="numberHouse" class="form-control numClient" min="1">
+                        <label>Quantidade</label>
+                        <input type="text" name="amount" class="form-control numClient" min="1">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('numero'))
                             <span class="help-block">
@@ -109,15 +83,11 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group col-md-2">
-                        <label name="complemento">Complemento</label>
-                        <input type="text" name="comp" class="form-control compClient">
-                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                        <label for="inputCity">Cidade</label>
-                        <input type="text" name="city" class="form-control cityClient" id="inputCity">
+                        <label for="inputCity">Fornecedor</label>
+                        <input type="text" name="provider" class="form-control cityClient" id="inputCity">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cidade'))
                             <span class="help-block">
@@ -125,47 +95,9 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group col-md-3 has-feedback {{$errors->has('uf') ? 'has-error' : '' }}">
-                        <label for="inputState">Estado</label>
-                        <select id="inputState" name="state" class="form-control stateClient">
-                            <option selected>Acre</option>
-                            <option>Alagoas</option>
-                            <option>Amapá</option>
-                            <option>Amazonas</option>
-                            <option>Bahia</option>
-                            <option>Ceará</option>
-                            <option>Espírito Santo</option>
-                            <option>Goiás</option>
-                            <option>Maranhão</option>
-                            <option>Mato Grosso</option>
-                            <option>Mato Grosso do Sul</option>
-                            <option>Minas Gerais</option>
-                            <option>Pará</option>
-                            <option>Paraíba</option>
-                            <option>Paraná</option>
-                            <option>Pernambuco</option>
-                            <option>Piauí</option>
-                            <option>Rio de Janeiro</option>
-                            <option>Rio Grande do Norte</option>
-                            <option>Rio Grande do Sul</option>
-                            <option>Rondônia</option>
-                            <option>Roraima</option>
-                            <option>Santa Catarina</option>
-                            <option>São Paulo</option>
-                            <option>Sergipe</option>
-                            <option>Tocantins</option>
-                            <option>Distrito Federal</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2 has-feedback {{$errors->has('cep') ? 'has-error' : '' }}">
-                        <label for="inputZip">CEP</label>
-                        <input type="number" name="cep" class="form-control cepClient" id="inputZip">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        @if ($errors->has('cep'))
-                            <span class="help-block">
-                                <strong class="error">{{ $errors->first('cep') }}</strong>
-                            </span>
-                        @endif
+                    <div class="form-group col-md-3">
+                        <label name="">Nota Fiscal</label>
+                        <input type="text" name="invoice" class="form-control compClient">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Cadastrar</button>

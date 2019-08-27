@@ -138,22 +138,17 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'index',
+                    'url'  => 'indexCli',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
                     'url'  => 'new',
                     'icon' => 'user-plus',
-                    ],
-                [
-                    'text' => 'Relatorio',
-                    'url'  => '#',
-                    'icon' => 'line-chart',
                 ],
             ],
         ],
-        [
+        /*[
             'text'    => 'Mecanico',
             'icon'    => 'wrench',
             'submenu' => [
@@ -173,7 +168,7 @@ return [
                     'icon' => 'line-chart',
                 ],
             ],
-        ],
+        ],*/
         [
             'text' => 'Fornecedor',
             'url'  => '#',
@@ -189,11 +184,6 @@ return [
                     'url'  => 'newPro',
                     'icon' => 'plus',
                 ],
-                [
-                    'text' => 'Relatorio',
-                    'url'  => '#',
-                    'icon' => 'line-chart',
-                ],
             ],
         ],
         [
@@ -203,18 +193,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => '#',
+                    'url'  => 'indexP',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
                     'url'  => 'newProd',
                     'icon' => 'plus',
-                ],
-                [
-                    'text' => 'Relatorio',
-                    'url'  => '#',
-                    'icon' => 'line-chart',
                 ],
             ],
         ],

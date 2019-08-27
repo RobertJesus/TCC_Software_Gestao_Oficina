@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('product.new');
+        return view('product.search');
     }
 
     public function create()
@@ -27,7 +27,7 @@ class ProductController extends Controller
 
         if($insert){
             return redirect()
-                    ->route('newPro')
+                    ->route('newProd')
                     ->with('success', 'Produto Cadastrado com sucesso!');
         }else{
         return redirect()
@@ -38,8 +38,8 @@ class ProductController extends Controller
 
     public function search(Request $request){
 
-        $list = Product::where('name', 'like', '%'.$request['name'].'%')
-                    ->Orwhere('record', 'like', '%'.$request['name'].'%')->get();
+        $list = Product::where('description', 'like', '%'.$request['name'].'%')
+                    ->Orwhere('cod', 'like', '%'.$request['name'].'%')->get();
                     
         $result = $list;
         

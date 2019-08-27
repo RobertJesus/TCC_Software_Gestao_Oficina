@@ -16,18 +16,13 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('cod');
-            $table->string('name');
-            $table->string('record');
-            $table->string('email');
-            $table->string('phoneP');
-            $table->string('tell')->nullable();
-            $table->string('address');
-            $table->string('bai');
-            $table->string('numberHouse');
-            $table->string('comp')->nullable();
-            $table->string('city');
-            $table->string('state');
-            $table->string('cep');
+            $table->string('description');
+            $table->string('brand');
+            $table->double('priceNew', 5, 2);
+            $table->double('priceOld', 5, 2);
+            $table->string('invoice');
+            $table->string('provider');
+            $table->string('amount');
             $table->timestamps();
         });
     }
