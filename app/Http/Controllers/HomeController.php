@@ -30,6 +30,6 @@ class HomeController extends Controller
     {   $client = Client::all()->count();
         $user = User::all()->count();
         $product = Product::all()->count();
-        return view('home', compact('user', 'client', 'product'));
+        return view('home', compact('user', 'client', 'product'))->with('success', 'Produto Cadastrado com sucesso!');
     }
 }
