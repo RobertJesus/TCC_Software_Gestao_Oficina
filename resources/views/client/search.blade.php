@@ -17,7 +17,7 @@
             {{ session('error') }}
         </div>
     @endif
-    <form class="form-inline" action="{{ url(config('adminlte.client', 'search')) }}" method="post">
+    <form class="form-inline" action="{{ url(config('adminlte.client', 'searchCli')) }}" method="post">
     {!! csrf_field() !!}
         <div class="form-row float-right" style="margin-bottom: 10px">
             <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar cliente" name="name">

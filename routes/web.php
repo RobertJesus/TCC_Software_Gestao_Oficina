@@ -31,7 +31,7 @@ Route::get('/index', 'ClientController@index')->name('index');
 Route::post('/storeC', 'ClientController@store')->name('storeC');
 ROute::get('/store', 'ClientController@stote')->name('store');
 Route::get('/view/{id}', 'ClientController@view')->name('view');
-Route::post('/search', 'ClientController@search')->name('search');
+Route::post('/searchCli', 'ClientController@search')->name('searchCli');
 Route::get('/destroyCli/{id}', 'ClientController@destroy')->name('destroyCli');
 Route::get('/edit/{id}', 'ClientController@edit')->name('edit');
 Route::post('/Clientupdate/{id}', 'ClientController@update')->name('Clientupdate');
