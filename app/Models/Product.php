@@ -23,4 +23,9 @@ class Product extends Model
     ];
     protected $guarded = ['id', 'created_at', 'update_at'];
     protected $table = 'products';
+    
+    function provider() 
+    {
+        return $this->belongsToMany('App\Models\Provider', 'provand_prods');
+    }
 }
