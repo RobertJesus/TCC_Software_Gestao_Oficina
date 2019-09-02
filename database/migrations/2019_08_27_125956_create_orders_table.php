@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('description');
-            $table->dougle('budget', 8,2);
+            $table->double('budget', 8,2);
             $table->date('date');
 
             $table->timestamps();

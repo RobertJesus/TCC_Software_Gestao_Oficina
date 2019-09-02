@@ -58,10 +58,13 @@
 
                     <ul class="nav navbar-nav">
                         <li class="nav-item dropdown">
+                        <?php if(empty(Auth::user()->name) == null){?>
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <?php }?>
+                            <div class="dropdown-menu dropdown-menu-ri
+                            ght" aria-labelledby="navbarDropdown">
                                 @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
                                     <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
                                         <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
