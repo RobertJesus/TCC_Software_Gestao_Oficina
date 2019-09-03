@@ -26,16 +26,18 @@ class ProductController extends Controller
     }
 
     public function store(Request $request, Product $product, ProvandProd $ProvandProd){
-        $id = Provider::where('name', '=', $request['provider'])->get('id');
+        $id = Provider::where('name', '=', $request['provider'])->get();
 
         $insert = $product->create($request->all());
-    
-        $ProProd['provider_id'] = $id;
+        foreach($id as $data){
+            $provader_id['provider_id'] = $data['id']; 
+        }
+        
+        $ProProd = $provader_id;
         $ProProd['product_id'] = $insert['id'];
         
         $result = $ProvandProd->create($ProProd);
-        return $result;
-        exit();
+        
         if($insert){
             return redirect()
                     ->route('newProd')

@@ -13,7 +13,7 @@ class ProviderController extends Controller
 {
     public function index()
     {
-        return view('provider.new');
+        return view('provider.search');
     }
 
     public function create()
@@ -47,7 +47,7 @@ class ProviderController extends Controller
             return view('provider.search', compact('list'));
         }else{
             return redirect()
-                    ->route('search')
+                    ->route('searchF')
                     ->with('error', 'Não foi possivel encontrar registro');
         }
     }
