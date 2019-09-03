@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use App\Models\Provider;
+use App\Models\ProvandProd;
+
 
 use Illuminate\Http\Request;
 
@@ -17,14 +20,22 @@ class ProductController extends Controller
     }
 
     public function create()
-    {
-        return view('product.new');
+    {   
+        $provider = Provider::all();
+        return view('product.new', compact('provider'));
     }
 
-    public function store(Request $request, Product $product){
-        
-        $insert = $product->create($request->all());
+    public function store(Request $request, Product $product, ProvandProd $ProvandProd){
+        $id = Provider::where('name', '=', $request['provider'])->get('id');
 
+        $insert = $product->create($request->all());
+    
+        $ProProd['provider_id'] = $id;
+        $ProProd['product_id'] = $insert['id'];
+        
+        $result = $ProvandProd->create($ProProd);
+        return $result;
+        exit();
         if($insert){
             return redirect()
                     ->route('newProd')

@@ -18,7 +18,7 @@
         @endif
         <p class="login-box-msg">Cadastrar Produto</p>
         <div class="pai">
-            <form action="{{ url(config('adminlte.product', 'store')) }}" method="post">
+            <form action="{{ url(config('adminlte.product', 'storeP')) }}" method="get">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -87,7 +87,13 @@
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Fornecedor</label>
-                        <input type="text" name="provider" class="form-control cityClient" id="inputCity">
+                        <select name="provider" class="form-control stateClient">
+                            <?php if(empty($provider) == null) { ?>
+                                <?php foreach($provider as $data){ ?>
+                                    <option>{{$data->name}}</option>
+                                <?php }?>
+                            <?php }?>
+                        </select>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cidade'))
                             <span class="help-block">

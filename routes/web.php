@@ -37,7 +37,7 @@ Route::get('/edit/{id}', 'ClientController@edit')->name('edit');
 Route::post('/Clientupdate/{id}', 'ClientController@update')->name('Clientupdate');
 Route::post('/{id}', 'ClientController@msg')->name('msg');
 // Rotas Fornecedor
-Route::post('/store', 'ProviderController@store')->name('store');
+Route::get('/store', 'ProviderController@store')->name('store');
 Route::get('/newPro', 'ProviderController@create')->name('newPro');
 Route::post('/search', 'ProviderController@search')->name('search');
 Route::get('/destroyPro/{id}', 'ProviderController@destroy')->name('destroyPro');
@@ -52,6 +52,6 @@ Route::post('/store', 'MechanicalController@store')->name('store');
 // Rotas Produtos
 Route::get('indexP', 'ProductController@index')->name('indexP');
 Route::get('newProd', 'ProductController@create')->name('newProd');
-Route::post('store', 'ProductController@store')->name('store');
+Route::get('/storeP', 'ProductController@store')->name('storeP');
 Route::post('/search', 'ProductController@search')->name('search');
 Auth::routes();
