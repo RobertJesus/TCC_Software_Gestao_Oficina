@@ -26,6 +26,7 @@ class ProductController extends Controller
     }
 
     public function store(Request $request, Product $product, ProvandProd $ProvandProd){
+        
         $id = Provider::where('name', '=', $request['provider'])->get();
 
         $insert = $product->create($request->all());

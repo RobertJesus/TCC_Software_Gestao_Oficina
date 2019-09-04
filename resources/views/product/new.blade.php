@@ -18,7 +18,7 @@
         @endif
         <p class="login-box-msg">Cadastrar Produto</p>
         <div class="pai">
-            <form action="{{ url(config('adminlte.product', 'storeP')) }}" method="get">
+            <form action="{{ url(config('adminlte.product', 'storeP')) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

@@ -15,7 +15,6 @@ class CreateProvandProdsTable extends Migration
     {
         Schema::create('provand_prods', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->primary('id');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
             $table->integer('provider_id')->unsigned();

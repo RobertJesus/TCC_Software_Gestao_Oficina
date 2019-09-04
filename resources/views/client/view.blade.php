@@ -57,7 +57,7 @@
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ url(config('adminlte.client', 'msg')) }}" method="post">
+                                    <form action="{{ route('msg', $client->id) }}" method="post">
                                     {!! csrf_field() !!}
                                     <div class="modal-body">
                                         <div class="form-group">
@@ -65,7 +65,6 @@
                                             <textarea class="form-control" id="message-text" name="msg"></textarea>
                                             <label class="col-form-label">Telefone</label>
                                             <input type="tel" class="form-control" name="num" value="55{{$client->phoneP}}">
-                                            <input type="number" class="form-control" name="id" value="{{$client->id}}">
                                         </div>
                                     </div>
                                     <div class="modal-footer">

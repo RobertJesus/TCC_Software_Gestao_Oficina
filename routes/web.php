@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/editUser', 'UserController@edit')->name('editUser');
-//Rotas User
+// //Rotas User
 Route::post('/update', 'UserController@update')->name('update');
 Route::get('/destroyUser/{id}', 'UserController@destroy')->name('destroyUser');
 //Rotas Client
@@ -35,11 +35,11 @@ Route::post('/searchCli', 'ClientController@search')->name('searchCli');
 Route::get('/destroyCli/{id}', 'ClientController@destroy')->name('destroyCli');
 Route::get('/edit/{id}', 'ClientController@edit')->name('edit');
 Route::post('/Clientupdate/{id}', 'ClientController@update')->name('Clientupdate');
-Route::post('/{id}', 'ClientController@msg')->name('msg');
+Route::post('/msg/{id}', 'ClientController@msg')->name('msg');
 // Rotas Fornecedor
-Route::get('/storeF', 'ProviderController@store')->name('storeF');
+Route::post('/storeF', 'ProviderController@store')->name('storeF');
 Route::get('/newPro', 'ProviderController@create')->name('newPro');
-Route::get('/searchF', 'ProviderController@search')->name('searchF');
+Route::post('/searchF', 'ProviderController@search')->name('searchF');
 Route::get('/destroyPro/{id}', 'ProviderController@destroy')->name('destroyPro');
 Route::get('/indexPro', 'ProviderController@index')->name('indexPro');
 Route::get('/editPro/{id}', 'ProviderController@edit')->name('editPro');
@@ -52,6 +52,5 @@ Route::post('/store', 'MechanicalController@store')->name('store');
 // Rotas Produtos
 Route::get('indexP', 'ProductController@index')->name('indexP');
 Route::get('newProd', 'ProductController@create')->name('newProd');
-Route::get('/storeP', 'ProductController@store')->name('storeP');
-Route::get('/search', 'ProductController@search')->name('search');
-Auth::routes();
+Route::post('/storeP', 'ProductController@store')->name('storeP');
+Route::post('/search', 'ProductController@search')->name('search');
