@@ -59,3 +59,6 @@ Route::get('/editProd/{id}', 'ProductController@edit')->name('editProd');
 Route::post('/updateProd/{id}', 'ProductController@update')->name('updateProd');
 Route::get('/destroyProd/{id}', 'ProductController@destroy')->name('destroyProd');
 //Route::get('/dataProduct/{id}', 'ProviderController@dataProduct')->name('dataProduct');
+ //Rotas Ordem de Serviço
+ Route::get('/newOs', 'ServiceOrderController@create')->name('newOs');
+ ROute::get('/indexOs', 'ServiceOrderController@index')->name('indexOs');
