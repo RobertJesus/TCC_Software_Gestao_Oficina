@@ -67,21 +67,22 @@ class ProductController extends Controller
     }
 
     public function edit($id){
+        $provider = Provider::all();
         $product = Product::where('id', '=', $id)->get();
         
-        return view('provider.edit', compact('provider'));
+        return view('product.edit', compact('product', 'provider'));
     }
 
     public function update(Request $request, $id){ 
         
-        $provider = Product::find($id);
+        $product = Product::find($id);
         
         $result = $product->update($request->all());
 
         if($result){
             return redirect()
-                    ->route('indexPro')
-                    ->with('success', 'Fornecedor atualizado com sucesso!');
+                    ->route('indexP')
+                    ->with('success', 'Produto atualizado com sucesso!');
         }else{
             return redirect()
                     ->back()
@@ -94,8 +95,8 @@ class ProductController extends Controller
         $result = $product->delete();
         if($result){
             return redirect()
-                    ->route('indexPro')
-                    ->with('success', 'Cliente excluido com sucesso!');
+                    ->route('indexP')
+                    ->with('success', 'Produto excluido com sucesso!!!');
         }else{
             return redirect()
                     ->back()
@@ -103,7 +104,9 @@ class ProductController extends Controller
         }
     }
     public function view($id){
-        $list = Product::where('id','=', $id)->get();
-        return view('provider.view', compact('list'));
+    
+        $product = Product::where('id','=', $id)->get();
+        
+        return view('product.view', compact('product'));
     }
 }

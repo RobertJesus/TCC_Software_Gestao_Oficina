@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ProviderController;
 use App\Models\Provider;
+use App\Models\Product;
+use App\Models\ProvanProd;
 
 class ProviderController extends Controller
 {
@@ -92,4 +94,16 @@ class ProviderController extends Controller
         $list = Provider::where('id','=', $id)->get();
         return view('provider.view', compact('list'));
     }
+
+    /*public function dataProduct($id){
+        
+        //$product = Product::where('id', '=', $id)->get();
+
+        $result = $id->produtos;
+        return $result;
+        exit();
+        foreach($result as $product){
+            echo ($product->description);
+        }
+    }*/
 }

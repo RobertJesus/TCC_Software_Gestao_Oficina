@@ -17,13 +17,22 @@
             {{ session('error') }}
         </div>
     @endif
-    <form class="form-inline" action="{{ url(config('adminlte.product', 'search')) }}" method="post">
-    {!! csrf_field() !!}
-        <div class="form-row float-right" style="margin-bottom: 10px">
-            <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar produto" name="name">
-            <button type="submit" class="btn btn-primary my-1">Buscar</button>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <a href="{{route('newProd')}}" class=""> 
+                <button type="submit" class="btn btn-success" >Novo Cliente</button>
+            </a>
         </div>
-    </form><hr>
+        <div class="form-group col-md-6">
+            <form class="form-inline" action="{{ url(config('adminlte.product', 'search')) }}" method="post">
+            {!! csrf_field() !!}
+                <div class="float-right" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar produto" name="name">
+                    <button type="submit" class="btn btn-primary my-1">Buscar</button>
+                </div>
+            </form>
+        </div><hr>
+    </div>
     <div class="pai">
         <table class="table table-striped">
             <thead>
@@ -48,9 +57,9 @@
                         <td>R$ {{$data->priceNew}}</td>
                         <td>R$ {{$data->priceOld}}</td>
                         <td>{{$data->amount}}</td>
-                        <td><a href="{{ route('viewPro', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                        <td><a href="{{ route('editPro', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('destroyPro', $data->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="{{ route('viewProd', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('editProd', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="{{ route('destroyProd', $data->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

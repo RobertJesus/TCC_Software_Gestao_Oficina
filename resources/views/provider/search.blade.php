@@ -33,6 +33,7 @@
                     <th scope="col">Endereço</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Visualizar</th>
+                    <th scope="col">Produtos</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
                 </tr>
@@ -44,7 +45,8 @@
                         <td>{{$provider->email}}</td>
                         <td>{{$provider->address}}</td>
                         <td>{{$provider->phoneP}}</td>
-                        <td><a href="{{ route('viewPro', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('dataProduct', $provider->id)}}" class="fa fa-barcode"></a></td>
+                        <td><a href="{{ route('viewProd', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
                         <td><a href="{{ route('editPro', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('destroyPro', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>

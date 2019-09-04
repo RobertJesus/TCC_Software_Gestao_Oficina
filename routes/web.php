@@ -54,3 +54,8 @@ Route::get('indexP', 'ProductController@index')->name('indexP');
 Route::get('newProd', 'ProductController@create')->name('newProd');
 Route::post('/storeP', 'ProductController@store')->name('storeP');
 Route::post('/search', 'ProductController@search')->name('search');
+Route::get('/viewProd/{id}', 'ProductController@view')->name('viewProd');
+Route::get('/editProd/{id}', 'ProductController@edit')->name('editProd');
+Route::post('/updateProd/{id}', 'ProductController@update')->name('updateProd');
+Route::get('/destroyProd/{id}', 'ProductController@destroy')->name('destroyProd');
+//Route::get('/dataProduct/{id}', 'ProviderController@dataProduct')->name('dataProduct');
