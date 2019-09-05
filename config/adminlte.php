@@ -209,9 +209,15 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => '#',
+                    'url'  => 'indexOs',
                     'icon' => 'search',
                 ],
+                [
+                    'text' => 'Novo',
+                    'url'  => 'newOs',
+                    'icon' => 'plus',
+                ],
+                
             ],
         ],
     ],
