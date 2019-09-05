@@ -58,11 +58,8 @@ Route::get('/viewProd/{id}', 'ProductController@view')->name('viewProd');
 Route::get('/editProd/{id}', 'ProductController@edit')->name('editProd');
 Route::post('/updateProd/{id}', 'ProductController@update')->name('updateProd');
 Route::get('/destroyProd/{id}', 'ProductController@destroy')->name('destroyProd');
-<<<<<<< HEAD
 Route::get('/products/{id}', 'ProviderController@products')->name('products');
-=======
-//Route::get('/dataProduct/{id}', 'ProviderController@dataProduct')->name('dataProduct');
+
  //Rotas Ordem de Serviço
  Route::get('/newOs', 'ServiceOrderController@create')->name('newOs');
  ROute::get('/indexOs', 'ServiceOrderController@index')->name('indexOs');
->>>>>>> d2ef66aa4c0658e878f0ed73f67cb2c334ff5285
