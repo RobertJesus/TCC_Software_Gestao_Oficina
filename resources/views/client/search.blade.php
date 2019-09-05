@@ -17,13 +17,22 @@
             {{ session('error') }}
         </div>
     @endif
-    <form class="form-inline" action="{{ url(config('adminlte.client', 'searchCli')) }}" method="post">
-    {!! csrf_field() !!}
-        <div class="form-row float-right" style="margin-bottom: 10px">
-            <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar cliente" name="name">
-            <button type="submit" class="btn btn-primary my-1">Buscar</button>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <a href="{{route('new')}}" class=""> 
+                <button type="submit" class="btn btn-success">Novo Cliente</button>
+            </a>
         </div>
-    </form><hr>
+        <div class="form-group col-md-6">
+            <form class="form-inline" action="{{ url(config('adminlte.client', 'searchCli')) }}" method="post">
+            {!! csrf_field() !!}
+                <div class="form-row float-right" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar cliente" name="name">
+                    <button type="submit" class="btn btn-primary my-1">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div><hr>
     <div class="pai">
         <table class="table table-striped">
             <thead>

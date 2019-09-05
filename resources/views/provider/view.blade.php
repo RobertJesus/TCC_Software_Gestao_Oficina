@@ -17,6 +17,11 @@
                 {{ session('error') }}
             </div>
         @endif
+    <div class="form-group">
+        <a href="{{route('indexPro')}}"> 
+            <button type="submit" class="btn btn-info" >Voltar</button>
+        </a>
+    </div>
     <div class="pai">
     <table class="table table-hover">
         <tbody>

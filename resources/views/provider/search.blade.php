@@ -17,13 +17,22 @@
             {{ session('error') }}
         </div>
     @endif
-    <form class="form-inline" action="{{ url(config('adminlte.provider', 'searchF')) }}" method="post">
-    {!! csrf_field() !!}
-        <div class="form-row float-right" style="margin-bottom: 10px">
-            <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar fornecedor" name="name">
-            <button type="submit" class="btn btn-primary my-1">Buscar</button>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <a href="{{route('newPro')}}" class=""> 
+                <button type="submit" class="btn btn-success" >Novo Fornecedor</button>
+            </a>
         </div>
-    </form><hr>
+        <div class="form-group col-md-6">
+            <form class="form-inline" action="{{ url(config('adminlte.provider', 'searchF')) }}" method="post">
+            {!! csrf_field() !!}
+                <div class="form-row float-right" style="margin-bottom: 10px">
+                    <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar fornecedor" name="name">
+                    <button type="submit" class="btn btn-primary my-1">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div><hr>
     <div class="pai">
         <table class="table table-striped">
             <thead>
@@ -32,8 +41,8 @@
                     <th scope="col">Email</th>
                     <th scope="col">Endereço</th>
                     <th scope="col">Telefone</th>
-                    <th scope="col">Visualizar</th>
                     <th scope="col">Produtos</th>
+                    <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
                 </tr>
@@ -45,8 +54,8 @@
                         <td>{{$provider->email}}</td>
                         <td>{{$provider->address}}</td>
                         <td>{{$provider->phoneP}}</td>
-                        <td><a href="{{ route('dataProduct', $provider->id)}}" class="fa fa-barcode"></a></td>
-                        <td><a href="{{ route('viewProd', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a></td>
+                        <td><a href="{{ route('viewPro', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
                         <td><a href="{{ route('editPro', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('destroyPro', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>

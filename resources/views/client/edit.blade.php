@@ -5,6 +5,7 @@
 @section('content')
 
     <div class="register-box-body">
+        <p class="login-box-msg">Editar Cadastro do Cliente</p>
         @if(session('success'))
             <div class="alert alert-info">
                 {{ session('success') }}
@@ -16,7 +17,11 @@
                 {{ session('error') }}
             </div>
         @endif
-        <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
+        <div class="form-group">
+            <a href="{{route('indexCli')}}"> 
+                <button type="submit" class="btn btn-info" >Voltar</button>
+            </a>
+        </div>
         <div class="pai">
         <?php foreach($client as $data){ ?>
             <form action="{{ route('Clientupdate', $data->id) }}" method="post">

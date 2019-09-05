@@ -29,8 +29,8 @@ class Provider extends Model
     protected $guarded = ['id', 'created_at', 'update_at'];
     protected $table = 'providers';
 
-    /*public function produtos()
+    public function produtos()
     {
         return $this->belongsToMany(Product::class, 'provand_prods');
-    }*/
+    }
 }

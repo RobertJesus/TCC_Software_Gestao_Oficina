@@ -5,6 +5,7 @@
 @section('content')
 
     <div class="register-box-body">
+        <p class="login-box-msg">Cadastrar Fornecedor</p>
         @if(session('success'))
             <div class="alert alert-info">
                 {{ session('success') }}
@@ -16,7 +17,11 @@
                 {{ session('error') }}
             </div>
         @endif
-        <p class="login-box-msg">Cadastrar Fornecedor</p>
+        <div class="form-group">
+            <a href="{{route('indexPro')}}"> 
+                <button type="submit" class="btn btn-info" >Voltar</button>
+            </a>
+        </div>
         <div class="pai">
         <?php foreach($provider as $data){ ?>
             <form action="{{ route('updatePro', $data->id) }}" method="post">

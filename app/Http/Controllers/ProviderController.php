@@ -95,15 +95,15 @@ class ProviderController extends Controller
         return view('provider.view', compact('list'));
     }
 
-    /*public function dataProduct($id){
+    public function products($id){
         
-        //$product = Product::where('id', '=', $id)->get();
-
-        $result = $id->produtos;
-        return $result;
-        exit();
-        foreach($result as $product){
-            echo ($product->description);
+        $product = Provider::where('id', '=', $id)->get();
+        
+        foreach($product as $products){
+            $list = $products->produtos;
         }
-    }*/
+
+        return view('provider.viewProduct', compact('list', 'name'));
+        
+    }
 }
