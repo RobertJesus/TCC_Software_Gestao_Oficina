@@ -18,7 +18,7 @@
     @endif
         <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
         <div class="pai">
-        <form action="{{ url(config('adminlte.user', 'update')) }}" method="post">
+        <form action="{{ route('user.update') }}" method="post">
             {!! csrf_field() !!}
             <?php foreach($user as $users){ ?>
             <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

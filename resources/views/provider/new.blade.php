@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="pai">
-            <form action="{{ url(config('adminlte.provider', 'storeF')) }}" method="post">
+            <form action="{{ route('provider.store') }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

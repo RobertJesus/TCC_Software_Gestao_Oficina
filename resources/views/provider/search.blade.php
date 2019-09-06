@@ -19,12 +19,12 @@
     @endif
     <div class="row">
         <div class="form-group col-md-6">
-            <a href="{{route('newPro')}}" class=""> 
+            <a href="{{route('provider.new')}}" class=""> 
                 <button type="submit" class="btn btn-success" >Novo Fornecedor</button>
             </a>
         </div>
         <div class="form-group col-md-6">
-            <form class="form-inline" action="{{ url(config('adminlte.provider', 'searchF')) }}" method="post">
+            <form class="form-inline" action="{{ route('provider.search') }}" method="post">
             {!! csrf_field() !!}
                 <div class="form-row float-right" style="margin-bottom: 10px">
                     <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar fornecedor" name="name">
@@ -54,10 +54,10 @@
                         <td>{{$provider->email}}</td>
                         <td>{{$provider->address}}</td>
                         <td>{{$provider->phoneP}}</td>
-                        <td><a href="{{ route('products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a></td>
-                        <td><a href="{{ route('viewPro', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                        <td><a href="{{ route('editPro', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('destroyPro', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="{{ route('provider.products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a></td>
+                        <td><a href="{{ route('provider.view', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('provider.edit', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="{{ route('provider.destroy', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

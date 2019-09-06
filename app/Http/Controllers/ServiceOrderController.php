@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\ServiceOrder;
 
 class ServiceOrderController extends Controller
 {
@@ -22,8 +24,9 @@ class ServiceOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('service.create');
+    {   
+        $client = Client::all();
+        return view('service.new', compact('client'));
     }
 
     /**
@@ -32,9 +35,19 @@ class ServiceOrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ServiceOrder $serviceOrder)
     {
-        //
+        $insert = $serviceOrder->create($request->all());
+
+        if($insert){
+            return redirect()
+                    ->route('service.new')
+                    ->with('success', 'Usuário Cadastrado com sucesso!');
+        }else{
+        return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao inserir');
+        }
     }
 
     /**

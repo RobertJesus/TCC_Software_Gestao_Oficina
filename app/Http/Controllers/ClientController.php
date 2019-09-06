@@ -44,7 +44,7 @@ class ClientController extends Controller
 
         if($insert){
             return redirect()
-                    ->route('new')
+                    ->route('client.new')
                     ->with('success', 'Usuário Cadastrado com sucesso!');
         }else{
         return redirect()
@@ -67,7 +67,8 @@ class ClientController extends Controller
 
         if($result){
             return 
-                    view('')
+                    redirect()
+                    ->route('client.index')
                     ->with('success', 'Cliente atualizado com sucesso!');
         }else{
             return redirect()
@@ -81,7 +82,7 @@ class ClientController extends Controller
         $result = $users->delete();
         if($result){
             return redirect()
-                    ->route('indexCli')
+                    ->route('client.index')
                     ->with('success', 'Cliente excluido com sucesso!');
         }else{
             return redirect()
@@ -91,6 +92,7 @@ class ClientController extends Controller
     }
     public function view($id){
         $list = Client::where('id','=', $id)->get();
+        
         return view('client.view', compact('list'));
     }
     public function search(Request $request){
@@ -104,7 +106,7 @@ class ClientController extends Controller
             return view('client.search', compact('list'));
         }else{
             return redirect()
-                    ->route('search')
+                    ->route('client.search')
                     ->with('error', 'Não foi possivel encontrar registro');
         }
     }
@@ -120,7 +122,7 @@ class ClientController extends Controller
         ]);
         if($result){
             return redirect()
-                    ->route('view', $id)
+                    ->route('client.view', $id)
                     ->with('success', 'Mensagem enviada com sucesso!!!');
         }else{
             return redirect()

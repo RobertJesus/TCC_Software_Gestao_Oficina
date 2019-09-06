@@ -18,13 +18,13 @@
             </div>
         @endif
         <div class="form-group">
-            <a href="{{route('indexPro')}}"> 
+            <a href="{{route('provider.index')}}"> 
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
         <div class="pai">
         <?php foreach($provider as $data){ ?>
-            <form action="{{ route('updatePro', $data->id) }}" method="post">
+            <form action="{{ route('provider.update', $data->id) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

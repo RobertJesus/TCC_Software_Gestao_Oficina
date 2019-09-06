@@ -29,7 +29,7 @@ class ProviderController extends Controller
 
         if($insert){
             return redirect()
-                    ->route('newPro')
+                    ->route('provider.new')
                     ->with('success', 'Usuário Cadastrado com sucesso!');
         }else{
         return redirect()
@@ -49,7 +49,7 @@ class ProviderController extends Controller
             return view('provider.search', compact('list'));
         }else{
             return redirect()
-                    ->route('searchF')
+                    ->route('provider.search')
                     ->with('error', 'Não foi possivel encontrar registro');
         }
     }
@@ -68,7 +68,7 @@ class ProviderController extends Controller
 
         if($result){
             return redirect()
-                    ->route('indexPro')
+                    ->route('provider.index')
                     ->with('success', 'Fornecedor atualizado com sucesso!');
         }else{
             return redirect()
@@ -82,7 +82,7 @@ class ProviderController extends Controller
         $result = $provider->delete();
         if($result){
             return redirect()
-                    ->route('indexPro')
+                    ->route('provider.index')
                     ->with('success', 'Cliente excluido com sucesso!');
         }else{
             return redirect()
@@ -103,7 +103,7 @@ class ProviderController extends Controller
             $list = $products->produtos;
         }
 
-        return view('provider.viewProduct', compact('list', 'name'));
+        return view('provider.viewProduct', compact('list'));
         
     }
 }

@@ -18,7 +18,7 @@
             </div>
         @endif
         <div class="form-group">
-            <a href="{{route('indexCli')}}"> 
+            <a href="{{route('client.index')}}"> 
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
@@ -62,7 +62,7 @@
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form action="{{ route('msg', $client->id) }}" method="post">
+                                    <form action="{{ route('client.msg', $client->id) }}" method="post">
                                     {!! csrf_field() !!}
                                     <div class="modal-body">
                                         <div class="form-group">

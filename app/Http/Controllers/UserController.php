@@ -20,13 +20,22 @@ class UserController extends Controller
     {
         $id = auth()->user()->id;
         $list = User::where('id', '<>', $id)->get();
-        return view('users.add', compact('list'));
+        return view('users.new', compact('list'));
     }
     public function destroy($id)
     {
         $users = User::findOrFail($id);
-        $users->delete();
-        return redirect()->route('users')->withSuccess('Usuário deletado com sucesso!');
+        $result = $users->delete();
+
+        if($result){
+        return redirect()
+                ->route('user.index')
+                ->withSuccess('Usuário deletado com sucesso!');
+        }else{
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao excluir');
+            }
     }
     public function edit()
     {
@@ -59,7 +68,7 @@ class UserController extends Controller
         $user->save();
         
         return redirect()
-                ->route('editUser')
+                ->route('user.edit')
                 ->with('success', 'Usuário atualizado com sucesso!');
     }
 }

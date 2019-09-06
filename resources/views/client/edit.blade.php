@@ -18,13 +18,13 @@
             </div>
         @endif
         <div class="form-group">
-            <a href="{{route('indexCli')}}"> 
+            <a href="{{route('client.index')}}"> 
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
         <div class="pai">
         <?php foreach($client as $data){ ?>
-            <form action="{{ route('Clientupdate', $data->id) }}" method="post">
+            <form action="{{ route('client.update', $data->id) }}" method="post">
                 {!! csrf_field() !!}
                 
                 <div class="form-row">

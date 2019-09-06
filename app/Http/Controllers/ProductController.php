@@ -41,7 +41,7 @@ class ProductController extends Controller
         
         if($insert){
             return redirect()
-                    ->route('newProd')
+                    ->route('product.new')
                     ->with('success', 'Produto Cadastrado com sucesso!');
         }else{
         return redirect()
@@ -81,7 +81,7 @@ class ProductController extends Controller
 
         if($result){
             return redirect()
-                    ->route('indexP')
+                    ->route('product.index')
                     ->with('success', 'Produto atualizado com sucesso!');
         }else{
             return redirect()
@@ -90,12 +90,13 @@ class ProductController extends Controller
         }
     }
     public function destroy($id){
-        
+
         $product = Product::findOrFail($id);
         $result = $product->delete();
+
         if($result){
             return redirect()
-                    ->route('indexP')
+                    ->route('product.index')
                     ->with('success', 'Produto excluido com sucesso!!!');
         }else{
             return redirect()

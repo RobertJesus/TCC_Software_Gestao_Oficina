@@ -25,7 +25,7 @@
       <div class="icon">
         <i class="ion ion-person-add"></i>
       </div>
-      <a href="{{route('users')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{route('user.index')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="col-lg-3 col-xs-6">
@@ -39,7 +39,7 @@
       <div class="icon">
         <i class="ion ion-ios-person"></i>
       </div>
-      <a href="{{route('index')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{route('client.index')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -54,7 +54,7 @@
       <div class="icon">
         <i class="ion ion-ios-barcode"></i>
       </div>
-      <a href="{{route('indexP')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{route('product.index')}}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->

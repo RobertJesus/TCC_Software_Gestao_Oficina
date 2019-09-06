@@ -18,12 +18,12 @@
             </div>
         @endif
         <div class="form-group">
-            <a href="{{route('indexCli')}}"> 
+            <a href="{{route('client.index')}}"> 
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
         <div class="pai">
-            <form action="{{ url(config('adminlte.client', 'storeC')) }}" method="post">
+            <form action="{{ route('client.store') }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

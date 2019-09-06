@@ -121,12 +121,12 @@ return [
                 ],
                 [
                     'text' => 'Lista',
-                    'url'  => 'users',
+                    'route'  => 'user.index',
                     'icon' => 'list',
                 ],
                 [
                     'text' => 'Editar',
-                    'url'  => 'editUser',
+                    'route'  => 'user.edit',
                     "icon" => 'edit',
                 ],
 
@@ -138,12 +138,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'indexCli',
+                    'route'  => 'client.index',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => 'new',
+                    'route'  => 'client.new',
                     'icon' => 'user-plus',
                 ],
             ],
@@ -176,12 +176,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'indexPro',
+                    'route'  => 'provider.index',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => 'newPro',
+                    'route'  => 'provider.new',
                     'icon' => 'plus',
                 ],
             ],
@@ -193,12 +193,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'indexP',
+                    'route'  => 'product.index',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => 'newProd',
+                    'route'  => 'product.new',
                     'icon' => 'plus',
                 ],
             ],
@@ -209,12 +209,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'url'  => 'indexOs',
+                    'route'  => 'service.index',
                     'icon' => 'search',
                 ],
                 [
                     'text' => 'Novo',
-                    'url'  => 'newOs',
+                    'route'  => 'service.new',
                     'icon' => 'plus',
                 ],
                 

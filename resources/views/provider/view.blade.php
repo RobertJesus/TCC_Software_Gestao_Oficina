@@ -18,7 +18,7 @@
             </div>
         @endif
     <div class="form-group">
-        <a href="{{route('indexPro')}}"> 
+        <a href="{{route('provider.index')}}"> 
             <button type="submit" class="btn btn-info" >Voltar</button>
         </a>
     </div>
