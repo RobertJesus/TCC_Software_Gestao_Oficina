@@ -71,4 +71,5 @@ Route::prefix('product')->group(function(){
     Route::get('/new', 'ServiceOrderController@create')->name('service.new');
     Route::get('/index', 'ServiceOrderController@index')->name('service.index');
     Route::post('/store', 'ServiceOrderController@store')->name('service.store');
+    Route::post('/search', 'ServiceOrderController@search')->name('service.search');
  });

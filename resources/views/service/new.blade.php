@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="pai">
+        <div class="pai" id="pai">
             <form action="{{ route('service.store') }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
@@ -123,7 +123,42 @@
                 </div>
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </form>
+        </div><hr>
+        <button type="submit" class="btn btn-secondary" onclick="fechar_div();">Cadastrar Moto</button>
+        <div class="pai" id="filho" style="display:none;">
+        <p class="login-box-msg">Motos</p>
+            <form action="{{ route('service.store') }}" method="post">
+                {!! csrf_field() !!}
+                <div class="row d-flex justify-content-center">
+                    <div class="form-group col-md-2">
+                        <label>Quilometro</label>
+                        <input type="text" name="protocol" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                       <label>Placa</label>
+                       <input type="text" name="protocol" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                       <label>Placa</label>
+                       <input type="text" name="protocol" class="form-control">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </form>
         </div>
     </div>
     <!-- /.form-box -->
+    <script>
+        function fechar_div(){
+            var x = document.getElementById('filho');
+            var y = document.getElementById('pai');
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+                y.style.display = 'none';
+            } else {
+                x.style.display = 'none';
+                y.style.display = 'block';
+            }
+        }
+    </script>
 @stop

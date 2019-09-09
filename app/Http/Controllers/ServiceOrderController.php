@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\ServiceOrder;
+use App\User;
 
 class ServiceOrderController extends Controller
 {
@@ -14,8 +15,10 @@ class ServiceOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('service.search');
+    {   
+        $client = Client::all();
+        $user = User::all();
+        return view('service.search', compact('client', 'user'));
     }
 
     /**
@@ -93,5 +96,22 @@ class ServiceOrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request){
+       
+        $list = ServiceOrder::where('name', 'like', '%'.$request['name'].'%')
+                    ->Orwhere('responsible', 'like', '%'.$request['responsible'].'%')
+                    ->Orwhere('protocol', 'like', '%'.$request['protocol'].'%')->get();
+
+        $result = $list;
+        
+        if($result){
+            return view('service.search', compact('list'));
+        }else{
+            return redirect()
+                    ->route('search')
+                    ->with('error', 'Não foi possivel encontrar registro');
+        }
     }
 }

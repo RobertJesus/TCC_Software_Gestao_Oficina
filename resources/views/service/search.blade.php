@@ -17,24 +17,93 @@
             {{ session('error') }}
         </div>
     @endif
-    <form class="form-inline" action="{{ url(config('adminlte.service', 'searchOs')) }}" method="post">
     {!! csrf_field() !!}
-        <div class="form-row float-right" style="margin-bottom: 10px">
-            <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar OS" name="name">
-            <button type="submit" class="btn btn-primary my-1">Buscar</button>
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br><br>
+        <div class="form-row">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ route('service.search') }}" method="post">
+                        {!! csrf_field() !!}
+                        <div class="modal-body" style="width:200px;">
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Protocolo:</label><br>
+                                <input type="text" class="form-control" name="protocol">
+                            </div>
+                            <div class="form-group" style="width:350px;">
+                                <label for="message-text" class="col-form-label">Responsavel:</label>
+                                <select name="responsible" class="form-control stateClient">
+                                    <option class="form-control" select></option>
+                                    <?php if(empty($user) == null) { ?>
+                                        <?php foreach($user as $data){ ?>
+                                            <option class="form-control">{{$data->name}}</option>
+                                        <?php }?>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group" style="width:350px;">
+                                <label for="message-text" class="col-form-label">Cliente:</label>
+                                <select name="name" class="form-control stateClient">
+                                    <option class="form-control" name="name"></option>
+                                    <?php if(empty($client) == null) { ?>
+                                        <?php foreach($client as $data){ ?>
+                                            <option class="form-control">{{$data->name}}</option>
+                                        <?php }?>
+                                    <?php }?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+        </div><hr>
+        <div class="pai">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Protocolo</th>
+                        <th scope="col">Nome Cliente</th>
+                        <th scope="col">Tipo de Serviço</th>
+                        <th scope="col">Responsavel</th>
+                        <th scope="col">Visualizar</th>
+                        <th scope="col">Editar</th>
+                    </tr>
+                </thead>
+                <?php if(empty($list) == null){ ?>
+                    <?php foreach($list as $data){ ?>
+                        <tr>
+                            <td>{{$data->protocol}}</td>
+                            <td>{{$data->name}}</td>
+                            <td>{{$data->service}}</td>
+                            <td>{{$data->responsible}}</td>
+                            <td><a href="{{ route('service.search', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                            <td><a href="{{ route('service.search', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                        </tr>
+                    <?php }?>
+                <?php }?>
+            </table>
         </div>
-    </form><hr>
-    <div class="pai">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+
+<script>
+   $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
 @stop
