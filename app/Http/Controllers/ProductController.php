@@ -52,8 +52,9 @@ class ProductController extends Controller
 
     public function search(Request $request){
 
-        $list = Product::where('description', 'like', '%'.$request['name'].'%')
-                    ->Orwhere('cod', 'like', '%'.$request['name'].'%')->get();
+        $list = Product::where('description', '=', $request['name'])
+                    ->Orwhere('brand', '=', $request['brand'])
+                    ->Orwhere('cod', '=', $request['name'])->get();
                     
         $result = $list;
         

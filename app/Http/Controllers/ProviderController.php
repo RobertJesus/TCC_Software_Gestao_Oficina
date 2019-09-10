@@ -40,10 +40,12 @@ class ProviderController extends Controller
 
     public function search(Request $request){
 
-        $list = Provider::where('name', 'like', '%'.$request['name'].'%')
-                    ->Orwhere('record', 'like', '%'.$request['name'].'%')->get();
-                    
+        $list = Provider::where('name', '=', $request['name'])
+                    ->Orwhere('record', '=', $request['record'])
+                    ->Orwhere('nameFant','=',$request['nameFant'])->get();
+                
         $result = $list;
+        
         
         if($result){
             return view('provider.search', compact('list'));

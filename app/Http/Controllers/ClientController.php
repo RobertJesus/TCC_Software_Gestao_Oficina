@@ -97,8 +97,8 @@ class ClientController extends Controller
     }
     public function search(Request $request){
 
-        $list = Client::where('name', 'like', '%'.$request['name'].'%')
-                    ->Orwhere('record', 'like', '%'.$request['name'].'%')->get();
+        $list = Client::where('name', '=', $request['name'])
+                    ->Orwhere('record', '=', $request['name'])->get();
                     
         $result = $list;
         

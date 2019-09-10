@@ -23,10 +23,11 @@
     <form action="{{ route('sales.new') }}" method="post">
         {!! csrf_field() !!}
         <div class="form-row">
-            <div class="form-group col-md-12 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+            <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Cliente</label>
                 <select name="name" class="form-control stateClient">
                     <?php if(empty($client) == null) { ?>
+                        <option></option>
                         <?php foreach($client as $data){ ?>
                             <option>{{$data->name}}</option>
                         <?php }?>
@@ -56,22 +57,18 @@
                 @endif
             </div>
             <div class="form-group col-md-4">
-                <label>Série Comprovante</label>
-                <input type="text" name="protocol" class="form-control" value="Serie do Comprovante..">
-            </div>
-            <div class="form-group col-md-4">
                 <label>Número Comprovante</label>
-                <input type="text" name="protocol" class="form-control" value="Número do Comprovante..">
+                <input type="text" name="protocol" class="form-control" placeholder="Número do Comprovante..">
             </div>
         </div>
-        <div class="container">
             <div class="form-row">
                 <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Produto</label>
                     <select name="name" class="form-control stateClient">
+                            <option></option>
                         <?php if(empty($product) == null) { ?>
                             <?php foreach($product as $data){ ?>
-                                <option>{{$data->name}}</option>
+                                <option>{{$data->description}}</option>
                             <?php }?>
                         <?php }?>
                     </select>
@@ -85,9 +82,10 @@
                 <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Quantidade</label>
                     <select name="name" class="form-control stateClient">
+                        <option></option>
                         <?php if(empty($product) == null) { ?>
                             <?php foreach($product as $data){ ?>
-                                <option>{{$data->name}}</option>
+                                <option>{{$data->amount}}</option>
                             <?php }?>
                         <?php }?>
                     </select>
@@ -101,25 +99,10 @@
                 <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Preço Venda</label>
                     <select name="name" class="form-control stateClient">
+                            <option></option>
                         <?php if(empty($product) == null) { ?>
                             <?php foreach($product as $data){ ?>
-                                <option>{{$data->name}}</option>
-                            <?php }?>
-                        <?php }?>
-                    </select>
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    @if ($errors->has('cidade'))
-                        <span class="help-block">
-                            <strong class="error">{{ $errors->first('cidade') }}</strong>
-                        </span>
-                    @endif
-                </div>
-                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                    <label for="inputCity">Estoque</label>
-                    <select name="name" class="form-control stateClient">
-                        <?php if(empty($product) == null) { ?>
-                            <?php foreach($product as $data){ ?>
-                                <option>{{$data->name}}</option>
+                                <option>R$ {{$data->priceOld}}</option>
                             <?php }?>
                         <?php }?>
                     </select>
@@ -132,32 +115,16 @@
                 </div>
                 <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Desconto</label>
-                    <select name="name" class="form-control stateClient">
-                        <?php if(empty($product) == null) { ?>
-                            <?php foreach($product as $data){ ?>
-                                <option>{{$data->name}}</option>
-                            <?php }?>
-                        <?php }?>
-                    </select>
+                    <input type="text" class="form-control">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('cidade'))
                         <span class="help-block">
                             <strong class="error">{{ $errors->first('cidade') }}</strong>
                         </span>
                     @endif
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <a href="{{route('service.index')}}"> 
-                        <button type="submit" class="btn btn-info" >Adicionar</button>
-                    </div>
-                </div>
-                <div class="form-row">
-                    
-                </div>
-            </div> 
+                </div>            
         </div> 
-                                       
+        <button type="submit" class="btn btn-success" >Adicionar</button>                 
     </form>
     
 </div>

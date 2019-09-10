@@ -32,6 +32,7 @@
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Cliente</label>
                         <select name="name" class="form-control stateClient">
+                            <option></option>
                             <?php if(empty($client) == null) { ?>
                                 <?php foreach($client as $data){ ?>
                                     <option>{{$data->name}}</option>
@@ -91,6 +92,7 @@
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Responsavel</label>
                         <select name="responsible" class="form-control stateClient">
+                        <option></option>
                             <?php if(empty($client) == null) { ?>
                                 <?php foreach($client as $data){ ?>
                                     <option>{{$data->name}}</option>
@@ -124,14 +126,18 @@
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </form>
         </div><hr>
-        <button type="submit" class="btn btn-secondary" onclick="fechar_div();">Cadastrar Moto</button>
+        <button type="submit" class="btn btn-secondary" onclick="fechar_div();">Cadastrar Veiculo</button>
         <div class="pai" id="filho" style="display:none;">
-        <p class="login-box-msg">Motos</p>
+        <p class="login-box-msg">Veiculos</p>
             <form action="{{ route('service.store') }}" method="post">
                 {!! csrf_field() !!}
                 <div class="row d-flex justify-content-center">
                     <div class="form-group col-md-2">
-                        <label>Quilometro</label>
+                        <label>Quilometro Entrada</label>
+                        <input type="text" name="protocol" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Média dia</label>
                         <input type="text" name="protocol" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
@@ -139,7 +145,7 @@
                        <input type="text" name="protocol" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
-                       <label>Placa</label>
+                       <label>Marca</label>
                        <input type="text" name="protocol" class="form-control">
                     </div>
                 </div>

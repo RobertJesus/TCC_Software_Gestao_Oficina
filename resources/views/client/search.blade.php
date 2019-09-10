@@ -17,20 +17,36 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="row">
-        <div class="form-group col-md-6">
-            <a href="{{route('client.new')}}" class=""> 
-                <button type="submit" class="btn btn-success">Novo Cliente</button>
-            </a>
-        </div>
-        <div class="form-group col-md-6">
-            <form class="form-inline" action="{{ route('client.search') }}" method="post">
-            {!! csrf_field() !!}
-                <div class="form-row float-right" style="margin-bottom: 10px">
-                    <input type="text" class="form-control" style="margin-right: 10px;" placeholder="Pesquisar cliente" name="name">
-                    <button type="submit" class="btn btn-primary my-1">Buscar</button>
+    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br><br>
+    <div class="form-row">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{ route('client.search') }}" method="post">
+                    {!! csrf_field() !!}
+                    <div class="modal-body">
+                        <div class="form-group" style="width:350px;">
+                            <label for="message-text" class="col-form-label">Nome:</label><br>
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <div class="form-group" style="width:200px;">
+                            <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
+                            <input type="text" class="form-control" name="record">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div><hr>
     <div class="pai">
@@ -64,5 +80,16 @@
         </table>
     </div>
 </div>
-    <!-- /.form-box -->
+<!-- /.form-box -->
+<script>
+   $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
 @stop

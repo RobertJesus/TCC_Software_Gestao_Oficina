@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\Product;
 
 class SalesController extends Controller
 {
@@ -22,8 +24,11 @@ class SalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('sales.new');
+    {   
+        $client = Client::all();
+        $product = Product::all();
+
+        return view('sales.new', compact('client', 'product'));
     }
 
     /**
