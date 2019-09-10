@@ -133,6 +133,22 @@ return [
             ],
         ],
         [
+            'text' => 'Vendas',
+            'icon' => 'money',
+            'submenu' => [
+                [
+                    'text' => 'Buscar',
+                    'route'  => 'sales.index',
+                    'icon' => 'search',
+                ],
+                [
+                    'text' => 'Novo',
+                    'route'  => 'sales.new',
+                    'icon' => 'plus',
+                ],
+            ],
+        ],
+        [
             'text'    => 'Cliente',
             'icon'    => 'user',
             'submenu' => [

@@ -73,3 +73,9 @@ Route::prefix('product')->group(function(){
     Route::post('/store', 'ServiceOrderController@store')->name('service.store');
     Route::post('/search', 'ServiceOrderController@search')->name('service.search');
  });
+
+//Rotas Vendas
+ Route::prefix('sales')->group(function(){
+     Route::get('/new', 'SalesController@create')->name('sales.new');
+     Route::get('/index', 'SalesController@index')->name('sales.index');
+});
