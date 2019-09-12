@@ -64,7 +64,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Produto</label>
-                    <select name="name" class="form-control stateClient">
+                    <select name="nome" class="form-control stateClient">
                             <option></option>
                         <?php if(empty($product) == null) { ?>
                             <?php foreach($product as $data){ ?>
@@ -80,22 +80,17 @@
                     @endif
                 </div>
                 <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                    <label for="inputCity">Quantidade</label>
-                    <select name="name" class="form-control stateClient">
-                        <option></option>
-                        <?php if(empty($product) == null) { ?>
-                            <?php foreach($product as $data){ ?>
-                                <option>{{$data->amount}}</option>
-                            <?php }?>
-                        <?php }?>
-                    </select>
+                    
+                    {!! Form::label('product', 'Produto') !!}
+                    {!! Form::select('product', []) !!}
+                    
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('cidade'))
                         <span class="help-block">
                             <strong class="error">{{ $errors->first('cidade') }}</strong>
                         </span>
                     @endif
-                </div>
+                    </div>
                 <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Preço Venda</label>
                     <select name="name" class="form-control stateClient">
@@ -128,4 +123,18 @@
     </form>
     
 </div>
+@section('post-script')
+<script type="text/javascript">
+    $('select[name=nome]').change(function () {
+        var idproduct = $(this).val();
+        $.get('/get-product/' + product, function (product) {
+            $('select[name=product]').empty();
+            $.each(cidades, function (key, value) {
+                $('select[name=product]').append('<option value=' + value.id + '>' + value.product + '</option>');
+            });
+        });
+    });
+</script>
+@endsection
+
 @stop

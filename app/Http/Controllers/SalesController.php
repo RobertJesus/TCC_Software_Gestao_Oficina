@@ -31,6 +31,13 @@ class SalesController extends Controller
         return view('sales.new', compact('client', 'product'));
     }
 
+    public function getProduct($idProduct){
+        //$product = Product()::find($idProduct);
+        $product = $idProduct->product()->getQuery()->get(['id', 'amount', 'priceOld']);
+        
+        return Response::json($product);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
