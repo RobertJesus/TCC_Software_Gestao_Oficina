@@ -80,4 +80,4 @@ Route::prefix('product')->group(function(){
      Route::get('/index', 'SalesController@index')->name('sales.index');
 });
 
-Route::get('get-product/{idProduct}', 'SalesController@getProduct');
+Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');

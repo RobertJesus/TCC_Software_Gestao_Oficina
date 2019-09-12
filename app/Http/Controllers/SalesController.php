@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Product;
+use Illuminate\Support\Facades\Response;
 
 class SalesController extends Controller
 {
@@ -32,9 +33,9 @@ class SalesController extends Controller
     }
 
     public function getProduct($idProduct){
-        //$product = Product()::find($idProduct);
-        $product = $idProduct->product()->getQuery()->get(['id', 'amount', 'priceOld']);
         
+        $product = Product::where('description', '=', $idProduct)->getQuery()->get(['id', 'amount', 'priceOld']);
+
         return Response::json($product);
     }
 

@@ -64,7 +64,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Produto</label>
-                    <select name="nome" class="form-control stateClient">
+                    <select name="produto" class="form-control stateClient">
                             <option></option>
                         <?php if(empty($product) == null) { ?>
                             <?php foreach($product as $data){ ?>
@@ -79,10 +79,11 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                    
-                    {!! Form::label('product', 'Produto') !!}
-                    {!! Form::select('product', []) !!}
+                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">      
+                    <label name="amount">Quantidade</label>
+                    <select name="amount" class="form-control" value="[]">
+                        <option></option>
+                    </select>
                     
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('cidade'))
@@ -93,13 +94,8 @@
                     </div>
                 <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Preço Venda</label>
-                    <select name="name" class="form-control stateClient">
-                            <option></option>
-                        <?php if(empty($product) == null) { ?>
-                            <?php foreach($product as $data){ ?>
-                                <option>R$ {{$data->priceOld}}</option>
-                            <?php }?>
-                        <?php }?>
+                    <select name="priceOld" class="form-control" value="[]">
+                        <option></option>
                     </select>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('cidade'))
@@ -125,12 +121,14 @@
 </div>
 @section('post-script')
 <script type="text/javascript">
-    $('select[name=nome]').change(function () {
+    $('select[name=produto]').change(function () {
         var idproduct = $(this).val();
-        $.get('/get-product/' + product, function (product) {
-            $('select[name=product]').empty();
-            $.each(cidades, function (key, value) {
-                $('select[name=product]').append('<option value=' + value.id + '>' + value.product + '</option>');
+        $.get('get-product/' + idproduct, function (produtos) {
+            $('select[name=amount]').empty();
+            $('select[name=priceOld]').empty();
+            $.each(produtos, function (key, value) {
+                $('select[name=amount]').append('<option value=' + value.id + '>' + value.amount + '</option>');
+                $('select[name=priceOld]').append('<option value=' + value.id + '>' + value.priceOld + '</option>');
             });
         });
     });
