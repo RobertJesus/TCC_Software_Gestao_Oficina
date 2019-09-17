@@ -97,7 +97,7 @@
             <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Preço</label>
                 <select name="priceOld" class="form-control" value="[]">
-                    <option></option>
+                    <option value="[]"></option>
                 </select>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('cidade'))
@@ -108,7 +108,8 @@
             </div>
             <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Desconto</label>
-                <input type="text" class="form-control">
+                <input type="text" name="desc" class="form-control">
+                
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('cidade'))
                     <span class="help-block">
@@ -118,9 +119,7 @@
             </div>            
         </div>
         <button type="btn" class="btn btn-success" onclick="fechar_div();">Adicionar Produto</button> 
-    </form>
-        <button type="submit" class="btn btn-success">Adicionar</button>                 
-
+    </form>                 
     <div class="row" id="filho" style="display:none;">
         <div class="form-group col-md-12">
             <h1>Produtos</h1><hr>
@@ -130,12 +129,17 @@
                         <th>Nome</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
+                        <th>Desconto</th>
                     </tr>
                 </thead>
                 <tbody>
                 
                 </tbody>
             </table>
+            <form action="{{ route('sales.store') }}" method="post">
+            {!! csrf_field() !!}
+                <button type="submit" class="btn btn-success" style="aling-center;">Adicionar</button>
+            </form>
         </div>
     </div>
     
@@ -148,8 +152,8 @@
             $('select[name=amount]').empty();
             $('select[name=priceOld]').empty();
             $.each(produtos, function (key, value) {
-                $('select[name=amount]').append('<option value=' + value.id + '>' + value.amount + '</option>');
-                $('select[name=priceOld]').append('<option value=' + value.id + '>' + value.priceOld + '</option>');
+                $('select[name=amount]').append('<option value=' + value.amount + '>' + value.amount + '</option>');
+                $('select[name=priceOld]').append('<option value=' + value.priceOld + '>' + value.priceOld + '</option>');
             });
         });
     });
@@ -163,11 +167,12 @@
 
     $(document).ready(function(){
 	    $('#products').submit(function(){
-		var $this = $(this) ;
+        var $this = $(this);
 		var tr = '<tr>'+
 			'<td>'+$this.find("select[name='produto']").val()+'</td>'+
 			'<td>'+$this.find("select[name='amount']").val()+'</td>'+
-			'<td>'+$this.find("select[name='priceOld']").val()+'</td>'+
+            '<td>'+$this.find("select[name='priceOld']").val()+'</td>'+
+            '<td>'+$this.find("input[name='desc']").val()+'</td>'+
 			'</tr>'
 		$('#grid').find('tbody').append( tr );
 
@@ -176,5 +181,4 @@
 });
 </script>
 @endsection
-
 @stop

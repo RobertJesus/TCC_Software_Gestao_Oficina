@@ -78,6 +78,7 @@ Route::prefix('product')->group(function(){
  Route::prefix('sales')->group(function(){
      Route::get('/new', 'SalesController@create')->name('sales.new');
      Route::get('/index', 'SalesController@index')->name('sales.index');
+     Route::post('/store', 'SalesController@store')->name('sales.store');
 });
 
 Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');
