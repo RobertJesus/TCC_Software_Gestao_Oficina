@@ -38,6 +38,7 @@ Route::prefix('client')->group(function(){
     Route::get('/edit/{id}', 'ClientController@edit')->name('client.edit');
     Route::post('/update/{id}', 'ClientController@update')->name('client.update');
     Route::post('/msg/{id}', 'ClientController@msg')->name('client.msg');
+    Route::get('/orders/{id}', 'ClientController@orders')->name('client.orders');
 });
 //Rotas Fornecedor
 Route::prefix('provider')->group(function(){
@@ -72,6 +73,10 @@ Route::prefix('product')->group(function(){
     Route::get('/index', 'ServiceOrderController@index')->name('service.index');
     Route::post('/store', 'ServiceOrderController@store')->name('service.store');
     Route::post('/search', 'ServiceOrderController@search')->name('service.search');
+    Route::post('/orders', 'ServiceOrderController@orders')->name('service.orders');
+    Route::get('/edit/{id}', 'ServiceOrderController@edit')->name('service.edit');
+    Route::post('/update/{id}', 'ServiceOrderController@update')->name('service.update');
+    Route::get('/notes/{id}', 'ServiceOrderController@notes')->name('service.notes');
  });
 
 //Rotas Vendas
@@ -81,4 +86,10 @@ Route::prefix('product')->group(function(){
      Route::post('/store', 'SalesController@store')->name('sales.store');
 });
 
+Route::prefix('automobiles')->group(function(){
+    Route::get('/new', 'AutomobilesController@create')->name('automobiles.new');
+    Route::post('/store', 'AutomobilesController@store')->name('automobiles.store');
+});
+
 Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');
+Route::get('automobiles/get-client/{idclient}', 'AutomobilesController@getClient');

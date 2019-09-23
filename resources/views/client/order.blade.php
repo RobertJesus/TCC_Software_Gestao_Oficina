@@ -28,16 +28,21 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('client.search') }}" method="post">
+                    <form action="{{ route('service.orders') }}" method="post">
                     {!! csrf_field() !!}
                     <div class="modal-body">
                         <div class="form-group" style="width:350px;">
-                            <label for="message-text" class="col-form-label">Nome:</label><br>
-                            <input type="text" class="form-control" name="name">
+                            <label for="message-text" class="col-form-label">Protocolo:</label><br>
+                            <input type="text" class="form-control" name="protocol">
                         </div>
                         <div class="form-group" style="width:200px;">
-                            <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
-                            <input type="text" class="form-control" name="record">
+                            <label for="inputCity">Status</label>
+                            <select name="status" class="form-control stateClient">
+                                <option></option>
+                                <option>Aberto</option>
+                                <option>Em andamento</option>
+                                <option>Fechado</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -53,27 +58,25 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Endereço</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Visualizar</th>
+                    <th scope="col">Protocolo</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Serviço</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Responsavel</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
-                    <th scope="col">OS</th>
+                    <th scope="col">Observações</th>
                 </tr>
             </thead>
             <?php if(empty($list) == null){ ?>
-                <?php foreach($list as $client){ ?>
+                <?php foreach($list as $data){ ?>
                     <tr>
-                        <td>{{$client->name}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->address}}</td>
-                        <td>{{$client->phoneP}}</td>
-                        <td><a href="{{ route('client.view', $client->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                        <td><a href="{{ route('client.edit', $client->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('client.destroy', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
-                        <td><a href="{{ route('client.orders', $client->id)}}" class="text-danger"><i class="fa fa-file-text-o"></i></a></td>
+                        <td>{{$data->protocol}}</td>
+                        <td>{{$data->name}}</td>
+                        <td>{{$data->service}}</td>
+                        <td>{{$data->status}}</td>
+                        <td>{{$data->responsible}}</td>
+                        <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa-search"></i></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

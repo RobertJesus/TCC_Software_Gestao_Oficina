@@ -22,35 +22,32 @@
             </a>
         </div>
         <div class="pai" id="pai">
-            <form action="{{ route('service.store') }}" method="post">
+        <?php foreach($order as $data){ ?>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Protocolo</label>
+                    <select class="form-control">
+                        <option>{{$data->protocol}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Cliente</label>
+                    <select name="name" class="form-control stateClient">
+                                <option>{{$data->name}}</option>
+                    </select>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            <form action="{{ route('service.update', $data->id) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label>Protocolo</label>
-                        <input type="text" name="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
-                    </div>
-                    <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                        <label for="inputCity">Cliente</label>
-                        <select name="name" class="form-control stateClient">
-                            <option></option>
-                            <?php if(empty($client) == null) { ?>
-                                <?php foreach($client as $data){ ?>
-                                    <option>{{$data->name}}</option>
-                                <?php }?>
-                            <?php }?>
-                        </select>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        @if ($errors->has('cidade'))
-                            <span class="help-block">
-                                <strong class="error">{{ $errors->first('cidade') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                        <label for="inputCity">Serviço</label>
-                        <select name="service" class="form-control stateClient">
+                        <label for="inputCity">Setor</label>
+                        <select name="service" class="form-control stateClient" value="{{$data->service}}">
                                 <option>Financeiro</option>
                                 <option>Manutenção</option>
                         </select>
@@ -63,7 +60,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Prioridade</label>
-                        <select name="priority" class="form-control stateClient">
+                        <select name="priority" class="form-control stateClient" value="{{$data->priority}}">
                                 <option>Alta</option>
                                 <option>Normal</option>
                                 <option>Baixa</option>
@@ -77,7 +74,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Status</label>
-                        <select name="status" class="form-control stateClient">
+                        <select name="status" class="form-control stateClient" value="{{$data->status}}">
                                 <option>Aberto</option>
                                 <option>Em andamento</option>
                                 <option>Fechado</option>
@@ -91,7 +88,7 @@
                     </div>
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Responsavel</label>
-                        <select name="responsible" class="form-control stateClient">
+                        <select name="responsible" class="form-control stateClient" value="{{$data->responsible}}">
                         <option></option>
                             <?php if(empty($client) == null) { ?>
                                 <?php foreach($client as $data){ ?>
@@ -109,12 +106,12 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Descrição</label>
-                        <textarea type="text" name="description" class="form-control compClient"></textarea>
+                        <label>Descrição do serviço</label>
+                        <textarea type="text" name="descriptionSer" class="form-control compClient"></textarea>
                     </div>
                     <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Data de Execução</label>
-                        <input type="date" name="dateExec" class="form-control dateClient">
+                        <input type="date" name="dateExec" class="form-control dateClient" value="{{$data->dateExec}}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('data'))
                             <span class="help-block">
@@ -122,9 +119,17 @@
                             </span>
                         @endif
                     </div>
+                    <div class="form-group col-md-2">
+                        <label>Finalizar OS</label>
+                        <select name="statusFin" class="form-control stateClient">
+                                <option>Não</option>
+                                <option>Sim</option>
+                        </select>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </form>
+        <?php }?>
         </div><hr>
         <!--
         <button type="submit" class="btn btn-secondary" onclick="fechar_div();">Cadastrar Veiculo</button>

@@ -236,6 +236,23 @@ return [
                 
             ],
         ],
+        [
+            'text' => 'Automovel',
+            'icon' => 'list-alt',
+            'submenu' => [
+                [
+                    'text' => 'Buscar',
+                    'route'  => 'service.index',
+                    'icon' => 'search',
+                ],
+                [
+                    'text' => 'Novo',
+                    'route'  => 'automobiles.new',
+                    'icon' => 'plus',
+                ],
+                
+            ],
+        ],
     ],
 
     /*

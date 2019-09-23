@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ClientController;
 use App\Models\client;
 use Nexmo\Laravel\Facade\Nexmo;
+use App\Models\ServiceOrder;
 
 class ClientController extends Controller
 {
@@ -129,5 +130,15 @@ class ClientController extends Controller
                     ->back()
                     ->with('error', 'Erro ao enviar mensagem');
         }
+    }
+
+    public function orders($id)
+    {
+        $client = Client::where('id', '=', $id)->get();
+        
+        foreach($client as $data){
+            $list = $data->Orders->where('status','=', 'Aberto');
+        }
+        return view('client.order', compact('list'));
     }
 }

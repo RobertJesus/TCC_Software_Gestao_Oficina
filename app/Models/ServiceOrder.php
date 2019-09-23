@@ -20,7 +20,17 @@ class ServiceOrder extends Model
         'responsible', 
         'description',
         'dateExec',
+        'client_id',
     ];
-    protected $guarded = ['id', 'created_at', 'update_at'];
+    protected $guarded = [ 'id', 'created_at', 'update_at'];
     protected $table = 'service_orders';
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    public function Observacoes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

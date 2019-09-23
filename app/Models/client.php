@@ -28,4 +28,9 @@ class client extends Model
         'cep',];
     protected $guarded = ['id', 'created_at', 'update_at'];
     protected $table = 'clients';
+
+    public function Orders()
+    {
+        return $this->hasMany(ServiceOrder::class);
+    }
 }

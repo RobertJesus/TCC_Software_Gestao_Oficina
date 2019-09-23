@@ -14,7 +14,9 @@ class CreateServiceOrdersTable extends Migration
     public function up()
     {
         Schema::create('service_orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')->references('id')->on('clients');
             $table->string('protocol')->unique();
             $table->string('name');
             $table->string('service');
