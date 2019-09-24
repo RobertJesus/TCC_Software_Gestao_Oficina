@@ -36,6 +36,13 @@
                                     <label for="message-text" class="col-form-label">Protocolo:</label><br>
                                     <input type="text" class="form-control" name="protocol">
                                 </div>
+                                <div class="form-group">
+                                <label for="inputCity">Serviço</label>
+                                    <select name="service" class="form-control stateClient">
+                                            <option>Financeiro</option>
+                                            <option>Manutenção</option>
+                                    </select>
+                                </div>
                                 <div class="form-group" style="width:350px;">
                                     <label for="message-text" class="col-form-label">Responsavel:</label>
                                     <select name="responsible" class="form-control stateClient">
@@ -80,8 +87,8 @@
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>
-                <?php if(empty($list) == null){ ?>
-                    <?php foreach($list as $data){ ?>
+                <?php if(empty($os) == null){ ?>
+                    <?php foreach($os as $data){ ?>
                         <tr>
                             <td>{{$data->protocol}}</td>
                             <td>{{$data->name}}</td>

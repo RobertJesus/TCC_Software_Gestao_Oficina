@@ -14,10 +14,12 @@ class Note extends Model
     protected $fillable = [
         'note',
         'service_id',
-        ];
+    ];
+    
     protected $guarded = ['id', 'created_at', 'update_at'];
+    
     protected $table = 'notes';
-
+        
     public function Observacao()
     {
         return $this->belongsTo(ServiceOrder::class);

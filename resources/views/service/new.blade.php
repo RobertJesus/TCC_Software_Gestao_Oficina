@@ -46,6 +46,12 @@
                             </span>
                         @endif
                     </div>
+                    <div class="form-group col-md-4">
+                    <label for="inputCity">Veiculo</label>
+                        <select name="brand" class="form-control stateClient" value="[]">
+                            <option></option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
@@ -93,8 +99,8 @@
                         <label for="inputCity">Responsavel</label>
                         <select name="responsible" class="form-control stateClient">
                         <option></option>
-                            <?php if(empty($client) == null) { ?>
-                                <?php foreach($client as $data){ ?>
+                            <?php if(empty($user) == null) { ?>
+                                <?php foreach($user as $data){ ?>
                                     <option>{{$data->name}}</option>
                                 <?php }?>
                             <?php }?>
@@ -157,7 +163,18 @@
         </div>-->
     </div>
     <!-- /.form-box -->
+    @section('post-script')
     <script>
+        $('select[name=name]').change(function () {
+            var id = $(this).val();
+            $.get('get-auto/' + id, function (autos) {
+                $('select[name=brand]').empty();
+                $.each(autos, function (key, value) {
+                    $('select[name=brand]').append('<option value=' + value.id + '>' + value.brand + '</option>');
+                });
+            });
+        });
+        
         function fechar_div(){
             var x = document.getElementById('filho');
             var y = document.getElementById('pai');
@@ -170,4 +187,5 @@
             }
         }
     </script>
+@endsection
 @stop

@@ -108,17 +108,16 @@
                             </span>
                         @endif
                     </div>
-                    <!--
                     <div class="form-group col-md-2 has-feedback {{$errors->has('bairro') ? 'has-error' : '' }}">
                         <label for="inputCity">Bairro</label>
-                        <input type="text" name="address" class="form-control bairroClient" id="inputCity" placeholder="Endereço">
+                        <input type="text" name="district" class="form-control bairroClient" id="inputCity" placeholder="Bairro">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('bairro'))
                             <span class="help-block">
                                 <strong class="error">{{ $errors->first('bairro') }}</strong>
                             </span>
                         @endif
-                    </div>-->
+                    </div>
                     <div class="form-group col-md-2 {{$errors->has('numero') ? 'has-error' : '' }}">
                         <label>Numero</label>
                         <input type="text" name="numberHouse" class="form-control numClient" placeholder="123" min="1">

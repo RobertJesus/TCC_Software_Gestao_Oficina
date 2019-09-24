@@ -90,8 +90,8 @@
                         <label for="inputCity">Responsavel</label>
                         <select name="responsible" class="form-control stateClient" value="{{$data->responsible}}">
                         <option></option>
-                            <?php if(empty($client) == null) { ?>
-                                <?php foreach($client as $data){ ?>
+                            <?php if(empty($user) == null) { ?>
+                                <?php foreach($user as $data){ ?>
                                     <option>{{$data->name}}</option>
                                 <?php }?>
                             <?php }?>

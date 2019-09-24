@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Response;
 use App\Models\Client;
 use App\Models\ServiceOrder;
 use App\Models\Note;
+use App\Models\Automobile;
 use App\User;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class ServiceOrderController extends Controller
 {
@@ -18,8 +21,10 @@ class ServiceOrderController extends Controller
     public function index()
     {   
         $client = Client::all();
-        $user = User::all();
-        return view('service.search', compact('client', 'user'));
+        $user = User::where('type', '=', '2')->get();
+        $os = ServiceOrder::where('status', '<>', 'Fechado')->get();
+    
+        return view('service.search', compact('client', 'user', 'os'));
     }
 
     /**
@@ -30,7 +35,8 @@ class ServiceOrderController extends Controller
     public function create()
     {   
         $client = Client::all();
-        return view('service.new', compact('client'));
+        $user = $user = User::where('type', '=', '2')->get();
+        return view('service.new', compact('client', 'user'));
     }
 
     /**
@@ -81,8 +87,9 @@ class ServiceOrderController extends Controller
     {
         $order = ServiceOrder::where('id', '=', $id)->get();
         $client = Client::all();
+        $user = User::where('type', '=', '2')->get();
         
-        return view('service.edit', compact('order', 'client'));
+        return view('service.edit', compact('order', 'client','user'));
     }
 
     /**
@@ -95,15 +102,30 @@ class ServiceOrderController extends Controller
     public function update(Request $request, $id, Note $note)
     {
         $order = ServiceOrder::find($id);
-        
+        $client = Client::find($id);
 
-        if($request['statusFin'] = 'Sim'){
+        if($request['statusFin'] == 'Sim'){
             $request['status'] = 'Fechado';
-            $desc['note'] = $request['descriptionSer'];
+            $not['note'] = $request['descriptionSer'];
             unset($request['statusFin']);
             unset($request['descriptionSer']);
-            $not = $desc;
             $not['service_id'] = $id;
+            if($request['status'] != $order['status']){
+                $msg = array();
+                $msg['id'] = $client['id'];
+                $msg['num'] = $client['phoneP'];
+                $msg['msg'] = ('Sua ordem de servico foi atualizada, status no momento ' . $request['status'] . '.');
+                
+                $result = Nexmo::message()->send([
+                    'to'   => $msg['num'],
+                    'from' => '16105552344',
+                    'text' => $msg['msg'],
+                ]);
+                
+            }else{
+                echo 'passei';
+            exit();
+            }
             $note->create($not);
             $result = $order->update($request->all());
                 if($result){
@@ -116,7 +138,7 @@ class ServiceOrderController extends Controller
                             ->with('error', 'Falha ao atualizar!');
                 }
         }else{
-            return $request;
+            echo 'fim';
             exit();
         }
     }
@@ -136,6 +158,7 @@ class ServiceOrderController extends Controller
     {   
         $list = ServiceOrder::where('name', 'like', '%'.$request['name'].'%')
                     ->Orwhere('responsible', 'like', '%'.$request['responsible'].'%')
+                    ->Orwhere('service', 'like', '%'.$request['service'].'%')
                     ->Orwhere('protocol', 'like', '%'.$request['protocol'].'%')->get();
 
         $result = $list;
@@ -166,5 +189,13 @@ class ServiceOrderController extends Controller
         return $result;
         exit();
         return view('client.notes', compact('list'));
+    }
+
+    public function getAuto($id)
+    {
+        $auto = Automobile::where('client', '=', $id)->getQuery()->get(['id', 'brand']);
+        
+        return $auto;
+        //return Response::json($auto);
     }
 }
