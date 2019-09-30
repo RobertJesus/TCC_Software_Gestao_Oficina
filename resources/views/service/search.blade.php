@@ -95,7 +95,7 @@
                             <td>{{$data->service}}</td>
                             <td>{{$data->responsible}}</td>
                             <td><a href="{{ route('service.search', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                            <td><a href="{{ route('service.search', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <?php }?>
                 <?php }?>

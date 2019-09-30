@@ -80,6 +80,13 @@ label{
 .form-inline{
     display: flow-root!important; 
 }
+.central{
+    width: 450px;
+    height: 200px;
+}
+.card{
+    margin-top: 50%!important;
+}
 @media screen and (max-width: 600px) {
     .selectOffice{
         width: 100%;

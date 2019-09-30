@@ -90,6 +90,10 @@ Route::prefix('automobiles')->group(function(){
     Route::get('/new', 'AutomobilesController@create')->name('automobiles.new');
     Route::post('/store', 'AutomobilesController@store')->name('automobiles.store');
 });
+Route::prefix('central')->group(function(){
+    Route::get('/index', 'CentralController@index')->name('central.index');
+    Route::get('/view', 'CentralController@view')->name('central.view');
+});
 
 Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');
 Route::get('automobiles/get-client/{idclient}', 'AutomobilesController@getClient');

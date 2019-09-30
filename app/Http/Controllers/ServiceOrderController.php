@@ -102,7 +102,7 @@ class ServiceOrderController extends Controller
     public function update(Request $request, $id, Note $note)
     {
         $order = ServiceOrder::find($id);
-        $client = Client::find($id);
+        $client = Client::find($order['client_id']);
 
         if($request['statusFin'] == 'Sim'){
             $request['status'] = 'Fechado';
@@ -110,39 +110,31 @@ class ServiceOrderController extends Controller
             unset($request['statusFin']);
             unset($request['descriptionSer']);
             $not['service_id'] = $id;
-            if($request['status'] != $order['status']){
-                $msg = array();
-                $msg['id'] = $client['id'];
-                $msg['num'] = $client['phoneP'];
-                $msg['msg'] = ('Sua ordem de servico foi atualizada, status no momento ' . $request['status'] . '.');
+        }
+        if($request['status'] != $order['status']){
+            $msg = array();
+            $msg['id'] = $client['id'];
+            $msg['num'] = $client['phoneP'];
+            $msg['msg'] = ('Sua ordem de servico foi atualizada, status no momento ' . $request['status'] . '.');
                 
-                $result = Nexmo::message()->send([
-                    'to'   => $msg['num'],
-                    'from' => '16105552344',
-                    'text' => $msg['msg'],
-                ]);
-                
-            }else{
-                echo 'passei';
-            exit();
-            }
-            $note->create($not);
-            $result = $order->update($request->all());
-                if($result){
-                    return redirect()
-                            ->route('client.index')
-                            ->with('success', 'Ordem de serviço finalizada com sucesso!');
-                }else{
-                    return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao atualizar!');
-                }
+            $result = Nexmo::message()->send([
+                'to'   => $msg['num'],
+                'from' => '16105552344',
+                'text' => $msg['msg'],
+            ]);   
+        }
+        $note->create($not);
+        $result = $order->update($request->all());
+        if($result){
+            return redirect()
+                    ->route('client.index')
+                    ->with('success', 'Ordem de serviço finalizada com sucesso!');
         }else{
-            echo 'fim';
-            exit();
+            return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao atualizar!');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -193,8 +185,8 @@ class ServiceOrderController extends Controller
 
     public function getAuto($id)
     {
-        $auto = Automobile::where('client', '=', $id)->getQuery()->get(['id', 'brand']);
-        
+       $auto = Automobile::where('client', '=', $id)->getQuery()->get(['id', 'brand']);
+
         return $auto;
         //return Response::json($auto);
     }

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
-use App\Models\client;
-use App\user;
+use App\Models\ServiceOrder;
+use App\Models\Client;
+use App\User;
 use App\Models\Product;
 
 class HomeController extends Controller
@@ -30,6 +31,7 @@ class HomeController extends Controller
     {   $client = Client::all()->count();
         $user = User::all()->count();
         $product = Product::all()->count();
-        return view('home', compact('user', 'client', 'product'))->with('success', 'Produto Cadastrado com sucesso!');
+        $orders = ServiceOrder::all()->count();
+        return view('home', compact('user', 'client', 'product', 'orders'))->with('success', 'Produto Cadastrado com sucesso!');
     }
 }
