@@ -23,13 +23,14 @@ class ServiceOrder extends Model
         'client_id',
     ];
     protected $guarded = [ 'id', 'created_at', 'update_at'];
+
     protected $table = 'service_orders';
 
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
-    public function Observacoes()
+    public function observacoes()
     {
         return $this->hasMany(Note::class);
     }

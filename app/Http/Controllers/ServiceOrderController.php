@@ -106,10 +106,6 @@ class ServiceOrderController extends Controller
 
         if($request['statusFin'] == 'Sim'){
             $request['status'] = 'Fechado';
-            $not['note'] = $request['descriptionSer'];
-            unset($request['statusFin']);
-            unset($request['descriptionSer']);
-            $not['service_id'] = $id;
         }
         if($request['status'] != $order['status']){
             $msg = array();
@@ -121,10 +117,15 @@ class ServiceOrderController extends Controller
                 'to'   => $msg['num'],
                 'from' => '16105552344',
                 'text' => $msg['msg'],
-            ]);   
+            ]);
         }
+        $not['note'] = $request['descriptionSer'];
+        unset($request['statusFin']);
+        unset($request['descriptionSer']);
+        $not['service_id'] = $id;
         $note->create($not);
         $result = $order->update($request->all());
+        
         if($result){
             return redirect()
                     ->route('client.index')
@@ -176,10 +177,8 @@ class ServiceOrderController extends Controller
         $note = ServiceOrder::where('id', '=', $id)->get();
         
         foreach($note as $data){
-            $result = $data->Observacoes;
+            $result = $data->observacoes->note;
         }
-        return $result;
-        exit();
         return view('client.notes', compact('list'));
     }
 
