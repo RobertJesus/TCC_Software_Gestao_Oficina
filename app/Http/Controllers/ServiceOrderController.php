@@ -189,4 +189,10 @@ class ServiceOrderController extends Controller
         return $auto;
         //return Response::json($auto);
     }
+
+    public function view($id)
+    {
+        $order = ServiceOrder::where('id', '=', $id)->get();
+        return view('service.view', compact('order'));
+    }
 }

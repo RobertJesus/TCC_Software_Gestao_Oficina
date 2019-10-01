@@ -40,7 +40,8 @@ class ClientController extends Controller
             'cidade' => ['required', 'max:255'],
             'cep' => ['required', 'max:8'],
         ]);*/
-
+        unset($request['rad']);
+    
         $insert = $client->create($request->all());
 
         if($insert){

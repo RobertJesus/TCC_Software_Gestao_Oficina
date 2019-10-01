@@ -77,6 +77,7 @@ Route::prefix('product')->group(function(){
     Route::get('/edit/{id}', 'ServiceOrderController@edit')->name('service.edit');
     Route::post('/update/{id}', 'ServiceOrderController@update')->name('service.update');
     Route::get('/notes/{id}', 'ServiceOrderController@notes')->name('service.notes');
+    Route::get('/view/{id}', 'ServiceOrderController@view')->name('service.view');
  });
 
 //Rotas Vendas
@@ -93,6 +94,7 @@ Route::prefix('automobiles')->group(function(){
 Route::prefix('central')->group(function(){
     Route::get('/index', 'CentralController@index')->name('central.index');
     Route::get('/view', 'CentralController@view')->name('central.view');
+    Route::post('/login', 'CentralController@login')->name('central.login');
 });
 
 Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');
