@@ -17,7 +17,7 @@
             </div>
         @endif
         <p class="login-box-msg">Registrar Mecanico</p>
-        <div class="pai">
+        <div class="row">
         <form action="{{ url(config('adminlte.mechanical', 'store')) }}" method="post">
             {!! csrf_field() !!}
             <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

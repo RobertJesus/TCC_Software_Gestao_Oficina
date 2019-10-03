@@ -22,7 +22,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="pai">
+        <div class="row">
             <form action="{{ route('product.store') }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-row">

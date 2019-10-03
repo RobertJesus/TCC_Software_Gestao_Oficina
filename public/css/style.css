@@ -50,6 +50,15 @@
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     display: block;
 }
+.cor{
+    background-color: #fff;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #54667a;
+}
+a{
+    color:#54667a;
+}
 .pai{
     display: flex;
     justify-content: center;

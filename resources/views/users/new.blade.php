@@ -11,7 +11,7 @@
         </div>
     @endif
     <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
-    <div class="pai">
+    <div class="row">
         <table class="table table-striped">
             <thead>
                 <tr>

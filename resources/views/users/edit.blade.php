@@ -17,7 +17,7 @@
         </div>
     @endif
         <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
-        <div class="pai">
+        <div class="row">
         <form action="{{ route('user.update') }}" method="post">
             {!! csrf_field() !!}
             <?php foreach($user as $users){ ?>

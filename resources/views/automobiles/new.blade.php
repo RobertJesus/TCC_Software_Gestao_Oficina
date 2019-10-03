@@ -92,11 +92,15 @@
             <div class="form-row">
                     <div class="form-group col-md-2">
                         <label>Quilometro Entrada</label>
-                        <input type="text" name="km" class="form-control">
+                        <input type="text" name="km" id="km" class="form-control" onblur="calcular();">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Média dia</label>
-                        <input type="text" name="kmDay" class="form-control">
+                        <input type="text" name="kmDay" id="kmDay" class="form-control" onblur="calcular();">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Dias</label>
+                        <input type="text" name="Day" id="Day" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Placa</label>
@@ -113,7 +117,16 @@
 </div>
     <!-- /.form-box -->
     @section('post-script')
-    <script>
+<script >
+    function calcular(){
+        var km = Number(document.getElementById('km').value);
+        var kmDay = Number(document.getElementById('kmDay').value);
+        var revisao = km + 1000;
+        var total, cont = 0;
+        
+        document.getElementById('Day').value = revisao;
+    }
+
         $('select[name=cliente]').change(function () {
             var idclient = $(this).val();
             $.get('get-client/' + idclient, function (clients) {

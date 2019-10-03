@@ -22,7 +22,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="pai">
+        <div class="row">
         <?php foreach($provider as $data){ ?>
             <form action="{{ route('provider.update', $data->id) }}" method="post">
                 {!! csrf_field() !!}

@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="pai" id="pai">
+        <div class="row" id="pai">
         <?php foreach($order as $data){ ?>
             <div class="form-row">
                 <div class="form-group col-md-3">

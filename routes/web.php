@@ -92,7 +92,8 @@ Route::prefix('automobiles')->group(function(){
     Route::post('/store', 'AutomobilesController@store')->name('automobiles.store');
 });
 Route::prefix('central')->group(function(){
-    Route::get('/index', 'CentralController@index')->name('central.index');
+    Route::get('/index/{name}', 'CentralController@index')->name('central.index');
+    Route::get('/central', 'CentralController@central')->name('central.central');
     Route::get('/view', 'CentralController@view')->name('central.view');
     Route::post('/login', 'CentralController@login')->name('central.login');
 });

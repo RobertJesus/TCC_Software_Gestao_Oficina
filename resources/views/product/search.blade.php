@@ -53,7 +53,7 @@
             </div>
         </div>
     </div><hr>
-    <div class="pai">
+    <div class="row">
         <table class="table table-striped">
             <thead>
                 <tr>
