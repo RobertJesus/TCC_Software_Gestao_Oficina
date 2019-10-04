@@ -14,6 +14,7 @@ class Automobile extends Model
     protected $fillable = [
         'km',
         'kmDay',
+        'dateReview',
         'board',
         'brand',
         'client',

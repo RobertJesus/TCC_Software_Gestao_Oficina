@@ -17,6 +17,7 @@ class CreateAutomobilesTable extends Migration
             $table->increments('id');
             $table->string('km');
             $table->string('kmDay');
+            $table->date('dateReview');
             $table->string('board');
             $table->string('brand');
             $table->string('client');

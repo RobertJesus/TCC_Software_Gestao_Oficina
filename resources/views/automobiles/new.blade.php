@@ -92,15 +92,15 @@
             <div class="form-row">
                     <div class="form-group col-md-2">
                         <label>Quilometro Entrada</label>
-                        <input type="text" name="km" id="km" class="form-control" onblur="calcular();">
+                        <input type="text" name="km" id="km" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Média dia</label>
-                        <input type="text" name="kmDay" id="kmDay" class="form-control" onblur="calcular();">
+                        <input type="text" name="kmDay" id="kmDay" class="form-control" onblur="calcular()">
                     </div>
                     <div class="form-group col-md-2">
-                        <label>Dias</label>
-                        <input type="text" name="Day" id="Day" class="form-control">
+                        <label>Proxima Revisão</label>
+                        <input type="date" name="dateReview" id="dateReview" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Placa</label>
@@ -119,14 +119,22 @@
     @section('post-script')
 <script >
     function calcular(){
-        var km = Number(document.getElementById('km').value);
-        var kmDay = Number(document.getElementById('kmDay').value);
-        var revisao = km + 1000;
-        var total, cont = 0;
+        var km, kmDay, revisao, total, cont, atual;
+        total = 0;
+        cont = 0;
+        km = Number(document.getElementById('km').value);
+        kmDay = Number(document.getElementById('kmDay').value);
+        revisao = km + 1000;
+        total = revisao / kmDay;
+        total = Math.round(total);
         
-        document.getElementById('Day').value = revisao;
+        var hoje = new Date();
+        var dataVenc = new Date(hoje.getTime() + (total * 24 * 60 * 60 * 1000));
+    
+        alert('A proxima revisão sera proximo ao dia ' +  dataVenc.getDate() + "/" + (dataVenc.getMonth() + 1) + "/" + dataVenc.getFullYear());
+        //document.getElementById('dateRe').value = + dataVenc.getFullYear() + "/" + (dataVenc.getMonth() + 1) + "/" + dataVenc.getDate();
+        return;
     }
-
         $('select[name=cliente]').change(function () {
             var idclient = $(this).val();
             $.get('get-client/' + idclient, function (clients) {

@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Automobile;
+use App\Models\client;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class ExampleCron extends Command
 {
@@ -38,7 +40,7 @@ class ExampleCron extends Command
      */
     public function handle()
     {
-        $date = data('d/m/y');
+        $date = date('Y-m-d');
         $auto = Automobile::where('dateReview', '=', $date)->get();
         foreach($auto as $data){
             $id = $data['client'];
@@ -46,14 +48,14 @@ class ExampleCron extends Command
         $client = Client::where('name', '=', $id)->get();
         
         foreach($auto as $data){
-            $msg = $data['phoneP'];
+            $msg['id'] = $data['id'];
+            $msg['num'] = $data['phoneP'];
         }
 
-        $msg['num'] = $client['phoneP'];
-        $msg['msg'] = ('A revisão do seu veiculo esta proximo fique atento e agende uma visita em nossa oficina!!!');
+        $msg['msg'] = ('A revisao do seu veiculo esta proximo fique atento e agende uma visita em nossa oficina!!!');
             
         Nexmo::message()->send([
-            'to'   => $msg['num'],
+            'to'   => 5519991210699,//$msg['num'],
             'from' => '16105552344',
             'text' => $msg['msg'],
         ]);
