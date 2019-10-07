@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Response;
-use App\Models\Client;
+use App\Models\client;
 use App\Models\ServiceOrder;
 use App\Models\Note;
 use App\Models\Automobile;
@@ -20,7 +20,7 @@ class ServiceOrderController extends Controller
      */
     public function index()
     {   
-        $client = Client::all();
+        $client = Client::where('status','=', 1)->get();
         $user = User::where('type', '=', '2')->get();
         $os = ServiceOrder::where('status', '<>', 'Fechado')->get();
     
@@ -34,7 +34,7 @@ class ServiceOrderController extends Controller
      */
     public function create()
     {   
-        $client = Client::all();
+        $client = Client::where('status','=', 1)->get();
         $user = $user = User::where('type', '=', '2')->get();
         return view('service.new', compact('client', 'user'));
     }

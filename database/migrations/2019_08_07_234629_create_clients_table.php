@@ -18,6 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->date('date');
             $table->string('record');
+            $table->string('status');
             $table->string('sex');
             $table->string('email');
             $table->string('phoneP');

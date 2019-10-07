@@ -18,7 +18,8 @@ class ClientController extends Controller
     }
     public function index()
     {
-        return view('client.search');
+        $list =  Client::where('status', '=',1)->get();
+        return view('client.search', compact('list'));
     }
 
     public function create(){
@@ -27,7 +28,6 @@ class ClientController extends Controller
 
     public function store(Request $request, Client $client)
     {   
-
         /*$request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255'],
@@ -41,7 +41,8 @@ class ClientController extends Controller
             'cep' => ['required', 'max:8'],
         ]);*/
         unset($request['rad']);
-    
+        $request['status'] = 1;
+        
         $insert = $client->create($request->all());
 
         if($insert){
@@ -55,15 +56,16 @@ class ClientController extends Controller
         }
     }
 
-    public function edit($id){
-        $client = Client::where('id', '=', $id)->get();
-        
+    public function edit($id)
+    {
+        $client = Client::where('id', '=', $id)->get();    
         return view('client.edit', compact('client'));
     }
 
-    public function update(Request $request, $id){ 
-        
+    public function update(Request $request, $id)
+    {    
         $client = Client::find($id);
+        $request['status'] = $client['status'];
         
         $result = $client->update($request->all());
 
@@ -78,8 +80,24 @@ class ClientController extends Controller
                     ->with('error', 'Falha ao atualizar!');
         }
     }
-    public function destroy($id){
-        
+    public function toFile($id)
+    {
+        $client = Client::findOrFail($id);
+        $client['status'] = 2;//Arquivado
+        $cli[] = $client;
+        $result = $client->update($cli);
+        if($result){
+            return redirect()
+                    ->route('client.index')
+                    ->with('success', 'Cliente arquivado com sucesso!');
+        }else{
+            return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao excluir');
+        }
+    }
+    public function destroy($id)
+    {    
         $users = Client::findOrFail($id);
         $result = $users->delete();
         if($result){
@@ -92,15 +110,16 @@ class ClientController extends Controller
                     ->with('error', 'Falha ao excluir');
         }
     }
-    public function view($id){
-        $list = Client::where('id','=', $id)->get();
-        
+    public function view($id)
+    {
+        $list = Client::where('id','=', $id)->get();    
         return view('client.view', compact('list'));
     }
-    public function search(Request $request){
-
+    public function search(Request $request)
+    {
         $list = Client::where('name', '=', $request['name'])
-                    ->Orwhere('record', '=', $request['name'])->get();
+                    ->Orwhere('record', '=', $request['name'])
+                    ->Orwhere('status','=', $request['status'])->get();
                     
         $result = $list;
         
@@ -113,8 +132,8 @@ class ClientController extends Controller
         }
     }
 
-    public function msg(Request $request){
-        
+    public function msg(Request $request)
+    {    
         $id = $request->id;
             
         $result = Nexmo::message()->send([
