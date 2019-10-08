@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Console\Command;
 use App\Models\Automobile;
 use App\Models\client;
@@ -9,6 +11,7 @@ use Nexmo\Laravel\Facade\Nexmo;
 
 class ExampleCron extends Command
 {
+    /* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
     /**
      * The name and signature of the console command.
      *

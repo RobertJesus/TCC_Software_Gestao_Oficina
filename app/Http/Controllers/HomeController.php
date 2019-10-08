@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Models\ServiceOrder;
-use App\Models\Client;
+use App\Models\client;
 use App\User;
 use App\Models\Product;
 

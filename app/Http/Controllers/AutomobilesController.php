@@ -16,14 +16,15 @@ class AutomobilesController extends Controller
 
     public function create()
     {
-        $client = Client::all();
+        $client = Client::where('status','=', 1)->get();
         return view('automobiles.new', compact('client'));
     }
 
     public function store(Request $request, Automobile $auto)
     {
+        
         $insert = $auto->create($request->all());
-
+        
         if($insert){
             return redirect()
                     ->route('automobiles.new')

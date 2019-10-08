@@ -26,7 +26,9 @@ class client extends Model
         'comp', 
         'city', 
         'state', 
-        'cep',];
+        'cep',
+        'status',
+    ];
     protected $guarded = ['id', 'created_at', 'update_at'];
     protected $table = 'clients';
 
