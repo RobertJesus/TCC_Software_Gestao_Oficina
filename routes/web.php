@@ -83,12 +83,13 @@ Route::prefix('product')->group(function(){
  });
 
 //Rotas Vendas
- Route::prefix('sales')->group(function(){
-     Route::get('/new', 'SalesController@create')->name('sales.new');
-     Route::get('/index', 'SalesController@index')->name('sales.index');
-     Route::post('/store', 'SalesController@store')->name('sales.store');
+Route::prefix('sales')->group(function(){
+    Route::get('/new', 'SalesController@create')->name('sales.new');
+    Route::get('/index', 'SalesController@index')->name('sales.index');
+    Route::post('/store', 'SalesController@store')->name('sales.store');
+    Route::get('/view/{id}', 'SalesController@view')->name('sales.view');
+    Route::get('/destroy/{id}', 'SalesController@destroy')->name('sales.destroy');
 });
-
 Route::prefix('automobiles')->group(function(){
     Route::get('/new', 'AutomobilesController@create')->name('automobiles.new');
     Route::post('/store', 'AutomobilesController@store')->name('automobiles.store');
