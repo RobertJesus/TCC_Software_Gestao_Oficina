@@ -59,6 +59,65 @@ function valida_form (){
     document.getElementById("cep").focus();
     return false
     }
+}
+function valida_form_for (){
+    if(document.getElementById("name").value.length < 3){
+        alert('Por favor, preencha o campo Nome/Razão Social');
+        document.getElementById("name").focus();
+        return false
+    }
+    if(document.getElementById("nameFant").value.length < 3){
+        alert('Por favor, preencha o campo Nome/Razão Social');
+        document.getElementById("nameFant").focus();
+        return false
+    }
+    if(document.getElementById("record").value.length < 3){
+        alert('Por favor, preencha o campo CPF/CNPJ');
+        document.getElementById("record").focus();
+        return false
+    }
+    if(document.getElementById("email").value.length < 3){
+        alert('Por favor, preencha o campo email');
+        document.getElementById("email").focus();
+        return false
+        }
+        if(document.getElementById("phoneP").value.length < 3){
+        alert('Por favor, preencha o campo Telefone');
+        document.getElementById("phoneP").focus();
+        return false
+        }
+        if(document.getElementById("address").value.length < 3){
+        alert('Por favor, preencha o campo rua');
+        document.getElementById("address").focus();
+        return false
+        }
+        if(document.getElementById("district").value.length < 3){
+        alert('Por favor, preencha o campo bairro');
+        document.getElementById("district").focus();
+        return false
+        }
+        if(document.getElementById("numberHouse").value.length < 3){
+        alert('Por favor, preencha o campo numero');
+        document.getElementById("numberHouse").focus();
+        return false
+        }
+        if(document.getElementById("city").value.length < 3){
+        alert('Por favor, preencha o campo cidade');
+        document.getElementById("city").focus();
+        return false
+        }
+        if(document.getElementById("state").value.length < 3){
+        alert('Por favor, preencha o campo estado');
+        document.getElementById("status").focus();
+        return false
+        }
+        if(document.getElementById("cep").value.length < 3){
+        alert('Por favor, preencha o campo cep');
+        document.getElementById("cep").focus();
+        return false
+        }
+}
+function valida_form_prod (){
     if(document.getElementById("cod").value.length < 3){
         alert('Por favor, preencha o campo codigo do produto');
         document.getElementById("cod").focus();
@@ -100,8 +159,85 @@ function valida_form (){
         return false
     }
 }
-
- 
+function valida_form_Os(){
+    if(document.getElementById("protocol").value.length < 3){
+        alert('Por favor, preencha o campo numero do protocolo');
+        document.getElementById("protocol").focus();
+        return false
+    }
+    if(document.getElementById("name").value.length < 3){
+        alert('Por favor, preencha o campo nome do cliente');
+        document.getElementById("name").focus();
+        return false
+    }
+    if(document.getElementById("brand").value.length < 3){
+        alert('Por favor, preencha o campo veiculo');
+        document.getElementById("brand").focus();
+        return false
+    }
+    if(document.getElementById("service").value.length < 3){
+        alert('Por favor, preencha o campo serviço');
+        document.getElementById("service").focus();
+        return false
+    }
+    if(document.getElementById("priority").value.length < 3){
+        alert('Por favor, preencha o campo prioridade');
+        document.getElementById("priority").focus();
+        return false
+    }
+    if(document.getElementById("status").value.length < 3){
+        alert('Por favor, preencha o campo status');
+        document.getElementById("status").focus();
+        return false
+    }
+    if(document.getElementById("responsible").value.length < 3){
+        alert('Por favor, preencha o campo responsavel');
+        document.getElementById("responsible").focus();
+        return false
+    }
+    if(document.getElementById("description").value.length < 3){
+        alert('Por favor, preencha o campo descrição');
+        document.getElementById("description").focus();
+        return false
+    }
+    if(document.getElementById("description").value.length < 3){
+        alert('Por favor, preencha o campo descrição');
+        document.getElementById("description").focus();
+        return false
+    }
+}
+function valida_form_auto(){
+    if(document.getElementById("client").value.length < 3){
+        alert('Por favor, preencha o campo cliente');
+        document.getElementById("client").focus();
+        return false
+    }
+    if(document.getElementById("km").value.length < 3){
+        alert('Por favor, preencha o quilometro entrada');
+        document.getElementById("km").focus();
+        return false
+    }
+    if(document.getElementById("kmDay").value.length < 3){
+        alert('Por favor, preencha o campo quilometro media');
+        document.getElementById("kmdDay").focus();
+        return false
+    }
+    if(document.getElementById("dateReview").value.length < 3){
+        alert('Por favor, preencha o campo data');
+        document.getElementById("dateReview").focus();
+        return false
+    }
+    if(document.getElementById("board").value.length < 3){
+        alert('Por favor, preencha o campo placa');
+        document.getElementById("board").focus();
+        return false
+    }
+    if(document.getElementById("brand").value.length < 3){
+        alert('Por favor, preencha o campo marca');
+        document.getElementById("brand").focus();
+        return false
+    }
+}
 function campo_numerico (){
     if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;
 }

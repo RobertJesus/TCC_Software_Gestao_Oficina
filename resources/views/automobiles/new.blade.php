@@ -68,12 +68,12 @@
         </div>
     </div><br><br>-->
     <div class="register-box-body">
-        <form action="{{ route('automobiles.store')}}" method="post">
+        <form action="{{ route('automobiles.store')}}" method="post" onsubmit="return valida_form_auto(this)">
         {!! csrf_field() !!}
             <div class="form-row">
                 <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Cliente</label>
-                    <select name="client" class="form-control stateClient">
+                    <select name="client" id="client" class="form-control stateClient">
                             <option></option>
                         <?php if(empty($client) == null) { ?>
                             <?php foreach($client as $data){ ?>
@@ -104,11 +104,11 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label>Placa</label>
-                        <input type="text" name="board" class="form-control">
+                        <input type="text" name="board" id="board" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Marca</label>
-                        <input type="text" name="brand" class="form-control">
+                        <input type="text" name="brand" id="brand" class="form-control">
                     </div>
                 
             </div>    

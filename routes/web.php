@@ -67,6 +67,7 @@ Route::prefix('product')->group(function(){
     Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
     Route::post('/update/{id}', 'ProductController@update')->name('product.update');
     Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
+    Route::get('/pdf', 'ProductController@nameMethod')->name('product.pdf');
 });
  //Rotas Ordem de Serviço
  Route::prefix('service')->group(function(){

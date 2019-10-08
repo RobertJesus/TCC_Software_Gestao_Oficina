@@ -22,16 +22,16 @@
             </a>
         </div>
         <div class="row" id="pai">
-            <form action="{{ route('service.store') }}" method="post">
+            <form action="{{ route('service.store') }}" method="post" onsubmit="return valida_form_Os(this)">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label>Protocolo</label>
-                        <input type="text" name="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
+                        <input type="text" name="protocol" id="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
                     </div>
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Cliente</label>
-                        <select name="name" class="form-control stateClient">
+                        <select name="name" id="name" class="form-control stateClient">
                             <option></option>
                             <?php if(empty($client) == null) { ?>
                                 <?php foreach($client as $data){ ?>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group col-md-4">
                     <label for="inputCity">Veiculo</label>
-                        <select name="brand" class="form-control stateClient" value="[]">
+                        <select name="brand" id="brand" class="form-control stateClient" value="[]">
                             <option></option>
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Serviço</label>
-                        <select name="service" class="form-control stateClient">
+                        <select name="service" id="service" class="form-control stateClient">
                                 <option>Financeiro</option>
                                 <option>Manutenção</option>
                         </select>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Prioridade</label>
-                        <select name="priority" class="form-control stateClient">
+                        <select name="priority" id="priority" class="form-control stateClient">
                                 <option>Alta</option>
                                 <option>Normal</option>
                                 <option>Baixa</option>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Status</label>
-                        <select name="status" class="form-control stateClient">
+                        <select name="status" id="status" class="form-control stateClient">
                                 <option>Aberto</option>
                                 <option>Em andamento</option>
                                 <option>Fechado</option>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Responsavel</label>
-                        <select name="responsible" class="form-control stateClient">
+                        <select name="responsible" id="responsible" class="form-control stateClient">
                         <option></option>
                             <?php if(empty($user) == null) { ?>
                                 <?php foreach($user as $data){ ?>
@@ -116,7 +116,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Descrição</label>
-                        <textarea type="text" name="description" class="form-control compClient"></textarea>
+                        <textarea type="text" name="description" id="description" class="form-control compClient"></textarea>
                     </div>
                     <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Data de Execução</label>

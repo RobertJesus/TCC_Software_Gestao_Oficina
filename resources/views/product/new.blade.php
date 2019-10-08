@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="row">
-            <form action="{{ route('product.store') }}" method="post" onsubmit="return valida_form(this)">
+            <form action="{{ route('product.store') }}" method="post" onsubmit="return valida_form_prod(this)">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">

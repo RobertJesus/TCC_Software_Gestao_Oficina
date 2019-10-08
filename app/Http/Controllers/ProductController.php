@@ -16,7 +16,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('product.search');
+        $list = Product::all();
+        return view('product.search', compact('list'));
     }
 
     public function create()
@@ -105,10 +106,19 @@ class ProductController extends Controller
                     ->with('error', 'Falha ao excluir');
         }
     }
-    public function view($id){
-    
+    public function view($id)
+    {
         $product = Product::where('id','=', $id)->get();
         
         return view('product.view', compact('product'));
+    }
+    public function nameMethod()
+    {
+    $products = Product::all();
+        //return view('product.pdf', compact('products'));
+
+    return \PDF::loadView('product.pdf', compact('products'))
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('nome-arquivo-pdf-gerado.pdf');
     }
 }

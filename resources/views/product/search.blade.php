@@ -17,6 +17,11 @@
             {{ session('error') }}
         </div>
     @endif
+    <a href="{{route('product.pdf')}}">
+        <button type="button" class="btn btn-success">
+        Gerar PDF
+        </button>
+    </a>
     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br><br>
     <div class="form-row">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
