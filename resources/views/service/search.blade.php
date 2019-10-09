@@ -84,6 +84,7 @@
                         <th scope="col">Tipo de Serviço</th>
                         <th scope="col">Responsavel</th>
                         <th scope="col">Visualizar</th>
+                        <th scope="col">PDF</th>
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>
@@ -95,6 +96,7 @@
                             <td>{{$data->service}}</td>
                             <td>{{$data->responsible}}</td>
                             <td><a href="{{ route('service.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                            <td><a href="{{ route('service.pdf', $data->id)}}" class="text-success"><i class="fa fa-file-pdf-o"></i></a></td>
                             <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <?php }?>

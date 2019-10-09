@@ -17,6 +17,11 @@
             {{ session('error') }}
         </div>
     @endif
+    <a href="{{route('provider.pdf')}}">
+        <button type="button" class="btn btn-success">
+        Gerar PDF
+        </button>
+    </a>
     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br><br>
     <div class="form-row">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,8 +79,11 @@
                         <td>{{$provider->email}}</td>
                         <td>{{$provider->address}}</td>
                         <td>{{$provider->phoneP}}</td>
-                        <td><a href="{{ route('provider.products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a></td>
-                        <td><a href="{{ route('provider.view', $provider->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td>
+                            <a href="{{ route('provider.products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a>
+                            <a href="{{ route('provider.pdfProdcts', $provider->id)}}" classs="text-success" style="padding-left:15px"><i class="fa fa-file-pdf-o"></i></a>
+                        </td>
+                        <td><a href="{{ route('provider.view', $provider->id)}}" class="text-success"><i class="fa fa-eye"></i></a></td>
                         <td><a href="{{ route('provider.edit', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('provider.destroy', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>

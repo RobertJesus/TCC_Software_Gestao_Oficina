@@ -20,7 +20,7 @@ class ServiceOrderController extends Controller
      */
     public function index()
     {   
-        $client = Client::where('status','=', 1)->get();
+        $client = Client::where('status','=', '1')->get();
         $user = User::where('type', '=', '2')->get();
         $os = ServiceOrder::where('status', '<>', 'Fechado')->get();
     
@@ -34,7 +34,7 @@ class ServiceOrderController extends Controller
      */
     public function create()
     {   
-        $client = Client::where('status','=', 1)->get();
+        $client = Client::where('status','=', '1')->get();
         $user = $user = User::where('type', '=', '2')->get();
         return view('service.new', compact('client', 'user'));
     }
@@ -191,8 +191,16 @@ class ServiceOrderController extends Controller
     }
 
     public function view($id)
-    {
+    {   
         $order = ServiceOrder::where('id', '=', $id)->get();
         return view('service.view', compact('order'));
+    }
+    public function pdf($id)
+    {
+        $client = Client::where('id', '=', $id)->get();
+        $order = ServiceOrder::where('id', '=', $id)->get();
+        return \PDF::loadView('service.pdf', compact('order', 'client'))
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('produtos.pdf');
     }
 }

@@ -52,6 +52,8 @@ Route::prefix('provider')->group(function(){
     Route::post('/update/{id}', 'ProviderController@update')->name('provider.update');
     Route::get('/view/{id}', 'ProviderController@view')->name('provider.view');
     Route::get('/products/{id}', 'ProviderController@products')->name('provider.products');
+    Route::get('/pdf', 'ProviderController@pdf')->name('provider.pdf');
+    Route::get('/pdf/{id}', 'ProviderController@pdfProduct')->name('provider.pdfProdcts');
 });
 
 // Rotas mecanico
@@ -67,7 +69,7 @@ Route::prefix('product')->group(function(){
     Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
     Route::post('/update/{id}', 'ProductController@update')->name('product.update');
     Route::get('/destroy/{id}', 'ProductController@destroy')->name('product.destroy');
-    Route::get('/pdf', 'ProductController@nameMethod')->name('product.pdf');
+    Route::get('/pdf', 'ProductController@pdf')->name('product.pdf');
 });
  //Rotas Ordem de Serviço
  Route::prefix('service')->group(function(){
@@ -80,6 +82,7 @@ Route::prefix('product')->group(function(){
     Route::post('/update/{id}', 'ServiceOrderController@update')->name('service.update');
     Route::get('/notes/{id}', 'ServiceOrderController@notes')->name('service.notes');
     Route::get('/view/{id}', 'ServiceOrderController@view')->name('service.view');
+    Route::get('/pdf/{id}', 'ServiceOrderController@pdf')->name('service.pdf');
  });
 
 //Rotas Vendas

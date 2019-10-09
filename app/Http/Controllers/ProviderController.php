@@ -15,7 +15,8 @@ class ProviderController extends Controller
 {
     public function index()
     {
-        return view('provider.search');
+        $list = Provider::all();
+        return view('provider.search', compact('list'));
     }
 
     public function create()
@@ -106,6 +107,25 @@ class ProviderController extends Controller
         }
 
         return view('provider.viewProduct', compact('list'));
+    }
+    public function pdf()
+    {
+    $providers = Provider::all();
+        //return view('product.pdf', compact('products'));
+
+    return \PDF::loadView('provider.pdf', compact('providers'))
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('fornecedores.pdf');
+    }
+    public function pdfProduct($id)
+    {
+        $product = Provider::where('id', '=', $id)->get();
         
+        foreach($product as $products){
+            $products = $products->produtos;
+        }
+        return \PDF::loadView('product.pdf', compact('products'))
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('produtos.pdf');
     }
 }

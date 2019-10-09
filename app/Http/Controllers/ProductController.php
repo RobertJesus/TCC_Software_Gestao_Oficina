@@ -112,13 +112,13 @@ class ProductController extends Controller
         
         return view('product.view', compact('product'));
     }
-    public function nameMethod()
+    public function pdf()
     {
     $products = Product::all();
         //return view('product.pdf', compact('products'));
 
     return \PDF::loadView('product.pdf', compact('products'))
                 // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
-          ->download('nome-arquivo-pdf-gerado.pdf');
+          ->download('produtos.pdf');
     }
 }

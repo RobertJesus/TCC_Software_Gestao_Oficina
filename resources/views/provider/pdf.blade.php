@@ -23,31 +23,27 @@
             </div>
             <hr>
             <center>
-                <h5>Produtos</h5>
+                <h5>Fornecedores</h5>
             </center>
             <div class="row card" style="border: 1px solid black;">
                 <div class="form-row">
                     <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Descrição</th>
-                                <th>Marca</th>
-                                <th>Preço Entrada</th>
-                                <th>Preço Venda</th>
-                                <th>Fornecedor</th>
-                                <th>Quantidade</th>
+                                <th>Razão Social</th>
+                                <th>Nome Fantasia</th>
+                                <th>CNPJ</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
                             </tr>
                         </thead>
-                        @forelse($products as $product)
+                        @forelse($providers as $data)
                         <tr>
-                            <td>{{$product->cod}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->brand}}</td>
-                            <td>{{$product->priceNew}}</td>
-                            <td>{{$product->priceOld}}</td>
-                            <td>{{$product->provider}}</td>
-                            <td>{{$product->amount}}</td>
+                            <td>{{$data->name}}</td>
+                            <td>{{$data->nameFant}}</td>
+                            <td>{{$data->record}}</td>
+                            <td>{{$data->email}}</td>
+                            <td>{{$data->phoneP}}</td>
                         </tr>
                         @empty
                         @endforelse

@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+            <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Tipo de Comprovante</label>
                 <select name="service" class="form-control stateClient">
                         <option>Dinheiro</option>
@@ -56,15 +56,15 @@
                     </span>
                 @endif
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label>Número Comprovante</label>
-                <input type="text" name="protocol" class="form-control" placeholder="Número do Comprovante..">
+                <input type="text" name="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
             </div>
         </div>
     </form>
     <form action="" method="post" id="products">
         <div class="form-row">
-            <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+            <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Produto</label>
                 <select name="produto" class="form-control stateClient">
                         <option></option>
@@ -96,7 +96,7 @@
                 </div>
             <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Preço</label>
-                <select name="priceOld" class="form-control" value="[]">
+                <select name="priceOld" id="priceOld" class="form-control" value="[]">
                     <option value="[]"></option>
                 </select>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -108,7 +108,7 @@
             </div>
             <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Desconto</label>
-                <input type="text" name="desc" class="form-control">
+                <input type="text" name="desc" id="desc" class="form-control" onblur="calcular()">
                 
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('cidade'))
@@ -116,13 +116,26 @@
                         <strong class="error">{{ $errors->first('cidade') }}</strong>
                     </span>
                 @endif
-            </div>            
+            </div>
+            <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                <label for="inputCity">Total</label>
+                <input type="text" name="total" id="total" class="form-control">
+                
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                @if ($errors->has('cidade'))
+                    <span class="help-block">
+                        <strong class="error">{{ $errors->first('cidade') }}</strong>
+                    </span>
+                @endif
+            </div>             
         </div>
         <button type="btn" class="btn btn-success" onclick="fechar_div();">Adicionar Produto</button> 
     </form>                 
     <div class="row" id="filho" style="display:none;">
         <div class="form-group col-md-12">
             <h1>Produtos</h1><hr>
+            <form action="{{ route('sales.store') }}" method="post">
+            {!! csrf_field() !!}
             <table id="grid" class="table table-striped">
                 <thead>
                     <tr>
@@ -130,14 +143,13 @@
                         <th>Quantidade</th>
                         <th>Preço</th>
                         <th>Desconto</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
                 
                 </tbody>
             </table>
-            <form action="{{ route('sales.store') }}" method="post">
-            {!! csrf_field() !!}
                 <button type="submit" class="btn btn-success" style="aling-center;">Adicionar</button>
             </form>
         </div>
@@ -157,7 +169,12 @@
             });
         });
     });
-
+    function calcular(){
+        var n1 = document.getElementById("priceOld").value;
+        var n2 = document.getElementById("desc").value;
+        var n3 = n1 - n2;
+        document.getElementById("total").value = n3.toFixed(2);
+    }
     function fechar_div(){
             var x = document.getElementById('filho');
             if (x.style.display === 'none') {
@@ -173,7 +190,8 @@
 			'<td>'+$this.find("select[name='amount']").val()+'</td>'+
             '<td>'+$this.find("select[name='priceOld']").val()+'</td>'+
             '<td>'+$this.find("input[name='desc']").val()+'</td>'+
-			'</tr>'
+			'<td>'+$this.find("input[name='total']").val()+'</td>'+
+            '</tr>'
 		$('#grid').find('tbody').append( tr );
 
 		return false;

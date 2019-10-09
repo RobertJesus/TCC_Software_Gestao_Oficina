@@ -22,7 +22,7 @@
             </a>
         </div>
         <div class="row" id="pai">
-            <form action="{{ route('service.store') }}" method="post" onsubmit="return valida_form_Os(this)">
+            <form action="{{ route('service.store') }}" method="post" >
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-3">
