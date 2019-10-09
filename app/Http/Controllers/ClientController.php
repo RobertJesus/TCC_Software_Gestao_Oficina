@@ -161,4 +161,12 @@ class ClientController extends Controller
         }
         return view('client.order', compact('list'));
     }
+    public function pdf()
+    {
+    $client = Client::all();
+        //return view('product.pdf', compact('products'));
+    return \PDF::loadView('client.pdf', compact('client'))
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('clientes.pdf');
+    }
 }

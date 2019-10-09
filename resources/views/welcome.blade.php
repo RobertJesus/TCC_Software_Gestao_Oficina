@@ -71,10 +71,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Registrar</a>
-                        @endif
                     @endauth
                 </div>
             @endif
@@ -86,7 +82,7 @@
 
                 <div class="links">
                     <a href="{{route('login')}}">Administrador</a>
-                    <a href="{{route('login')}}">Mecânico</a>
+                    <a href="{{route('central.central')}}">Cliente</a>
                     
                 </div>
             </div>

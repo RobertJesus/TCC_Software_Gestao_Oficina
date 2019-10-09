@@ -65,6 +65,7 @@
                     <th scope="col">Responsavel</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Observações</th>
+                    <th scope="col">PDF</th>
                 </tr>
             </thead>
             <?php if(empty($list) == null){ ?>
@@ -76,7 +77,8 @@
                         <td>{{$data->status}}</td>
                         <td>{{$data->responsible}}</td>
                         <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa-search"></i></td>
+                        <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa fa-eye"></i></td>
+                        <td><a href="{{ route('service.pdf', $data->id)}}" class="text-success"><i class="fa fa-file-pdf-o"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

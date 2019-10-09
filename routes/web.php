@@ -40,6 +40,7 @@ Route::prefix('client')->group(function(){
     Route::post('/msg/{id}', 'ClientController@msg')->name('client.msg');
     Route::get('/orders/{id}', 'ClientController@orders')->name('client.orders');
     Route::get('/toFile/{id}', 'ClientController@toFile')->name('client.toFile');
+    Route::get('/pdf', 'ClientController@pdf')->name('client.pdf');
 });
 //Rotas Fornecedor
 Route::prefix('provider')->group(function(){

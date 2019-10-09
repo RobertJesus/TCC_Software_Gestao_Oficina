@@ -90,7 +90,7 @@
                 </thead>
                 <?php if(empty($os) == null){ ?>
                     <?php foreach($os as $data){ ?>
-                        <tr>
+                        <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                             <td>{{$data->protocol}}</td>
                             <td>{{$data->name}}</td>
                             <td>{{$data->service}}</td>

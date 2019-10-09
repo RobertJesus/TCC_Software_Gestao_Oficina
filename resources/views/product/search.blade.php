@@ -75,7 +75,7 @@
             </thead>
             <?php if(empty($list) == null){ ?>
                 <?php foreach($list as $data){ ?>
-                    <tr>
+                    <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                         <td>{{$data->cod}}</td>
                         <td>{{$data->description}}</td>
                         <td>{{$data->brand}}</td>

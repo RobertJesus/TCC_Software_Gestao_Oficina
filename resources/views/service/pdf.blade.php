@@ -39,7 +39,7 @@
                     </table>
                     @empty
                     @endforelse
-                </div><hr>
+                </div>
             </div>
             </div>
             <hr>
@@ -75,6 +75,12 @@
                         <h5>Observação</h5>
                         @empty
                         @endforelse
+                    </div>
+                    <div class="form-row">
+                        <center>
+                        <p>________________________________________</p>
+                        <p>Assinatura do cliente</p>
+                        </center>
                     </div>
                 </div>
             </div>

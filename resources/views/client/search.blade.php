@@ -17,6 +17,11 @@
             {{ session('error') }}
         </div>
     @endif
+    <a href="{{route('client.pdf')}}">
+        <button type="button" class="btn btn-success">
+        Gerar PDF
+        </button>
+    </a>
     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br><br>
     <div class="form-row">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,7 +77,7 @@
             </thead>
             <?php if(empty($list) == null){ ?>
                 <?php foreach($list as $client){ ?>
-                    <tr>
+                    <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                         <td>{{$client->name}}</td>
                         <td>{{$client->email}}</td>
                         <td>{{$client->address}}</td>

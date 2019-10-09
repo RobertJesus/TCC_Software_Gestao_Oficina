@@ -64,9 +64,10 @@
                 <tr>
                     <th scope="col">Razão Social</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Endereço</th>
+                    <th scope="col">CNPJ</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Produtos</th>
+                    <th scope="col">PDF</th>
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
@@ -74,15 +75,13 @@
             </thead>
             <?php if(empty($list) == null){ ?>
                 <?php foreach($list as $provider){ ?>
-                    <tr>
+                    <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                         <td>{{$provider->name}}</td>
                         <td>{{$provider->email}}</td>
-                        <td>{{$provider->address}}</td>
+                        <td>{{$provider->record}}</td>
                         <td>{{$provider->phoneP}}</td>
-                        <td>
-                            <a href="{{ route('provider.products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a>
-                            <a href="{{ route('provider.pdfProdcts', $provider->id)}}" classs="text-success" style="padding-left:15px"><i class="fa fa-file-pdf-o"></i></a>
-                        </td>
+                        <td><a href="{{ route('provider.products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a></td>              </td>
+                        <td><a href="{{ route('provider.pdfProdcts', $provider->id)}}" classs="text-success" style="padding-left:15px"><i class="fa fa-file-pdf-o"></i></a></td>
                         <td><a href="{{ route('provider.view', $provider->id)}}" class="text-success"><i class="fa fa-eye"></i></a></td>
                         <td><a href="{{ route('provider.edit', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('provider.destroy', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
