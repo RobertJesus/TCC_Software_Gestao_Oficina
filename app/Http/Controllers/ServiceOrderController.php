@@ -8,6 +8,7 @@ use App\Models\client;
 use App\Models\ServiceOrder;
 use App\Models\Note;
 use App\Models\Automobile;
+use App\Models\Event;
 use App\User;
 use Nexmo\Laravel\Facade\Nexmo;
 
@@ -45,16 +46,19 @@ class ServiceOrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ServiceOrder $serviceOrder)
+    public function store(Request $request, ServiceOrder $serviceOrder, Event $event)
     {
         $id = Client::where('name','=', $request['name'])->get('id');
         foreach ($id as $data){
             $cli = $data['id'];
         }
         $request['client_id'] = $cli;
+        $everts['title'] = $request['service'];
+        $everts['start_date'] = $request['dateExec'];
+        $everts['end_date'] = $request['dateExec'];
+        $result = $event->create($everts);
         
         $insert = $serviceOrder->create($request->all());
-        //$id['id'] = $insert['id'];
         
         if($insert){
             return view('service.new')
