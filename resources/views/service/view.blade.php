@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="row" id="pai">
+        <div class="pai" id="pai">
         <table class="table table-hover">
             <tbody>
                 <?php foreach($order as $data){ ?>

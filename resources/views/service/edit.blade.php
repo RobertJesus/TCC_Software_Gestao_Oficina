@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="row" id="pai">
+    <div class="pai" id="pai">
         <?php foreach($order as $data){ ?>
             <div class="form-row">
                 <div class="form-group col-md-3">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                     <label for="inputCity">Cliente</label>
-                    <select name="name" id="name" class="form-control stateClient">
+                    <select name="name" id="name" class="form-control">
                                 <option>{{$data->name}}</option>
                     </select>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -47,7 +47,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Setor</label>
-                        <select name="service" id="service" class="form-control stateClient" value="{{$data->service}}">
+                        <select name="service" id="service" class="form-control" value="{{$data->service}}">
                                 <option>Financeiro</option>
                                 <option>Manutenção</option>
                         </select>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Prioridade</label>
-                        <select name="priority" id="priority" class="form-control stateClient" value="{{$data->priority}}">
+                        <select name="priority" id="priority" class="form-control" value="{{$data->priority}}">
                                 <option>Alta</option>
                                 <option>Normal</option>
                                 <option>Baixa</option>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Status</label>
-                        <select name="status" id="status" class="form-control stateClient" value="{{$data->status}}">
+                        <select name="status" id="status" class="form-control" value="{{$data->status}}">
                                 <option>Aberto</option>
                                 <option>Em andamento</option>
                                 <option>Fechado</option>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Responsavel</label>
-                        <select name="responsible" id="responsible" class="form-control stateClient" value="{{$data->responsible}}">
+                        <select name="responsible" id="responsible" class="form-control" value="{{$data->responsible}}">
                         <option></option>
                             <?php if(empty($user) == null) { ?>
                                 <?php foreach($user as $data){ ?>
@@ -107,11 +107,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Descrição do serviço</label>
-                        <textarea type="text" name="descriptionSer" id="description" class="form-control compClient"></textarea>
+                        <textarea type="text" name="descriptionSer" id="description" class="form-control"></textarea>
                     </div>
                     <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Data de Execução</label>
-                        <input type="date" name="dateExec" class="form-control dateClient" value="{{$data->dateExec}}">
+                        <input type="date" name="dateExec" class="form-control" value="{{$data->dateExec}}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('data'))
                             <span class="help-block">
@@ -121,7 +121,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label>Finalizar OS</label>
-                        <select name="statusFin" class="form-control stateClient">
+                        <select name="statusFin" class="form-control">
                                 <option>Não</option>
                                 <option>Sim</option>
                         </select>
@@ -160,7 +160,9 @@
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </form>
         </div>-->
+        </div>
     </div>
+</div>
     <!-- /.form-box -->
     <script>
         function fechar_div(){

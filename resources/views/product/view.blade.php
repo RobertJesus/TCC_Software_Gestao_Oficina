@@ -22,7 +22,7 @@
             <button type="submit" class="btn btn-info" >Voltar</button>
         </a>
     </div>
-    <div class="row">
+    <div class="pai">
     <table class="table table-hover">
         <tbody>
             <?php foreach($product as $data){ ?>

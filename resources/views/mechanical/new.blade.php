@@ -17,11 +17,11 @@
             </div>
         @endif
         <p class="login-box-msg">Registrar Mecanico</p>
-        <div class="row">
+        <div class="pai">
         <form action="{{ url(config('adminlte.mechanical', 'store')) }}" method="post">
             {!! csrf_field() !!}
             <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
-                <input type="text" name="name" class="form-control inputName" value="{{ old('name') }}"
+                <input type="text" name="name" class="form-control" value="{{ old('name') }}"
                         placeholder="{{ trans('adminlte::adminlte.full_name') }}">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('name'))
@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                <input type="email" name="email" class="form-control inputEmail" value="{{ old('email') }}"
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                         placeholder="{{ trans('adminlte::adminlte.email') }}">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 @if ($errors->has('email'))
@@ -47,7 +47,7 @@
                 @endif
             </div>
             <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
-                <input type="password" name="password" class="form-control inputPassword"
+                <input type="password" name="password" class="form-control"
                         placeholder="{{ trans('adminlte::adminlte.password') }}">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @if ($errors->has('password'))
@@ -61,7 +61,7 @@
                         placeholder="{{ trans('adminlte::adminlte.retype_password') }}">
                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                 @if ($errors->has('password_confirmation'))
-                    <span class="help-block inputName">
+                    <span class="help-block">
                         <strong class="error">{{ $errors->first('password_confirmation') }}</strong>
                     </span>
                 @endif

@@ -24,7 +24,7 @@
             </a>
         </div>
     </div><hr>
-    <div class="row">
+    <div class="pai">
     <table class="table table-striped">
             <thead>
                 <tr>

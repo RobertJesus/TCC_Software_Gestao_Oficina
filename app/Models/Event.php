@@ -11,8 +11,4 @@ class Event extends Model
         'start_date',
         'end_date'
     ];
-
-    protected $guarded = [ 'id', 'created_at', 'update_at'];
-
-    protected $table = 'events';
 }

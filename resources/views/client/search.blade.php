@@ -22,46 +22,48 @@
         Gerar PDF
         </button>
     </a>
-    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br><br>
-    <div class="form-row">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button>
+    <div class="pai">
+        <div class="form-row">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ route('client.search') }}" method="post">
+                        {!! csrf_field() !!}
+                            <div class="modal-body">
+                                <div class="form-group" style="width:350px;">
+                                    <label for="message-text" class="col-form-label">Nome:</label><br>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                                <div class="form-group" style="width:200px;">
+                                    <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
+                                    <input type="text" class="form-control" name="record">
+                                </div>
+                                <div class="form-group" style="width:350px;">
+                                    <label for="message-text" class="col-form-label">Status</label><br><br>
+                                    <select class="selectOffice" name="status" id="exampleFormControlSelect1">
+                                        <option value="1">Ativo</option>
+                                        <option value="2">Arquivado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </div>
+                        </form>
                     </div>
-                    <form action="{{ route('client.search') }}" method="post">
-                    {!! csrf_field() !!}
-                        <div class="modal-body">
-                            <div class="form-group" style="width:350px;">
-                                <label for="message-text" class="col-form-label">Nome:</label><br>
-                                <input type="text" class="form-control" name="name">
-                            </div>
-                            <div class="form-group" style="width:200px;">
-                                <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
-                                <input type="text" class="form-control" name="record">
-                            </div>
-                            <div class="form-group" style="width:350px;">
-                                <label for="message-text" class="col-form-label">Status</label><br><br>
-                                <select class="selectOffice" name="status" id="exampleFormControlSelect1">
-                                    <option value="1">Ativo</option>
-                                    <option value="2">Arquivado</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Filtrar</button>
-                        </div>
-                    </form>
                 </div>
             </div>
-        </div>
-    </div><hr>
-    <div class="row">
+        </div><hr>
+    </div>
+    <div class="pai">
         <table class="table table-striped">
             <thead>
                 <tr>

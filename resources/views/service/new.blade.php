@@ -21,7 +21,7 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="row" id="pai">
+        <div class="pai" id="pai">
             <form action="{{ route('service.store') }}" method="post" >
                 {!! csrf_field() !!}
                 <div class="form-row">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Cliente</label>
-                        <select name="name" id="name" class="form-control stateClient">
+                        <select name="name" id="name" class="form-control">
                             <option></option>
                             <?php if(empty($client) == null) { ?>
                                 <?php foreach($client as $data){ ?>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group col-md-4">
                     <label for="inputCity">Veiculo</label>
-                        <select name="brand" id="brand" class="form-control stateClient" value="[]">
+                        <select name="brand" id="brand" class="form-control" value="[]">
                             <option></option>
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Serviço</label>
-                        <select name="service" id="service" class="form-control stateClient">
+                        <select name="service" id="service" class="form-control">
                                 <option>Financeiro</option>
                                 <option>Manutenção</option>
                         </select>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Prioridade</label>
-                        <select name="priority" id="priority" class="form-control stateClient">
+                        <select name="priority" id="priority" class="form-control">
                                 <option>Alta</option>
                                 <option>Normal</option>
                                 <option>Baixa</option>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Status</label>
-                        <select name="status" id="status" class="form-control stateClient">
+                        <select name="status" id="status" class="form-control">
                                 <option>Aberto</option>
                                 <option>Em andamento</option>
                                 <option>Fechado</option>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Responsavel</label>
-                        <select name="responsible" id="responsible" class="form-control stateClient">
+                        <select name="responsible" id="responsible" class="form-control">
                         <option></option>
                             <?php if(empty($user) == null) { ?>
                                 <?php foreach($user as $data){ ?>
@@ -116,11 +116,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Descrição</label>
-                        <textarea type="text" name="description" id="description" class="form-control compClient"></textarea>
+                        <textarea type="text" name="description" id="description" class="form-control"></textarea>
                     </div>
                     <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Data de Execução</label>
-                        <input type="date" name="dateExec" class="form-control dateClient">
+                        <input type="date" name="dateExec" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('data'))
                             <span class="help-block">

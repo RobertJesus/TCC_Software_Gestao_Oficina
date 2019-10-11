@@ -19,119 +19,123 @@
         <a href="{{route('service.index')}}"> 
             <button type="submit" class="btn btn-info" >Voltar</button>
         </a>
-    </div>  
-    <form action="" method="post">
-        {!! csrf_field() !!}
-        <div class="form-row">
-            <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                <label for="inputCity">Cliente</label>
-                <select name="name" class="form-control stateClient">
-                    <?php if(empty($client) == null) { ?>
-                        <option></option>
-                        <?php foreach($client as $data){ ?>
-                            <option>{{$data->name}}</option>
+    </div>
+    <div class="pai">
+        <form action="" method="post">
+            {!! csrf_field() !!}
+            <div class="form-row">
+                <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Cliente</label>
+                    <select name="name" class="form-control">
+                        <?php if(empty($client) == null) { ?>
+                            <option></option>
+                            <?php foreach($client as $data){ ?>
+                                <option>{{$data->name}}</option>
+                            <?php }?>
                         <?php }?>
-                    <?php }?>
-                </select>
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                <label for="inputCity">Tipo de Comprovante</label>
-                <select name="service" class="form-control stateClient">
-                        <option>Dinheiro</option>
-                        <option>Cartão</option>
-                        <option>Cheque</option>
-                </select>
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="form-group col-md-3">
-                <label>Número Comprovante</label>
-                <input type="text" name="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
-            </div>
-        </div>
-    </form>
-    <form action="" method="post" id="products">
-        <div class="form-row">
-            <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                <label for="inputCity">Produto</label>
-                <select name="produto" class="form-control stateClient">
-                        <option></option>
-                    <?php if(empty($product) == null) { ?>
-                        <?php foreach($product as $data){ ?>
-                            <option>{{$data->description}}</option>
-                        <?php }?>
-                    <?php }?>
-                </select>
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">      
-                <label name="amount">Quantidade</label>
-                <select name="amount" class="form-control" value="[]">
-                    <option></option>
-                </select>
-                
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
+                    </select>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
                 </div>
-            <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                <label for="inputCity">Preço</label>
-                <select name="priceOld" id="priceOld" class="form-control" value="[]">
-                    <option value="[]"></option>
-                </select>
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
             </div>
-            <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                <label for="inputCity">Desconto</label>
-                <input type="text" name="desc" id="desc" class="form-control" onblur="calcular()">
-                
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
+            <div class="form-row">
+                <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Tipo de Comprovante</label>
+                    <select name="service" class="form-control">
+                            <option>Dinheiro</option>
+                            <option>Cartão</option>
+                            <option>Cheque</option>
+                    </select>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Número Comprovante</label>
+                    <input type="text" name="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
+                </div>
             </div>
-            <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
-                <label for="inputCity">Total</label>
-                <input type="text" name="total" id="total" class="form-control">
-                
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                @if ($errors->has('cidade'))
-                    <span class="help-block">
-                        <strong class="error">{{ $errors->first('cidade') }}</strong>
-                    </span>
-                @endif
-            </div>             
-        </div>
-        <button type="btn" class="btn btn-success" onclick="fechar_div();">Adicionar Produto</button> 
-    </form>                 
-    <div class="row" id="filho" style="display:none;">
+        </form>
+    </div>
+    <div class="pai">
+        <form action="" method="post" id="products">
+            <div class="form-row">
+                <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Produto</label>
+                    <select name="produto" class="form-control">
+                            <option></option>
+                        <?php if(empty($product) == null) { ?>
+                            <?php foreach($product as $data){ ?>
+                                <option>{{$data->description}}</option>
+                            <?php }?>
+                        <?php }?>
+                    </select>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">      
+                    <label name="amount">Quantidade</label>
+                    <select name="amount" class="form-control" value="[]">
+                        <option></option>
+                    </select>
+                    
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                    </div>
+                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Preço</label>
+                    <select name="priceOld" id="priceOld" class="form-control" value="[]">
+                        <option value="[]"></option>
+                    </select>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Desconto</label>
+                    <input type="text" name="desc" id="desc" class="form-control" onblur="calcular()">
+                    
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <label for="inputCity">Total</label>
+                    <input type="text" name="total" id="total" class="form-control">
+                    
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    @if ($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong class="error">{{ $errors->first('cidade') }}</strong>
+                        </span>
+                    @endif
+                </div>             
+            </div>
+            <button type="btn" class="btn btn-success" onclick="fechar_div();">Adicionar Produto</button> 
+        </form>
+    </div>                 
+    <div class="pai" id="filho" style="display:none;">
         <div class="form-group col-md-12">
             <h1>Produtos</h1><hr>
             <form action="{{ route('sales.store') }}" method="post">

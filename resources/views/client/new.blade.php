@@ -22,13 +22,13 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="row">
+        <div class="pai">
             <form action="{{ route('client.store') }}" method="post" name="form_consulta" onsubmit="return valida_form(this)">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label>Nome/Razão Social</label>
-                        <input type="text" name="name" id="name" class="form-control nameClient"
+                        <input type="text" name="name" id="name" class="form-control"
                             placeholder="{{ trans('adminlte::adminlte.full_name') }}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('name'))
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Data de Nascimento</label>
-                        <input type="date" name="date" id="date" class="form-control dateClient">
+                        <input type="date" name="date" id="date" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('data'))
                             <span class="help-block">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label>Sexo</label>
-                            <select class="form-control sexoClient" name="sex" id="sex">
+                            <select class="form-control" name="sex" id="sex">
                                 <option selected>Feminino</option>
                                 <option>Masculino</option>
                             </select>
@@ -72,7 +72,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-5 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                         <label>E-mail</label>
-                        <input type="text" name="email" id="email" class="form-control emailClient"
+                        <input type="text" name="email" id="email" class="form-control"
                             placeholder="{{ trans('adminlte::adminlte.email') }}">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('email'))
@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{ $errors->has('celular') ? 'has-error' : '' }}">
                         <label>Celular 1</label>
-                        <input type="text" name="phoneP" id="phoneP" class="form-control celClient" placeholder="19-99121-0699">
+                        <input type="text" name="phoneP" id="phoneP" class="form-control" placeholder="19-99121-0699">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('celular'))
                             <span class="help-block">
@@ -93,17 +93,17 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label name="celular2">Celular 2</label>
-                        <input type="text" name="phoneS" class="form-control celClient" placeholder="19-99121-0699">
+                        <input type="text" name="phoneS" class="form-control" placeholder="19-99121-0699">
                     </div>
                     <div class="form-group col-md-2">
                         <label name="telefone">Telefone</label>
-                        <input type="text" name="tell" class="form-control celClient" placeholder="19-3866-0000">
+                        <input type="text" name="tell" class="form-control" placeholder="19-3866-0000">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
                         <label for="inputCity">Endereço</label>
-                        <input type="text" name="address" id="address" class="form-control endClient" id="inputCity" placeholder="Endereço">
+                        <input type="text" name="address" id="address" class="form-control" id="inputCity" placeholder="Endereço">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('endereco'))
                             <span class="help-block">
@@ -113,7 +113,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('bairro') ? 'has-error' : '' }}">
                         <label for="inputCity">Bairro</label>
-                        <input type="text" name="district" id="district" class="form-control bairroClient" id="inputCity" placeholder="Bairro">
+                        <input type="text" name="district" id="district" class="form-control" id="inputCity" placeholder="Bairro">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('bairro'))
                             <span class="help-block">
@@ -123,7 +123,7 @@
                     </div>
                     <div class="form-group col-md-2 {{$errors->has('numero') ? 'has-error' : '' }}">
                         <label>Numero</label>
-                        <input type="text" name="numberHouse" id="numberHouse" class="form-control numClient" placeholder="123" min="1">
+                        <input type="text" name="numberHouse" id="numberHouse" class="form-control" placeholder="123" min="1">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('numero'))
                             <span class="help-block">
@@ -133,13 +133,13 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label name="complemento">Complemento</label>
-                        <input type="text" name="comp" class="form-control compClient" placeholder="Complemento">
+                        <input type="text" name="comp" class="form-control" placeholder="Complemento">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Cidade</label>
-                        <input type="text" name="city" id="city" class="form-control cityClient" id="inputCity" placeholder="Cidade">
+                        <input type="text" name="city" id="city" class="form-control" id="inputCity" placeholder="Cidade">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cidade'))
                             <span class="help-block">
@@ -149,7 +149,7 @@
                     </div>
                     <div class="form-group col-md-3 has-feedback {{$errors->has('uf') ? 'has-error' : '' }}">
                         <label for="inputState">Estado</label>
-                        <select id="inputState" name="state" id="state" class="form-control stateClient">
+                        <select id="inputState" name="state" id="state" class="form-control">
                             <option selected>Acre</option>
                             <option>Alagoas</option>
                             <option>Amapá</option>
@@ -181,7 +181,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cep') ? 'has-error' : '' }}">
                         <label for="inputZip">CEP</label>
-                        <input type="number" name="cep" id="cep" class="form-control cepClient" id="inputZip" placeholder="13835-000">
+                        <input type="number" name="cep" id="cep" class="form-control" id="inputZip" placeholder="13835-000">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cep'))
                             <span class="help-block">
