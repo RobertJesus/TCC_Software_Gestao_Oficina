@@ -11,7 +11,8 @@ class AutomobilesController extends Controller
 {
     public function index()
     {
-        return view('automobiles.new');
+        $auto = Automobile::all();
+        return view('automobiles.search', compact('auto'));
     }
 
     public function create()
@@ -39,5 +40,11 @@ class AutomobilesController extends Controller
     {
         $client = Client::where('name', '=', $idclient)->getQuery()->get(['id', 'record', 'email', 'name']);
         return Response::json($client);
+    }
+    public function search(Request $request)
+    {
+        $auto = Automobile::where('client', '=', $request['client'])
+                        ->Orwhere('board', '=', $request['board'])->get();
+        return view('automobiles.search', compact('auto'));
     }
 }

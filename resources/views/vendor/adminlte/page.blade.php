@@ -3,6 +3,7 @@
 @section('adminlte_css')
     <link rel="stylesheet"
           href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
     @stack('css')
     @yield('css')
 @stop
@@ -124,7 +125,7 @@
             <section class="content">
 
                 @yield('content')
-
+    
             </section>
             <!-- /.content -->
             @if(config('adminlte.layout') == 'top-nav')
@@ -140,10 +141,8 @@
 
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
-    
     <!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    
     @yield('post-script')
     @stack('js')
     @yield('js')

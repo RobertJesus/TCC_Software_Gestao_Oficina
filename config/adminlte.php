@@ -242,7 +242,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Buscar',
-                    'route'  => 'service.index',
+                    'route'  => 'automobiles.index',
                     'icon' => 'search',
                 ],
                 [

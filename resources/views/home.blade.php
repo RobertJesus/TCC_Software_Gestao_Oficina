@@ -1,7 +1,12 @@
 @extends('adminlte::page')
-
+@section('post-script')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/lang-all.js"></script>
+{!! $calendar->script() !!}
+@stop
 @section('title', 'Software para Gestão de Oficina')
-
 @section('content_header')
 <div class="row">
   @if(session('success'))
@@ -74,12 +79,13 @@
   </div>
 
   <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="pai card" style="margin-top:0px!important;">
+        <div class="col-md-12 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Full Calendar Example</div>
-
-                <div class="panel-body">
+                <div class="panel-heading"><br>
+                  <h4>Agendamentos</h4>
+                </div>
+                <div class="panel-body" id="calendar">
                     {!! $calendar->calendar() !!}
                 </div>
             </div>
@@ -89,7 +95,4 @@
   <!-- ./col -->
 </div>
 <!-- /.row -->
-<script>
-$('.alert').alert('close')
-</script>
 @stop

@@ -95,8 +95,10 @@ Route::prefix('sales')->group(function(){
     Route::get('/destroy/{id}', 'SalesController@destroy')->name('sales.destroy');
 });
 Route::prefix('automobiles')->group(function(){
+    Route::get('/inde', 'AutomobilesController@index')->name('automobiles.index');
     Route::get('/new', 'AutomobilesController@create')->name('automobiles.new');
     Route::post('/store', 'AutomobilesController@store')->name('automobiles.store');
+    Route::post('/search', 'AutomobilesController@search')->name('automobiles.search');
 });
 Route::prefix('central')->group(function(){
     Route::get('/index/{name}', 'CentralController@index')->name('central.index');

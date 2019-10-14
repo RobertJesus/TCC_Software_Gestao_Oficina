@@ -17,7 +17,7 @@
             {{ session('error') }}
         </div>
     @endif
-        <a href="{{route('service.new')}}"> 
+        <a href="{{route('automobiles.new')}}"> 
             <button type="submit" class="btn btn-success" >Novo</button>
         </a>
         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button>
@@ -32,41 +32,16 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="{{ route('service.search') }}" method="post">
+                                <form action="{{ route('automobiles.search') }}" method="post">
                                 {!! csrf_field() !!}
-                                <div class="modal-body" style="width:200px;">
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">Protocolo:</label><br>
-                                        <input type="text" class="form-control" name="protocol">
+                                <div class="modal-body">
+                                    <div class="form-group" style="width:300px;">
+                                        <label for="message-text" class="col-form-label">Cliente:</label><br>
+                                        <input type="text" class="form-control" name="client">
                                     </div>
-                                    <div class="form-group">
-                                    <label for="inputCity">Serviço</label>
-                                        <select name="service" class="form-control">
-                                                <option>Financeiro</option>
-                                                <option>Manutenção</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group" style="width:350px;">
-                                        <label for="message-text" class="col-form-label">Responsavel:</label>
-                                        <select name="responsible" class="form-control">
-                                            <option class="form-control" select></option>
-                                            <?php if(empty($user) == null) { ?>
-                                                <?php foreach($user as $data){ ?>
-                                                    <option class="form-control">{{$data->name}}</option>
-                                                <?php }?>
-                                            <?php }?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group" style="width:350px;">
-                                        <label for="message-text" class="col-form-label">Cliente:</label>
-                                        <select name="name" class="form-control">
-                                            <option class="form-control" name="name"></option>
-                                            <?php if(empty($client) == null) { ?>
-                                                <?php foreach($client as $data){ ?>
-                                                    <option class="form-control">{{$data->name}}</option>
-                                                <?php }?>
-                                            <?php }?>
-                                        </select>
+                                    <div class="form-group" style="width:200px;">
+                                        <label for="message-text" class="col-form-label">Placa:</label>
+                                        <input type="text" class="form-control" name="board">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -83,24 +58,22 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Protocolo</th>
-                        <th scope="col">Nome Cliente</th>
-                        <th scope="col">Tipo de Serviço</th>
-                        <th scope="col">Responsavel</th>
-                        <th scope="col">Visualizar</th>
-                        <th scope="col">PDF</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Placa</th>
+                        <th scope="col">Data Revisão</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
                     </tr>
                 </thead>
-                <?php if(empty($os) == null){ ?>
-                    <?php foreach($os as $data){ ?>
+                <?php if(empty($auto) == null){ ?>
+                    <?php foreach($auto as $data){ ?>
                         <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
-                            <td>{{$data->protocol}}</td>
-                            <td>{{$data->name}}</td>
-                            <td>{{$data->service}}</td>
-                            <td>{{$data->responsible}}</td>
+                            <td>{{$data->client}}</td>
+                            <td>{{$data->brand}}</td>
+                            <td>{{$data->board}}</td>
+                            <td>{{date("d/m/Y", strtotime($data->dateReview))}}</td>
                             <td><a href="{{ route('service.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                            <td><a href="{{ route('service.pdf', $data->id)}}" class="text-success"><i class="fa fa-file-pdf-o"></i></a></td>
                             <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <?php }?>
