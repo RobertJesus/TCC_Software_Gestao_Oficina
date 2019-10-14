@@ -12,7 +12,7 @@
     <div class="login-box">
         <div class="login-logo">
             <!-- Definir um logo -->
-            Definir um logo
+            <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">

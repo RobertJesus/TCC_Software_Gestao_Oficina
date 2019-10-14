@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="form-row">
                     <div class="col-md-9">
-                        <img src="https://i.pinimg.com/originals/e2/d9/4d/e2d94dc7c0dccb4f83df6e3adae380dd.png" style="width:100px;">
+                        <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
                     </div>
                     <div class="col-md-3">
                         <h5>GR Software</h5>

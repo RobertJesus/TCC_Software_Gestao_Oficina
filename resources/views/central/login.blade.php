@@ -9,12 +9,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <header>
-                <!--<div class="form-group">
-                    <a class="navbar-brand"><img src="https://static.ferramentaskennedy.com.br/storage/assets/tools1.png" style="width:125px;"></a>
-                </div>-->
-            </header>
-            <div class="row d-flex justify-content-center"> 
+            <div class="row d-flex justify-content-center">
                 <div class="form-group col-md-4">
                     <div class="central">
                         <div class="card card-body text-center">
@@ -29,6 +24,10 @@
                                     {{ session('error') }}
                                 </div>
                             @endif
+                            <div class="login-logo">
+                                <!-- Definir um logo -->
+                                <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
+                            </div>
                             <h4 class="card-title">Central do Assinante</h4>
                             <h6 class="card-subtitle mb-2 text-muted">Informe seu CPF ou CNPJ para acessar a area do cliente.</h6>
                             <form method="POST" action="{{route('central.login')}}" name="form_consulta">

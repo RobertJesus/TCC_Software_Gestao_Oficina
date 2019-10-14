@@ -8,21 +8,11 @@
     </head>
     <body style="background-color: #F2F7F8;">
         <div class="row">
-        @if(session('success'))
-            <div class="alert alert-info">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
             <div class="card form-group col-md-12" style="margin-top:0px!important" >
+            <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" style="padding-top:8px;">{{$name}}</a>
+                        <a class="nav-link">{{$name}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('central.central')}}">Sair</a>
@@ -38,6 +28,17 @@
                 </div>
             </div>
             <div class="col-md-9 cor">
+                @if(session('success'))
+                <div class="alert alert-info">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     <div class="card" style="margin-top:20px!important">
                         <p>Seja bem vindo a nossa central do assinante, aqui você pode ter informções a respeito da sua ordem de serviço.</p>

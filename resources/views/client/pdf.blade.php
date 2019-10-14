@@ -3,8 +3,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Título Opcional</title>
-        <link rel="stylesheet" href="{{url('public/css/style.css')}}" type="text/css">
-        <link rel="stylesheet" href="{{url('public/css/app.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('public/css/style.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('public/css/app.css')}}" type="text/css">
         
     </head>
     <body>
@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="form-row">
                     <div class="col-md-9">
-                        <img src="https://i.pinimg.com/originals/e2/d9/4d/e2d94dc7c0dccb4f83df6e3adae380dd.png" style="width:100px;">
+                        <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
                     </div>
                     <div class="col-md-3">
                         <h5>GR Software</h5>
