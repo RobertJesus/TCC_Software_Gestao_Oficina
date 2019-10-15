@@ -30,7 +30,7 @@ class ServiceOrder extends Model
     {
         return $this->belongsTo(Client::class);
     }
-    public function observacoes()
+    public function observaco()
     {
         return $this->hasMany(Note::class);
     }

@@ -34,7 +34,7 @@ class SalesController extends Controller
 
     public function getProduct($idProduct){
         
-        $product = Product::where('description', '=', $idProduct)->getQuery()->get(['id', 'amount', 'priceOld']);
+        $product = Product::where('id', '=', $idProduct)->getQuery()->get(['id', 'amount', 'priceOld']);
 
         return Response::json($product);
     }

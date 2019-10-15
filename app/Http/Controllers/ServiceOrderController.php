@@ -174,11 +174,8 @@ class ServiceOrderController extends Controller
     public function notes($id)
     {
         $note = ServiceOrder::where('id', '=', $id)->get();
-        
-        foreach($note as $data){
-            $result = $data->observacoes->note;
-        }
-        return view('client.notes', compact('list'));
+        $list = Note::where('service_id', '=', $id)->get();
+        return view('client.notes', compact('list', 'note'));
     }
 
     public function getAuto($id)
