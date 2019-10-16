@@ -181,7 +181,7 @@
             x.style.display = 'block';
         }
     }
- // Script bruno
+ // Script
     var cliente;
     var produtos = [];
     var produto = null;
@@ -190,10 +190,14 @@
         $('#status').val('Pendente');
     }
     $('#novoproduto').click(function(e) {
+        produto = {};
         produto.qtde = +$('#amount').val();
-        produto.preco_venda = +$('#priceOld').val();
-        produto.nome = +$('#produto').val();
-        $('#produto').val(0);;
+        produto.preco = $('#priceOld').val();
+        produto.preco_venda = +$('#totalPro').val();
+        produto.nome = $('#produto').text();
+        produto.desc = $('#desc').val();
+        produto.id = $('#produto').val();
+        $('#produto').val(0);
         $('#amount').val(0);
         $('#priceOld').val(0);
         produto.total = +(produto.qtde * produto.preco_venda);
@@ -211,17 +215,17 @@
         novosProdutos.forEach(function(produto) {
             var template =
             '<tr> ' +
-                '<td colspan="3" class="visible-xs">' + produto.codigo + ' - ' + produto.nome + '</td>'+
-            '</tr>' +
-            '<tr> ' +
                 '<input type="hidden" name="prod_id[]" value="' + produto.id + '">'+
                 '<input type="hidden" name="prod_nome[]" value="' + produto.nome + '">'+
                 '<input type="hidden" name="prod_qtde[]" value="' + produto.qtde + '">'+
-                '<input type="hidden" name="prod_pr[]" value="' + produto.preco_venda + '">'+
+                '<input type="hidden" name="prod_preco[]" value="' + produto.preco + '">'+
+                '<input type="hidden" name="prod_precoV[]" value="' + produto.preco_venda + '">'+
+                '<input type="hidden" name="prod_desc[]" value="' + produto.desc + '">'+
                 '<input type="hidden" name="prod_tot[]" value="' + produto.total + '">'+
-                '<td class="hidden-xs">' + produto.codigo + ' - ' + produto.nome +'</td>'+
+                '<td class="hidden-xs">' + produto.nome +'</td>'+
                 '<td style="text-align:right;">' + produto.qtde + '</td>'+
-                '<td style="text-align:right;">' + produto.preco_venda + '</td>'+
+                '<td style="text-align:right;">' + produto.preco + '</td>'+
+                '<td style="text-align:right;">' + produto.desc + '</td>'+
                 '<td style="text-align:right;">' + produto.total + '</td>' +
                 '<td><button type="button" class="btn btn-danger btn-xs btn-remover" data-codigo="' + produto.id + '">Remover</button></td>'
             '</tr>';
@@ -243,7 +247,8 @@
     }
     function calculaTotalPedido() {
         var total = produtos.sum('total');
-        $('#total').text(total);
+        $('#totalProdutos').text(produtos.sum('total').FormataDinheiro());
+        $('#total').text(total.FormataDinheiro());
     }
 
 </script>

@@ -11,7 +11,7 @@
             <?php foreach($list as $notes){ ?>
                 <div class="card-body">
                     <div class="card" style="margin-top:0px!important;">
-                    <h5 class="card-header">Data/Hora Ocorrência: {{date("d/m/Y ", strtotime($notes->created_at))}}</h5>
+                        <h5 class="card-header">Data/Hora Ocorrência: {{date("d/m/Y H:i:s", strtotime($notes->created_at))}}</h5>
                         <form>
                             <fieldset disabled>
                                 <table class="table">
@@ -44,6 +44,39 @@
                 </div>
                 <?php } ?>
             <?php } ?>
+            <div class="card-body">
+                    <div class="card" style="margin-top:0px!important;">
+                        <h5 class="card-header">Data/Hora Ocorrência: {{date("d/m/Y H:i:s", strtotime($data->created_at))}}</h5>
+                        <form>
+                            <fieldset disabled>
+                                <table class="table">
+                                    <tr class="form-group">
+                                        <th>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Serviço: {{$data->service}}">
+                                        </th>
+                                        <th>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->responsible}}">
+                                        </th>
+                                        <th>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->priority}}">
+                                        </th>
+                                        <th>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->status}}">
+                                        </th>
+                                    </tr>
+                                </table>
+                                <table class="table">
+                                    <tr class="form-group">
+                                        <td>
+                                            <label>Descrição de abertura da OS:</label>
+                                            <textarea type="text" id="disabledTextInput" class="form-control">{{$data->description}}</textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
         <?php } ?>
     <?php } ?>
 </div>
