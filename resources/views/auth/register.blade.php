@@ -10,8 +10,8 @@
             <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
                 {!! csrf_field() !!}
                 <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
-                    <input type="text" name="name" class="form-control" value="Nome"
-                            placeholder="{{ trans('adminlte::adminlte.full_name') }}">
+                    <input type="text" name="name" class="form-control"
+                            placeholder="Nome">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     @if ($errors->has('name'))
                         <span class="help-block">
@@ -27,8 +27,8 @@
                     </select>
                 </div>
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                    <input type="email" name="email" class="form-control" value="Email"
-                            placeholder="{{ trans('adminlte::adminlte.email') }}">
+                    <input type="email" name="email" class="form-control"
+                            placeholder="Email">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
                         <span class="help-block">

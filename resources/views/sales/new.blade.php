@@ -25,11 +25,11 @@
         <div class="form-row">
             <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Cliente</label>
-                <select name="name" class="form-control">
+                <select name="client_id" id="name" class="form-control">
                     <?php if(empty($client) == null) { ?>
-                        <option></option>
+                        <option value="0"></option>
                         <?php foreach($client as $data){ ?>
-                            <option value="{{$data->id}}">{{$data->name}}</option>
+                            <option value="{{$data->name}}">{{$data->name}}</option>
                         <?php }?>
                     <?php }?>
                 </select>
@@ -44,7 +44,7 @@
         <div class="form-row">
             <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Tipo de Comprovante</label>
-                <select name="service" class="form-control">
+                <select name="typePay" class="form-control">
                         <option>Dinheiro</option>
                         <option>Cartão</option>
                         <option>Cheque</option>
@@ -81,7 +81,7 @@
             </div>
             <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">      
                 <label name="amount">Quantidade</label>
-                <input type="number" step="1" name="amount" id="amount" class="form-control">
+                <input type="number" name="amount" id="amount" class="form-control">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('cidade'))
                     <span class="help-block">
@@ -103,7 +103,7 @@
             </div>
             <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Desconto</label>
-                <input type="text" name="desc" id="desc" class="form-control" onblur="calcular()">
+                <input type="text" name="desc" id="desc" value="0" class="form-control" onblur="calcular()">
                 
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('cidade'))
@@ -141,10 +141,7 @@
                     <tbody id="items"></tbody>
                 </table>
                 <table class="table"> 
-                    <tr>
-                        <td>TOTAL PRODUTOS</td>
-                        <td style="text-align:right;"><b><span id="totalProdutos"></span></b></td>
-                    </tr>
+
                     <tr>
                         <td>TOTAL</td>
                         <td style="text-align:right;"><b><span id="total"></span></b></td>
@@ -191,9 +188,9 @@
     }
     $('#novoproduto').click(function(e) {
         produto = {};
-        produto.qtde = +$('#amount').val();
+        produto.qtde = $('#amount').val();
         produto.preco = $('#priceOld').val();
-        produto.preco_venda = +$('#totalPro').val();
+        produto.preco_venda = $('#totalPro').val();
         produto.nome = $('#produto').text();
         produto.desc = $('#desc').val();
         produto.id = $('#produto').val();
@@ -215,13 +212,14 @@
         novosProdutos.forEach(function(produto) {
             var template =
             '<tr> ' +
-                '<input type="hidden" name="prod_id[]" value="' + produto.id + '">'+
-                '<input type="hidden" name="prod_nome[]" value="' + produto.nome + '">'+
-                '<input type="hidden" name="prod_qtde[]" value="' + produto.qtde + '">'+
-                '<input type="hidden" name="prod_preco[]" value="' + produto.preco + '">'+
-                '<input type="hidden" name="prod_precoV[]" value="' + produto.preco_venda + '">'+
-                '<input type="hidden" name="prod_desc[]" value="' + produto.desc + '">'+
-                '<input type="hidden" name="prod_tot[]" value="' + produto.total + '">'+
+                '<input type="hidden" name="product_id[]" value="' + produto.id + '">'+
+                '<input type="hidden" name="name_product[]" value="' + produto.nome + '">'+
+                '<input type="hidden" name="amount[]" value="' + produto.qtde + '">'+
+                '<input type="hidden" name="price[]" value="' + produto.preco + '">'+
+                '<input type="hidden" name="priceV[]" value="' + produto.preco_venda + '">'+
+                '<input type="hidden" name="desc[]" value="' + produto.desc + '">'+
+                '<input type="hidden" name="total[]" value="' + produto.total + '">'+
+                '<input type="hidden" name="totalVenda[]" id="totalVenda">'+
                 '<td class="hidden-xs">' + produto.nome +'</td>'+
                 '<td style="text-align:right;">' + produto.qtde + '</td>'+
                 '<td style="text-align:right;">' + produto.preco + '</td>'+
@@ -246,9 +244,11 @@
         });
     }
     function calculaTotalPedido() {
-        var total = produtos.sum('total');
-        $('#totalProdutos').text(produtos.sum('total').FormataDinheiro());
-        $('#total').text(total.FormataDinheiro());
+        var totalPro = +$('#totalPro').val();
+        var total = +$('#total').text();
+        var prod = totalPro + total;
+        document.getElementById("totalVenda").value = prod.toFixed(2);
+        $('#total').text(prod.toFixed(2));
     }
 
 </script>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\client;
 use App\Models\Product;
+use App\Models\Sales;
+use App\Models\SalesProduct;
 use Illuminate\Support\Facades\Response;
 
 class SalesController extends Controller
@@ -16,7 +18,9 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('sales.index');
+        $list = Sales::all();
+        
+        return view('sales.index', compact('list'));
     }
 
     /**
@@ -46,9 +50,42 @@ class SalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        //$id = Client::where('name', '=', $request['name'])->find();//->select('id')->first()->get();
+        unset($request['produto']);
+        unset($request['totalPro']);
         return $request;
-        exit();//
+        exit();
+        $this->sales = new Sales();
+        $this->salesProduct = new SalesProduct();
+        $result = $this->sales->create([
+            'client_id' => $request->client_id,
+            'typePay' => $request->typePay,
+            'protocol' => $request->protocol,
+            'totalPay' => $request->totalVenda[0],
+        ]);
+        
+        for ($i = 0; $i < count($request->amount); $i++){
+           $result = $this->salesProduct->create([
+                    'protocol' => $request->protocol,
+                    'amount' => $request->amount[$i],
+                    'desc' => $request->desc[$i] ,
+                    'product_id' => $request->product_id[$i],
+                    'price' => $request->price[$i],
+                    'priceV' => $request->priceV[$i],
+                    'total' => $request->total[$i],
+            ]);
+        } 
+
+        if($result){
+            return redirect()
+                    ->route('sales.index')
+                    ->with('success', 'Venda cadastrada com sucesso!');
+        }else{
+        return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao inserir');
+        }//
     }
 
     /**
@@ -94,5 +131,18 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pdfSales($id)
+    {
+    $sales = SalesProduct::where('protocol', '=', $id)->get();
+    
+    return $idPro;
+    exit();
+    $total = Sales::where('protocol', '=', $id)->get();
+        //return view('product.pdf', compact('products'));
+    return \PDF::loadView('sales.pdfSales', compact('sales', 'total'))
+                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('vendas.pdf');
     }
 }

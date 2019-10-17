@@ -36,4 +36,8 @@ class client extends Model
     {
         return $this->hasMany(ServiceOrder::class);
     }
+    public function salees()
+    {
+        return $this->belongsTo(Sales::class);
+    }
 }

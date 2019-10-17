@@ -26,27 +26,26 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Data</th>
+                    <th scope="col">Protocol</th>
                     <th scope="col">Cliente</th>
-                    <th scope="col">Tipo Comprovante</th>
-                    <th scope="col">Taxa</th>
+                    <th scope="col">Tipo Pagamento</th>
                     <th scope="col">Total</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Opções</th>
+                    <th scope="col">Data da venda</th>
+                    <th scope="col">PDF</th>
+                    <th scope="col">Visualizar</th>
                 </tr>
             </thead>
             
             <?php if(empty($list) == null){ ?>
-                <?php foreach($list as $sales){ ?>
+                <?php foreach($list as $data){ ?>
                     <tr>
-                        <td>{{$client->data}}</td>
-                        <td>{{$client->client}}</td>
-                        <td>{{$client->vouchertype}}</td>
-                        <td>{{$client->rate}}</td>
-                        <td>{{$client->total }}</td>
-                        <td>{{$client->state}}</td>
-                        <td><a href="{{ route('sales.view', $client->id)}}" class="text-danger"><i class="fa fa-file-text-o"></i></a></td>
-                        <td><a href="{{ route('sales.destroy', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar esta?')"><i class="fa fa-trash"></i></a></td>
+                        <td>{{$data->protocol}}</td>
+                        <td>{{$data->client_id}}</td>
+                        <td>{{$data->typePay}}</td>
+                        <td>R$ {{$data->totalPay}}</td>
+                        <td>{{date("d/m/Y", strtotime($data->created_at))}}</td>
+                        <td><a href="{{ route('sales.pdfSales', $data->protocol)}}" class="text-danger"><i class="fa fa-file-pdf-o"></i></a></td>
+                        <td><a href="{{ route('sales.destroy', $data->protocol)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar esta?')"><i class="fa fa-trash"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

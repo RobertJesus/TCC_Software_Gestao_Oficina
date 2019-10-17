@@ -28,4 +28,8 @@ class Product extends Model
     {
         return $this->belongsToMany(Provider::class, "provand_prods");
     }
+    public function salesProducts()
+    {
+        return $this->hasMany(salesProducts::class);
+    }
 }
