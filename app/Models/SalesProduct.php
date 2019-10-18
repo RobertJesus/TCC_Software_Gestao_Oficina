@@ -9,6 +9,7 @@ class SalesProduct extends Model
     protected $fillable = [
         'protocol',  
         'product_id',
+        'name',
         'amount',
         'desc', 
         'price',

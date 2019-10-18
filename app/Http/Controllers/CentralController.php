@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\client;
 use App\Models\ServiceOrder;
+use App\Models\Sales;
 
 
 class CentralController extends Controller
@@ -14,7 +15,7 @@ class CentralController extends Controller
         $client = Client::where('name', '=', $name)->get();
         $list = ServiceOrder::where('name', '=', $name)->get();
         
-        return view('central.index', compact('name', 'list'));
+        return view('central.index', compact('name', 'list', 'client'));
     }
     public function central()
     {

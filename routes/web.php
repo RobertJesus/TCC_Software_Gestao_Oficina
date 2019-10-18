@@ -94,6 +94,7 @@ Route::prefix('sales')->group(function(){
     Route::get('/view/{id}', 'SalesController@view')->name('sales.view');
     Route::get('/destroy/{id}', 'SalesController@destroy')->name('sales.destroy');
     Route::get('/pdfSales/{id}', 'SalesController@pdfSales')->name('sales.pdfSales');
+    Route::get('/pdf', 'SalesController@pdf')->name('sales.pdf');
 });
 Route::prefix('automobiles')->group(function(){
     Route::get('/inde', 'AutomobilesController@index')->name('automobiles.index');

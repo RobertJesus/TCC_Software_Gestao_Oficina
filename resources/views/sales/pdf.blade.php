@@ -23,35 +23,32 @@
             </div>
             <hr>
             <center>
-                <h5>Produtos</h5>
+                <h5>Vendas</h5>
             </center>
             <div class="row card" style="border: 1px solid black;">
                 <div class="form-row">
-                    <table class="table" >
+                    <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Descrição</th>
-                                <th>Marca</th>
-                                <th>Preço Entrada</th>
-                                <th>Preço Venda</th>
-                                <th>Fornecedor</th>
-                                <th>Quantidade</th>
+                                <th>Protocolo</th>
+                                <th>Cliente</th>
+                                <th>Tipo de Pagamento</th>
+                                <th>Total</th>
+                                <th>Data da Venda</th>
                             </tr>
                         </thead>
-                        @forelse($products as $product)
+                        @forelse($sales as $data)
                         <tr>
-                            <td>{{$product->cod}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->brand}}</td>
-                            <td>{{$product->priceNew}}</td>
-                            <td>{{$product->priceOld}}</td>
-                            <td>{{$product->provider}}</td>
-                            <td>{{$product->amount}}</td>
+                            <td>{{$data->protocol}}</td>
+                            <td>{{$data->client_id}}</td>
+                            <td>{{$data->typePay}}</td>
+                            <td>R$ {{$data->totalPay}}</td>
+                            <td>{{date("d/m/Y", strtotime($data->created_at))}}</td>
                         </tr>
                         @empty
                         @endforelse
-                    </table>
+                    </table><br><hr>
+                    <label style="float-right">Total R$ {{$total}}</label>
                 </div>
             </div>
         </div>

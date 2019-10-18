@@ -8,14 +8,16 @@
     </head>
     <body style="background-color: #F2F7F8;">
         <div class="row">
-            <div class="card form-group col-md-12" style="margin-top:0px!important" >
+            <div class="card form-group col"  style="margin-top:0px!important;flex-direction: inherit;" >
             <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
-                <ul class="nav justify-content-end">
+                <ul class="nav justify-content-end float-left" style="padding-top:15px;">
                     <li class="nav-item">
                         <a class="nav-link">{{$name}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('central.central')}}">Sair</a>
+                        <?php if(empty($client) == null){ ?>
+                            <?php foreach($client as $data){ ?>
+                                <a class="nav-link">{{$data->record}}</a>
+                            <?php } ?>
+                        <?php } ?>
                     </li>
                 </ul>
             </div>
@@ -23,8 +25,9 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="nav flex-column nav-pills cor" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Inicio</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Ordens de Serviço</a>
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Inicio</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Ordens de Serviço</a>
+                    <a class="nav-link" id="v-pills-profile-tab"  href="{{route('central.central')}}">Sair</a>
                 </div>
             </div>
             <div class="col-md-9 cor">
@@ -55,7 +58,7 @@
                             <th scope="col">Status</th>
                             <th scope="col">Data Abertura</th>
                             <th scope="col">Responsavel</th>
-                            <th scope="col">Observações</th>
+                            <th scope="col">Detalhe</th>
                         </tr>
                     </thead>
                     <?php if(empty($list) == null){ ?>

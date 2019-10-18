@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Sales;
 use App\Models\SalesProduct;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -54,8 +55,7 @@ class SalesController extends Controller
         //$id = Client::where('name', '=', $request['name'])->find();//->select('id')->first()->get();
         unset($request['produto']);
         unset($request['totalPro']);
-        return $request;
-        exit();
+
         $this->sales = new Sales();
         $this->salesProduct = new SalesProduct();
         $result = $this->sales->create([
@@ -68,6 +68,7 @@ class SalesController extends Controller
         for ($i = 0; $i < count($request->amount); $i++){
            $result = $this->salesProduct->create([
                     'protocol' => $request->protocol,
+                    'name' => $request->name_product[$i],
                     'amount' => $request->amount[$i],
                     'desc' => $request->desc[$i] ,
                     'product_id' => $request->product_id[$i],
@@ -136,13 +137,15 @@ class SalesController extends Controller
     public function pdfSales($id)
     {
     $sales = SalesProduct::where('protocol', '=', $id)->get();
-    
-    return $idPro;
-    exit();
     $total = Sales::where('protocol', '=', $id)->get();
-        //return view('product.pdf', compact('products'));
     return \PDF::loadView('sales.pdfSales', compact('sales', 'total'))
-                // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+          ->download('vendas.pdf');
+    }
+    public function pdf()
+    {
+        $sales = Sales::all();
+        $total = DB::table("Sales")->sum('totalPay');
+        return \PDF::loadView('sales.pdf', compact('sales', 'total'))
           ->download('vendas.pdf');
     }
 }

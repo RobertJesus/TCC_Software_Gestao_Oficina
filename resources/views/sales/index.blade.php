@@ -16,7 +16,7 @@
             {{ session('error') }}
         </div>
     @endif
-    <a href="{{route('provider.pdf')}}">
+    <a href="{{route('sales.pdf')}}">
         <button type="button" class="btn btn-success">Gerar PDF</button>
     </a>
     <a href="{{route('sales.new')}}">

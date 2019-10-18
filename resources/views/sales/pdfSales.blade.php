@@ -11,47 +11,52 @@
         <div class="container" style="border: 1px solid black;">
             <div class="row">
                 <div class="form-row">
-                    <div class="col-md-9">
+                    <div class="form-group col">
                         <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
-                    </div>
-                    <div class="col-md-3">
-                        <h5>GR Software</h5>
-                        <p>CNPJ 00.000.000/0001-84</p>
-                        <p>Telefone 3866-0000</p>
+                        <ul style="float:right; list-style-type: none;padding-right:50px;">
+                            <li>GR Software</li>
+                            <li>CNPJ 00.000.000/0001-84</li>
+                            <li>Telefone 3866-0000</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <hr>
             <center>
-                <h5>Produtos</h5>
+            @forelse($sales as $data)
+                <h5>Protocolo da venda {{$data->protocol}}</h5>
+            @empty
+            @endforelse
             </center>
             <div class="row card" style="border: 1px solid black;">
                 <div class="form-row">
                     <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Protocolo</th>
                                 <th>Descrição</th>
-                                <th>Marca</th>
-                                <th>Preço Entrada</th>
-                                <th>Preço Venda</th>
-                                <th>Fornecedor</th>
                                 <th>Quantidade</th>
+                                <th>Preço</th>
+                                <th>Desconto</th>
+                                <th>Preço Venda</th>
                             </tr>
                         </thead>
-                        @forelse($products as $product)
+                        @forelse($sales as $data)
                         <tr>
-                            <td>{{$product->cod}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->brand}}</td>
-                            <td>{{$product->priceNew}}</td>
-                            <td>{{$product->priceOld}}</td>
-                            <td>{{$product->provider}}</td>
-                            <td>{{$product->amount}}</td>
+                            <td>{{$data->protocol}}</td>
+                            <td>{{$data->name}}</td>
+                            <td>{{$data->amount}}</td>
+                            <td>R$ {{$data->price}}</td>
+                            <td>R$ {{$data->desc}}</td>
+                            <td>R$ {{$data->priceV}}</td>
                         </tr>
                         @empty
                         @endforelse
-                    </table>
+                    </table><br><hr>
+                    @forelse($total as $data)
+                    <label style="float-right">Total R$ {{$data->totalPay}}</label>
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </div>
