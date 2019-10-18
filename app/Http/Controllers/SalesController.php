@@ -7,6 +7,7 @@ use App\Models\client;
 use App\Models\Product;
 use App\Models\Sales;
 use App\Models\SalesProduct;
+use App\Models\ServiceOrder;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
 
@@ -42,6 +43,11 @@ class SalesController extends Controller
         $product = Product::where('id', '=', $idProduct)->getQuery()->get(['id', 'amount', 'priceOld']);
 
         return Response::json($product);
+    }
+    public function getClient($idclient){
+        $client = ServiceOrder::where('name', '=', $idclient)->getQuery()->get(['id', 'protocol']);
+
+        return Response::json($client);
     }
 
     /**
@@ -137,8 +143,10 @@ class SalesController extends Controller
     public function pdfSales($id)
     {
     $sales = SalesProduct::where('protocol', '=', $id)->get();
+    $protocol = DB::table('sales_products')->where('protocol','=', $id)->first();// $sales['protocol'];
+    
     $total = Sales::where('protocol', '=', $id)->get();
-    return \PDF::loadView('sales.pdfSales', compact('sales', 'total'))
+    return \PDF::loadView('sales.pdfSales', compact('sales', 'total', 'protocol'))
           ->download('vendas.pdf');
     }
     public function pdf()

@@ -110,5 +110,6 @@ Route::prefix('central')->group(function(){
 });
 
 Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');
+Route::get('sales/get-client/{idclient}', 'SalesController@getClient');
 Route::get('automobiles/get-client/{idclient}', 'AutomobilesController@getClient');
 Route::get('/service/get-auto/{id}', 'ServiceOrderController@getAuto');

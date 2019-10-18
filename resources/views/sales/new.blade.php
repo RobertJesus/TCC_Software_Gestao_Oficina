@@ -40,6 +40,18 @@
                     </span>
                 @endif
             </div>
+            <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                <label for="inputCity">Protocolo de OS em aberto</label>
+                <select name="protocolOS" id="protocolOS" class="form-control" value="[]">
+                    <option value="[]"></option>
+                </select>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                @if ($errors->has('cidade'))
+                    <span class="help-block">
+                        <strong class="error">{{ $errors->first('cidade') }}</strong>
+                    </span>
+                @endif
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
@@ -165,6 +177,16 @@
             });
         });
     });
+
+    $('select[name=client_id]').change(function () {
+        var idclient = $(this).val();
+        $.get('get-client/' + idclient, function (cliente) {
+            $('select[name=protocolOS]').empty();
+            $.each(cliente, function (key, value) {
+                $('select[name=protocolOS]').append('<option value=' + value.protocol + '>' + value.protocol + '</option>');
+            });
+        });
+    })
     function calcular(){
         var amount = document.getElementById("amount").value;
         var n1 = document.getElementById("priceOld").value;

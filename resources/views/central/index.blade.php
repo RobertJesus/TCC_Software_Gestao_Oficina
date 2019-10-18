@@ -3,11 +3,59 @@
     <head>
         <meta charset="utf-8">
         <title>Central do Assinante</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       
         <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
     </head>
     <body style="background-color: #F2F7F8;">
         <div class="row">
+        <div class="form-row">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ route('client.search') }}" method="post">
+                        {!! csrf_field() !!}
+                            <div class="modal-body">
+                                <div class="form-group" style="width:350px;">
+                                    <label for="message-text" class="col-form-label">Nome:</label><br>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                                <div class="form-group" style="width:200px;">
+                                    <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
+                                    <input type="text" class="form-control" name="record">
+                                </div>
+                                <div class="form-group" style="width:350px;">
+                                    <label for="message-text" class="col-form-label">Status</label><br><br>
+                                    <select class="selectOffice" name="status" id="exampleFormControlSelect1">
+                                        <option value="1">Ativo</option>
+                                        <option value="2">Arquivado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><hr>
+
+
+
             <div class="card form-group col"  style="margin-top:0px!important;flex-direction: inherit;" >
             <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
                 <ul class="nav justify-content-end float-left" style="padding-top:15px;">
@@ -30,7 +78,7 @@
                     <a class="nav-link" id="v-pills-profile-tab"  href="{{route('central.central')}}">Sair</a>
                 </div>
             </div>
-            <div class="col-md-9 cor">
+            <div class="col-md-9 cor"><br><br>
                 @if(session('success'))
                 <div class="alert alert-info">
                     {{ session('success') }}
@@ -59,6 +107,7 @@
                             <th scope="col">Data Abertura</th>
                             <th scope="col">Responsavel</th>
                             <th scope="col">Detalhe</th>
+                            <th scope="col">Venda</th>
                         </tr>
                     </thead>
                     <?php if(empty($list) == null){ ?>
@@ -70,7 +119,10 @@
                                 <td>{{$data->status}}</td>
                                 <td>{{date("d/m/Y", strtotime($data->created_at))}}</td>
                                 <td>{{$data->responsible}}</td>
-                                <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa-search"></i></td>
+                                <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa fa-search"></i></td>
+                                <td>
+                                    <a href="#" class="text-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-search">
+                                </td>
                             </tr>
                         <?php } ?>
                     <?php } ?>

@@ -23,10 +23,7 @@
             </div>
             <hr>
             <center>
-            @forelse($sales as $data)
-                <h5>Protocolo da venda {{$data->protocol}}</h5>
-            @empty
-            @endforelse
+                <h5>Protocolo da venda {{$protocol->protocol}}</h5>
             </center>
             <div class="row card" style="border: 1px solid black;">
                 <div class="form-row">

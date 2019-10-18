@@ -21,7 +21,7 @@ class CentralController extends Controller
     {
         return view('central.login');
     }
-    public function view()
+    public function view() 
     {
         return view('central.view');
     }
