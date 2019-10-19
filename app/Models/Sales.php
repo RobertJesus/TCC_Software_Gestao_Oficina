@@ -13,7 +13,8 @@ class Sales extends Model
      */
     protected $fillable = [
         'client_id',
-        'protocol', 
+        'protocol',
+        'protocolOrder',
         'typePay',
         'totalPay',
     ];

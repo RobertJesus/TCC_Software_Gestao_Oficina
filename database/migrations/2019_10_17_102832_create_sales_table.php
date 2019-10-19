@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->increments('id');
             $table->string('client_id');
             $table->string('protocol');
+            $table->string('protocolOrder');
             $table->string('typePay');
             $table->string('totalPay');
             $table->timestamps();

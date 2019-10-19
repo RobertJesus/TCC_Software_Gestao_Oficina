@@ -15,46 +15,49 @@
     </head>
     <body style="background-color: #F2F7F8;">
         <div class="row">
-        <div class="form-row">
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form action="{{ route('client.search') }}" method="post">
-                        {!! csrf_field() !!}
-                            <div class="modal-body">
-                                <div class="form-group" style="width:350px;">
-                                    <label for="message-text" class="col-form-label">Nome:</label><br>
-                                    <input type="text" class="form-control" name="name">
-                                </div>
-                                <div class="form-group" style="width:200px;">
-                                    <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
-                                    <input type="text" class="form-control" name="record">
-                                </div>
-                                <div class="form-group" style="width:350px;">
-                                    <label for="message-text" class="col-form-label">Status</label><br><br>
-                                    <select class="selectOffice" name="status" id="exampleFormControlSelect1">
-                                        <option value="1">Ativo</option>
-                                        <option value="2">Arquivado</option>
-                                    </select>
-                                </div>
+            <div class="form-row">
+                <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
+                            <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>Protocolo</th>
+                                        <th>Descrição</th>
+                                        <th>Quantidade</th>
+                                        <th>Preço</th>
+                                        <th>Desconto</th>
+                                        <th>Preço Venda</th>
+                                    </tr>
+                                </thead>
+                                @forelse($salesProduct as $data)
+                                <tr>
+                                    <td>{{$data->protocol}}</td>
+                                    <td>{{$data->name}}</td>
+                                    <td>{{$data->amount}}</td>
+                                    <td>R$ {{$data->price}}</td>
+                                    <td>R$ {{$data->desc}}</td>
+                                    <td>R$ {{$data->priceV}}</td>
+                                </tr>
+                                @empty
+                                @endforelse
+                            </table><br><hr>
+                                b  <label style="float-right">Total R$ {{$total}}</label>
+                            </table>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Filtrar</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div><hr>
-
-
+            </div><hr>
+        
 
             <div class="card form-group col"  style="margin-top:0px!important;flex-direction: inherit;" >
             <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
@@ -121,7 +124,7 @@
                                 <td>{{$data->responsible}}</td>
                                 <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa fa-search"></i></td>
                                 <td>
-                                    <a href="#" class="text-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-search">
+                                    <a href="#" class="text-success" data-toggle="modal" data-target=".bd-example-modal-xl"><i class="fa fa-search">
                                 </td>
                             </tr>
                         <?php } ?>

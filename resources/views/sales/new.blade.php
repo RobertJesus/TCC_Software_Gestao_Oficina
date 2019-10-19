@@ -42,7 +42,7 @@
             </div>
             <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Protocolo de OS em aberto</label>
-                <select name="protocolOS" id="protocolOS" class="form-control" value="[]">
+                <select name="protocolOrder" id="protocolOrder" class="form-control" value="[]">
                     <option value="[]"></option>
                 </select>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -181,9 +181,9 @@
     $('select[name=client_id]').change(function () {
         var idclient = $(this).val();
         $.get('get-client/' + idclient, function (cliente) {
-            $('select[name=protocolOS]').empty();
+            $('select[name=protocolOrder]').empty();
             $.each(cliente, function (key, value) {
-                $('select[name=protocolOS]').append('<option value=' + value.protocol + '>' + value.protocol + '</option>');
+                $('select[name=protocolOrder]').append('<option value=' + value.protocol + '>' + value.protocol + '</option>');
             });
         });
     })

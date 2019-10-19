@@ -68,6 +68,7 @@ class SalesController extends Controller
             'client_id' => $request->client_id,
             'typePay' => $request->typePay,
             'protocol' => $request->protocol,
+            'protocolOrder' => $request->protocolOrder,
             'totalPay' => $request->totalVenda[0],
         ]);
         
