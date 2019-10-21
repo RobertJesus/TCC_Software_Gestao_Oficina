@@ -20,12 +20,12 @@
             <button type="submit" class="btn btn-info" >Voltar</button>
         </a>
     </div>
-    <form action="{{route('sales.store')}}" method="post">
+    <form action="{{route('sales.store')}}" method="post" onsubmit="return valida_sales(this)">
         {!! csrf_field() !!}
         <div class="form-row">
             <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Cliente</label>
-                <select name="client_id" id="name" class="form-control">
+                <select name="client_id" id="name" id="name" class="form-control">
                     <?php if(empty($client) == null) { ?>
                         <option value="0"></option>
                         <?php foreach($client as $data){ ?>
@@ -56,7 +56,7 @@
         <div class="form-row">
             <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                 <label for="inputCity">Tipo de Comprovante</label>
-                <select name="typePay" class="form-control">
+                <select name="typePay" id="typePay" class="form-control">
                         <option>Dinheiro</option>
                         <option>Cartão</option>
                         <option>Cheque</option>
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Número Comprovante</label>
-                <input type="text" name="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
+                <input type="text" name="protocol" id="protocol" class="form-control" value="<?php echo date('YmdHis') ?>">
             </div>
         </div>
         <div class="form-row">

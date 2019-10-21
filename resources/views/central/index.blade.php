@@ -16,48 +16,87 @@
     <body style="background-color: #F2F7F8;">
         <div class="row">
             <div class="form-row">
-                <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Filtro Avançado</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
-                                <thead>
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Produtos utilizados na manutenção</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                                    <thead>
+                                        <tr>
+                                            <th>Protocolo</th>
+                                            <th>Descrição</th>
+                                            <th>Quantidade</th>
+                                            <th>Preço</th>
+                                            <th>Desconto</th>
+                                            <th>Preço Venda</th>
+                                        </tr>
+                                    </thead>
+                                    @forelse($salesProduct as $data)
                                     <tr>
-                                        <th>Protocolo</th>
-                                        <th>Descrição</th>
-                                        <th>Quantidade</th>
-                                        <th>Preço</th>
-                                        <th>Desconto</th>
-                                        <th>Preço Venda</th>
+                                        <td>{{$data->protocol}}</td>
+                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->amount}}</td>
+                                        <td>R$ {{$data->price}}</td>
+                                        <td>R$ {{$data->desc}}</td>
+                                        <td>R$ {{$data->priceV}}</td>
                                     </tr>
-                                </thead>
-                                @forelse($salesProduct as $data)
-                                <tr>
-                                    <td>{{$data->protocol}}</td>
-                                    <td>{{$data->name}}</td>
-                                    <td>{{$data->amount}}</td>
-                                    <td>R$ {{$data->price}}</td>
-                                    <td>R$ {{$data->desc}}</td>
-                                    <td>R$ {{$data->priceV}}</td>
-                                </tr>
-                                @empty
-                                @endforelse
-                            </table><br><hr>
-                                b  <label style="float-right">Total R$ {{$total}}</label>
-                            </table>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    @empty
+                                    @endforelse
+                                </table><br><hr>
+                                    <label style="padding-left:10px;" >Total R$ {{$total}}</label>
+                                </table>
+                                <div class="modal-footer">
+                                <a href="{{ route('sales.pdfSales', $protocol)}}">
+                                    <button type="button" class="btn btn-success">
+                                    Gerar PDF
+                                    </button>
+                                </a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><hr>
+            
+            <div class="row">
+                <div class="form-row">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Descrição</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                    <form>
+                                        <fieldset disabled>
+                                            <table class="table">
+                                                <tr class="form-group">
+                                                @forelse($list as $data)
+                                                    <td>
+                                                        <label>Descrição de abertura da OS:</label>
+                                                        <textarea type="text" id="disabledTextInput" class="form-control">{{$data->description}}</textarea>
+                                                    </td>
+                                                    @empty
+                                                @endforelse
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div><hr>
-        
+            </div>
 
             <div class="card form-group col"  style="margin-top:0px!important;flex-direction: inherit;" >
             <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
@@ -109,7 +148,7 @@
                             <th scope="col">Status</th>
                             <th scope="col">Data Abertura</th>
                             <th scope="col">Responsavel</th>
-                            <th scope="col">Detalhe</th>
+                            <th scope="col">Descrição</th>
                             <th scope="col">Venda</th>
                         </tr>
                     </thead>
@@ -122,9 +161,11 @@
                                 <td>{{$data->status}}</td>
                                 <td>{{date("d/m/Y", strtotime($data->created_at))}}</td>
                                 <td>{{$data->responsible}}</td>
-                                <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa fa-search"></i></td>
                                 <td>
-                                    <a href="#" class="text-success" data-toggle="modal" data-target=".bd-example-modal-xl"><i class="fa fa-search">
+                                    <a href="#" class="text-success"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-file-text-o"></i>
+                                </td>
+                                <td>
+                                    <a href="#" class="text-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-search">
                                 </td>
                             </tr>
                         <?php } ?>

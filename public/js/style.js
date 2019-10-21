@@ -39,7 +39,7 @@ function valida_form (){
     document.getElementById("district").focus();
     return false
     }
-    if(document.getElementById("numberHouse").value.length < 3){
+    if(document.getElementById("numberHouse").value.length < 2){
     alert('Por favor, preencha o campo numero');
     document.getElementById("numberHouse").focus();
     return false
@@ -96,7 +96,7 @@ function valida_form_for (){
         document.getElementById("district").focus();
         return false
         }
-        if(document.getElementById("numberHouse").value.length < 3){
+        if(document.getElementById("numberHouse").value.length < 2){
         alert('Por favor, preencha o campo numero');
         document.getElementById("numberHouse").focus();
         return false
@@ -118,7 +118,7 @@ function valida_form_for (){
         }
 }
 function valida_form_prod (){
-    if(document.getElementById("cod").value.length < 3){
+    if(document.getElementById("cod").value.length < 2){
         alert('Por favor, preencha o campo codigo do produto');
         document.getElementById("cod").focus();
         return false
@@ -128,7 +128,7 @@ function valida_form_prod (){
         document.getElementById("description").focus();
         return false
     }
-    if(document.getElementById("brand").value.length < 3){
+    if(document.getElementById("brand").value.length < 2){
         alert('Por favor, preencha o campo marca');
         document.getElementById("brand").focus();
         return false
@@ -143,7 +143,7 @@ function valida_form_prod (){
         document.getElementById("priceOld").focus();
         return false
     }
-    if(document.getElementById("amount").value.length < 3){
+    if(document.getElementById("amount").value.length < 1){
         alert('Por favor, preencha o campo quantidade');
         document.getElementById("amount").focus();
         return false
@@ -212,12 +212,12 @@ function valida_form_auto(){
         document.getElementById("client").focus();
         return false
     }
-    if(document.getElementById("km").value.length < 3){
+    if(document.getElementById("km").value.length < 1){
         alert('Por favor, preencha o quilometro entrada');
         document.getElementById("km").focus();
         return false
     }
-    if(document.getElementById("kmDay").value.length < 3){
+    if(document.getElementById("kmDay").value.length < 1){
         alert('Por favor, preencha o campo quilometro media');
         document.getElementById("kmdDay").focus();
         return false

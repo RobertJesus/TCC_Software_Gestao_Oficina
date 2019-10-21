@@ -58,6 +58,16 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {   
+        $produtos = [];
+        $this->$produtos = new Product();
+        for($i=0; $i < count($request->amount); $i++){
+            $produtos = Product::where('id', '=', $request['product_id'])->get();
+            $result = $produtos->update([
+                'amount' => $request['amount'] - $produtos->amount,//['amount'],
+            ]);
+        }
+        return $produtos;
+        exit();
         //$id = Client::where('name', '=', $request['name'])->find();//->select('id')->first()->get();
         unset($request['produto']);
         unset($request['totalPro']);
@@ -138,7 +148,23 @@ class SalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //$sales = Sales::where('protocol','=', $id)->findOrFail();
+        $sales = Sales::where('protocol', '=', $id)->get();
+        foreach($sales as $data){
+            $idSales = $data['id'];
+        }
+        $salesV = Sales::findOrFail($idSales);
+        $result = $salesV->delete();
+
+        if($result){
+            return redirect()
+                    ->route('sales.index')
+                    ->with('success', 'Venda excluida com sucesso!!!');
+        }else{
+            return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao excluir');
+        }
     }
 
     public function pdfSales($id)

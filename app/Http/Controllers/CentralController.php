@@ -20,7 +20,7 @@ class CentralController extends Controller
         $total = DB::table("Sales")->where('protocol', '=',$protocol)->sum('totalPay');
         $client = Client::where('name', '=', $name)->get();
         $list = ServiceOrder::where('name', '=', $name)->get();
-        return view('central.index', compact('name', 'list', 'client', 'salesProduct', 'total'));
+        return view('central.index', compact('name', 'list', 'client', 'salesProduct', 'total', 'protocol'));
     }
     public function central()
     {

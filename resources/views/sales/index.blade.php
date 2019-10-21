@@ -32,7 +32,7 @@
                     <th scope="col">Total</th>
                     <th scope="col">Data da venda</th>
                     <th scope="col">PDF</th>
-                    <th scope="col">Visualizar</th>
+                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
             
