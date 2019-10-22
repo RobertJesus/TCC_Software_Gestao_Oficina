@@ -13,7 +13,7 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
     </head>
-    <body style="background-color: #F2F7F8;">
+    <body style="background-color: #F2F7F8;"><!-- #d2d6de -->
         <div class="row">
             <div class="form-row">
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

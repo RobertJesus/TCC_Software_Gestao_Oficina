@@ -1,5 +1,5 @@
 .inputName{
-    width: 450px;
+    width: 300px;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -25,7 +25,7 @@
     display: block;
 }
 .inputEmail{
-    width: 400px;
+    width: 300px;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -38,7 +38,7 @@
     display: block;
 }
 .inputPassword{
-    width: 300px;
+    width: 230px;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;

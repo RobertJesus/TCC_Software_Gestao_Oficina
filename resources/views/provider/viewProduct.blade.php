@@ -24,7 +24,7 @@
             </a>
         </div>
     </div><hr>
-    <div class="pai">
+    <div class="table-responsive">
     <table class="table table-striped">
             <thead>
                 <tr>

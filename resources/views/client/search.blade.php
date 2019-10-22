@@ -63,7 +63,7 @@
             </div>
         </div><hr>
     </div>
-    <div class="pai">
+    <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -77,6 +77,7 @@
                     <th scope="col">OS</th>
                 </tr>
             </thead>
+            <tbody>
             <?php if(empty($list) == null){ ?>
                 <?php foreach($list as $client){ ?>
                     <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
@@ -91,11 +92,12 @@
                     </tr>
                 <?php } ?>
             <?php } ?>
+            </tbody>
         </table>
     </div>
 </div>
 <!-- /.form-box -->
-<script>
+<!--<script>
    $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -105,5 +107,5 @@
   modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
-</script>
+</script>-->
 @stop

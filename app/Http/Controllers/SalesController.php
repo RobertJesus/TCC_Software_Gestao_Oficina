@@ -59,15 +59,11 @@ class SalesController extends Controller
     public function store(Request $request)
     {   
         $produtos = [];
-        $this->$produtos = new Product();
         for($i=0; $i < count($request->amount); $i++){
-            $produtos = Product::where('id', '=', $request['product_id'])->get();
-            $result = $produtos->update([
-                'amount' => $request['amount'] - $produtos->amount,//['amount'],
-            ]);
+            $produtos = Product::find($request['product_id']);
+            $produtos[$i]['amount'] = $produtos[$i]['amount'] - $request->amount[$i];
+            $produtos[$i]->save();
         }
-        return $produtos;
-        exit();
         //$id = Client::where('name', '=', $request['name'])->find();//->select('id')->first()->get();
         unset($request['produto']);
         unset($request['totalPro']);

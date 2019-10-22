@@ -60,7 +60,7 @@
             </div>
         </div><hr>
     </div>
-    <div class="pai">
+    <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
