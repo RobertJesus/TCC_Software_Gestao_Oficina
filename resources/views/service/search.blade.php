@@ -79,7 +79,7 @@
                     </div>
             </div><hr>
         </div>
-        <div class="pai">
+        <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -107,7 +107,8 @@
                 <?php }?>
             </table>
         </div>
-
+    </div>
+<!--
 <script>
    $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
@@ -118,5 +119,5 @@
   modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
-</script>
+</script>-->
 @stop

@@ -107,6 +107,7 @@ Route::prefix('central')->group(function(){
     Route::get('/central', 'CentralController@central')->name('central.central');
     Route::get('/view', 'CentralController@view')->name('central.view');
     Route::post('/login', 'CentralController@login')->name('central.login');
+    Route::get('/pdf/{id}', 'CentralController@pdfCentral')->name('central.pdf');
 });
 
 Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');

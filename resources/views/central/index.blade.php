@@ -13,19 +13,20 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
     </head>
-    <body style="background-color: #F2F7F8;"><!-- #d2d6de -->
+<body style="background-color: #F2F7F8;"><!-- #d2d6de -->
         <div class="row">
             <div class="form-row">
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Produtos utilizados na manutenção</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Produtos utilizados na manutenção</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>Protocolo</th>
@@ -47,59 +48,60 @@
                                     </tr>
                                     @empty
                                     @endforelse
-                                </table><br><hr>
+                                </table>
                                     <label style="padding-left:10px;" >Total R$ {{$total}}</label>
                                 </table>
-                                <div class="modal-footer">
-                                <a href="{{ route('sales.pdfSales', $protocol)}}">
-                                    <button type="button" class="btn btn-success">
-                                    Gerar PDF
-                                    </button>
-                                </a>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div><hr>
-            
-            <div class="row">
-                <div class="form-row">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Descrição</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                    <form>
-                                        <fieldset disabled>
-                                            <table class="table">
-                                                <tr class="form-group">
-                                                @forelse($list as $data)
-                                                    <td>
-                                                        <label>Descrição de abertura da OS:</label>
-                                                        <textarea type="text" id="disabledTextInput" class="form-control">{{$data->description}}</textarea>
-                                                    </td>
-                                                    @empty
-                                                @endforelse
-                                                </tr>
-                                            </table>
-                                        </fieldset>
-                                    </form>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    </div>
+                            <div class="modal-footer">
+                            <a href="{{ route('central.pdf', $protocol)}}">
+                                <button type="button" class="btn btn-success">
+                                Gerar PDF
+                                </button>
+                            </a>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>           
+        <div class="row">
+            <div class="form-row">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Descrição</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form>
+                                <fieldset disabled>
+                                    <table class="table">
+                                        <tr class="form-group">
+                                        @forelse($list as $data)
+                                            <td>
+                                                <label>Descrição de abertura da OS:</label>
+                                                <textarea type="text" id="disabledTextInput" class="form-control">{{$data->description}}</textarea>
+                                            </td>
+                                            @empty
+                                        @endforelse
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">    
             <div class="card form-group col"  style="margin-top:0px!important;flex-direction: inherit;" >
-            <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
+                <img src="{{ asset('/img/logo.png') }}" style="width:200px!important;">
                 <ul class="nav justify-content-end float-left" style="padding-top:15px;">
                     <li class="nav-item">
                         <a class="nav-link">{{$name}}</a>
@@ -113,14 +115,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-2" style="margin-left:10px">
                 <div class="nav flex-column nav-pills cor" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Inicio</a>
                     <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Ordens de Serviço</a>
                     <a class="nav-link" id="v-pills-profile-tab"  href="{{route('central.central')}}">Sair</a>
                 </div>
             </div>
-            <div class="col-md-9 cor"><br><br>
+            <div class="col-md-9 cor">
                 @if(session('success'))
                 <div class="alert alert-info">
                     {{ session('success') }}
@@ -139,43 +141,44 @@
                 </div>
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <h5 class="float-left">Ordens de Serviço</h5>
-                    <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Protocolo</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Serviço</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Data Abertura</th>
-                            <th scope="col">Responsavel</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Venda</th>
-                        </tr>
-                    </thead>
-                    <?php if(empty($list) == null){ ?>
-                        <?php foreach($list as $data){ ?>
-                            <tr>
-                                <td>{{$data->protocol}}</td>
-                                <td>{{$data->name}}</td>
-                                <td>{{$data->service}}</td>
-                                <td>{{$data->status}}</td>
-                                <td>{{date("d/m/Y", strtotime($data->created_at))}}</td>
-                                <td>{{$data->responsible}}</td>
-                                <td>
-                                    <a href="#" class="text-success"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-file-text-o"></i>
-                                </td>
-                                <td>
-                                    <a href="#" class="text-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-search">
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    <?php } ?>
-                    </table>
-                </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Protocolo</th>
+                                    <th scope="col">Cliente</th>
+                                    <th scope="col">Serviço</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Data Abertura</th>
+                                    <th scope="col">Responsavel</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Venda</th>
+                                </tr>
+                            </thead>
+                            <?php if(empty($list) == null){ ?>
+                                <?php foreach($list as $data){ ?>
+                                    <tr>
+                                        <td>{{$data->protocol}}</td>
+                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->service}}</td>
+                                        <td>{{$data->status}}</td>
+                                        <td>{{date("d/m/Y", strtotime($data->created_at))}}</td>
+                                        <td>{{$data->responsible}}</td>
+                                        <td>
+                                            <a href="#" class="text-success"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fa fa-file-text-o"></i>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="text-success" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-search">
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
+</body>
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

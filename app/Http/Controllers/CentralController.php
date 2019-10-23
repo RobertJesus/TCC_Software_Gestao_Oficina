@@ -7,6 +7,7 @@ use App\Models\client;
 use App\Models\ServiceOrder;
 use App\Models\Sales;
 use App\Models\SalesProduct;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
 
@@ -21,7 +22,7 @@ class CentralController extends Controller
         $client = Client::where('name', '=', $name)->get();
         $list = ServiceOrder::where('name', '=', $name)->get();
         return view('central.index', compact('name', 'list', 'client', 'salesProduct', 'total', 'protocol'));
-    }
+    } 
     public function central()
     {
         return view('central.login');
@@ -51,5 +52,14 @@ class CentralController extends Controller
                 ->route('central.index', $name)
                 ->with('success', 'Seja bem vindo a central do assinante!');
         }
+    }
+    public function pdfCentral($id)
+    {
+    $sales = SalesProduct::where('protocol', '=', $id)->get();
+    $protocol = DB::table('sales_products')->where('protocol','=', $id)->first();// $sales['protocol'];
+    
+    $total = Sales::where('protocol', '=', $id)->get();
+    return \PDF::loadView('sales.pdfSales', compact('sales', 'total', 'protocol'))
+          ->download('vendas.pdf');
     }
 }
