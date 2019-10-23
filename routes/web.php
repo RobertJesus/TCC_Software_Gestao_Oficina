@@ -101,6 +101,10 @@ Route::prefix('automobiles')->group(function(){
     Route::get('/new', 'AutomobilesController@create')->name('automobiles.new');
     Route::post('/store', 'AutomobilesController@store')->name('automobiles.store');
     Route::post('/search', 'AutomobilesController@search')->name('automobiles.search');
+    Route::get('/view/{id}', 'AutomobilesController@view')->name('automobiles.view');
+    Route::get('/edit/{id}', 'AutomobilesController@edit')->name('automobiles.edit');
+    Route::get('/destroy/{id}', 'AutomobilesController@destroy')->name('automobiles.destroy');
+    Route::post('/update/{id}', 'AutomobilesController@update')->name('automobiles.update');
 });
 Route::prefix('central')->group(function(){
     Route::get('/index/{name}', 'CentralController@index')->name('central.index');

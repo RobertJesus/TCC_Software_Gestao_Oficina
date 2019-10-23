@@ -3,9 +3,9 @@
 @section('title', 'Software para Gestão de Oficina')
 
 @section('content')
-    
-<div class="register-box-body">
-    <p class="login-box-msg">Cadastro do Fornecedor</p>
+
+    <div class="register-box-body">
+        <p class="login-box-msg">Dados do Fornecedor</p>
         @if(session('success'))
             <div class="alert alert-info">
                 {{ session('success') }}
@@ -17,45 +17,140 @@
                 {{ session('error') }}
             </div>
         @endif
-    <div class="form-group">
-        <a href="{{route('provider.index')}}"> 
-            <button type="submit" class="btn btn-info" >Voltar</button>
-        </a>
-    </div>
-    <div class="table-responsive">
-    <table class="table table-hover">
-        <tbody>
-            <?php foreach($list as $provider){ ?>
-                <tr class="float-left">
-                    <td>Razão Social:</td>
-                    <td>{{$provider->name}}</td>
-                </tr>
-                <tr class="float-left">
-                    <td>Nome Fantasia:</td>
-                    <td>{{$provider->nameFant}}</td>
-                </tr>
-                <tr class="float-left">
-                    <td>CPF/CNPJ:</td>
-                    <td>{{$provider->record}}</td>
-                </tr>
-                <tr class="float-left">
-                        <td>Email:</td>
-                        <td>{{$provider->email}}</td>
-                </tr>
-                <tr class="float-left">
-                        <td>Celular:</td>
-                        <td>{{$provider->phoneP}}</td>
-                        <td>Telefone</td>
-                        <td>{{$provider->tell}}</td>
-                </tr>
-                <tr class="float-left">
-                    <td>Endereço:</td>
-                    <td>{{$provider->address}}, {{$provider->bai}}, {{$provider->numberHouse}} - {{$provider->cep}} - {{$provider->city}} / {{$provider->state}} - {{$provider->comp}}</td>
-                </tr>
+        <div class="form-group">
+            <a href="{{route('provider.index')}}"> 
+                <button type="submit" class="btn btn-info" >Voltar</button>
+            </a>
+        </div>
+        <div class="pai">
+        <?php foreach($list as $data){ ?>
+            <form action="{{ route('provider.update', $data->id) }}" method="post">
+            <fieldset disabled>
+                {!! csrf_field() !!}
+                <div class="form-row">
+                    <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
+                        <label>Razão Social</label>
+                        <input type="text" name="name" id="name" class="form-control" value="{{$data->name}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-4 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
+                        <label>Nome Fantasia</label>
+                        <input type="text" name="nameFant" id="nameFant" class="form-control" value="{{$data->nameFant}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('data'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('data') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-3 has-feedback {{ $errors->has('CPF/CNPJ') ? 'has-error' : '' }}">
+                        <label>CNPJ</label>
+                        <input for="text" name="record" id="record" class="form-control" value="{{$data->record}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('CPF/CNPJ'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('CPF/CNPJ') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
+                        <label>E-mail</label>
+                        <input type="text" name="email" id="email" class="form-control" value="{{$data->email}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2 has-feedback {{ $errors->has('celular') ? 'has-error' : '' }}">
+                        <label>Celular 1</label>
+                        <input type="text" name="phoneP" id="phoneP" class="form-control" value="{{$data->phoneP}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('celular'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('celular') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label name="telefone">Telefone</label>
+                        <input type="text" name="tell" class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
+                        <label for="inputCity">Endereço</label>
+                        <input type="text" name="address" id="address" class="form-control" id="inputCity" value="{{$data->address}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('endereco'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('endereco') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2 has-feedback {{$errors->has('bairro') ? 'has-error' : '' }}">
+                        <label>Bairro</label>
+                        <input type="text" name="bai" id="district" class="form-control" id="inputCity" value="{{$data->bai}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('bairro'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('bairro') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2 {{$errors->has('numero') ? 'has-error' : '' }}">
+                        <label>Numero</label>
+                        <input type="text" name="numberHouse" id="numberHouse" class="form-control" min="1" value="{{$data->numberHouse}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('numero'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('numero') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label name="complemento">Complemento</label>
+                        <input type="text" name="comp" class="form-control" value="{{$data->comp}}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                        <label for="inputCity">Cidade</label>
+                        <input type="text" name="city" id="city" class="form-control" id="inputCity" value="{{$data->city}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cidade'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cidade') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-3 has-feedback {{$errors->has('uf') ? 'has-error' : '' }}">
+                        <label for="inputState">Estado</label>
+                        <input type="text" name="state" id="state" class="form-control" id="inputState" value="{{$data->state}}">
+                    </div>
+                    <div class="form-group col-md-2 has-feedback {{$errors->has('cep') ? 'has-error' : '' }}">
+                        <label for="inputZip">CEP</label>
+                        <input type="number" name="cep" id="cep" class="form-control" id="inputZip" value="{{$data->cep}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cep'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cep') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </fieldset>
+            </form>
             <?php } ?>
-        </tbody>
-        </table>
+        </div>
     </div>
-</div>
     <!-- /.form-box -->
 @stop

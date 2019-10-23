@@ -79,7 +79,7 @@
                     </div>
             </div><hr>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -94,7 +94,7 @@
                 </thead>
                 <?php if(empty($os) == null){ ?>
                     <?php foreach($os as $data){ ?>
-                        <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                        <tr>
                             <td>{{$data->protocol}}</td>
                             <td>{{$data->name}}</td>
                             <td>{{$data->service}}</td>

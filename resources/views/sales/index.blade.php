@@ -22,7 +22,7 @@
     <a href="{{route('sales.new')}}">
         <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Nova Venda</button><br><br>
     </a>
-    <div class="pai">
+    <div class="table-responsive" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
         <table class="table table-striped">
             <thead>
                 <tr>

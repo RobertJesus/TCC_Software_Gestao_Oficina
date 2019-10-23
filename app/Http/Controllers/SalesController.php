@@ -175,7 +175,7 @@ class SalesController extends Controller
     public function pdf()
     {
         $sales = Sales::all();
-        $total = DB::table("Sales")->sum('totalPay');
+        $total = DB::table("sales")->sum('totalPay');
         return \PDF::loadView('sales.pdf', compact('sales', 'total'))
           ->download('vendas.pdf');
     }

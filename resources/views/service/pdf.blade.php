@@ -20,67 +20,67 @@
                         </ul>
                     </div>
                 </div>
-            </div><hr>
-                <center>
-                    <h5>Cliente</h5>
-                </center>
-                <div class="form-row">
-                    @forelse($client as $data)
-                    <table class="table">
-                        <tr>
-                            <td>Nome: {{$data->name}} CPF: {{$data->record}}</td>
-                        </tr>
-                        <tr>
-                            <td>Endereço: {{$data->address}}, {{$data->district}} - {{$data->numberHouse}}, {{$data->city}} / {{$data->cep}}</td>
-                        </tr>
-                        <tr>
-                            <td>Telefone: {{$data->phoneP, $data->phoneS}}</td>
-                        </tr>
-                    </table>
-                    @empty
-                    @endforelse
-                </div>
-            </div>
-            </div>
-            <hr>
-            <center>
-                <h5>Ordem de Serviço</h5>
-            </center>
-            <div class="row card" style="border: 1px solid black;">
-                <div class="form-row">
-                    <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
-                        <thead>
+                </div><hr>
+                    <center>
+                        <h5>Cliente</h5>
+                    </center><hr>
+                    <div class="form-row">
+                        @forelse($client as $data)
+                        <table class="table">
                             <tr>
-                                <th>Protocolo</th>
-                                <th>Serviço</th>
-                                <th>Prioridade</th>
-                                <th>Status</th>
-                                <th>Responsavel</th>
+                                <td>Nome: {{$data->name}} CPF: {{$data->record}}</td>
                             </tr>
-                        </thead>
-                        @forelse($order as $data)
-                        <tr>
-                            <td>{{$data->protocol}}</td>
-                            <td>{{$data->service}}</td>
-                            <td>{{$data->priority}}</td>
-                            <td>{{$data->status}}</td>
-                            <td>{{$data->responsible}}</td>
-                        </tr>
-                    </table>
-                    <div class="form-row" style="border:1px solid black;padding-bottom:100px;">
-                        <h5>Descrição</h5>
-                        {{$data->description}}
-                    </div>
-                    <div class="form-row" style="border:1px solid black;padding-bottom:100px;">
-                        <h5>Observação</h5>
+                            <tr>
+                                <td>Endereço: {{$data->address}}, {{$data->district}} - {{$data->numberHouse}}, {{$data->city}} / {{$data->cep}}</td>
+                            </tr>
+                            <tr>
+                                <td>Telefone: {{$data->phoneP, $data->phoneS}}</td>
+                            </tr>
+                        </table>
                         @empty
                         @endforelse
                     </div>
+                    <hr>
+                    <center>
+                    <h5>Ordem de Serviço</h5>
+                    </center>
+                </div>
+                <div class="row card" style="border: 1px solid black;">
                     <div class="form-row">
-                        <center>
-                        <p>________________________________________</p>
-                        <p>Assinatura do cliente</p>
-                        </center>
+                        <table class="table" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>Protocolo</th>
+                                    <th>Serviço</th>
+                                    <th>Prioridade</th>
+                                    <th>Status</th>
+                                    <th>Responsavel</th>
+                                </tr>
+                            </thead>
+                            @forelse($order as $data)
+                            <tr>
+                                <td>{{$data->protocol}}</td>
+                                <td>{{$data->service}}</td>
+                                <td>{{$data->priority}}</td>
+                                <td>{{$data->status}}</td>
+                                <td>{{$data->responsible}}</td>
+                            </tr>
+                        </table>
+                        <div class="form-row" style="border:1px solid black;padding-bottom:100px;">
+                            <h5>Descrição</h5>
+                            {{$data->description}}
+                        </div>
+                        <div class="form-row" style="border:1px solid black;padding-bottom:100px;">
+                            <h5>Observação</h5>
+                            @empty
+                            @endforelse
+                        </div>
+                        <div class="form-row">
+                            <center>
+                            <p>________________________________________</p>
+                            <p>Assinatura do cliente</p>
+                            </center>
+                        </div>
                     </div>
                 </div>
             </div>

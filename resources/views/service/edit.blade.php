@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="register-box-body">
-    <p class="login-box-msg">Cadastrar Ordens de Serviço</p>
+    <p class="login-box-msg">Editar Ordem de Serviço</p>
     @if(session('success'))
         <div class="alert alert-info">
             {{ session('success') }}

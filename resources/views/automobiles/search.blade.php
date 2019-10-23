@@ -54,7 +54,7 @@
                     </div>
             </div><hr>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -62,25 +62,27 @@
                         <th scope="col">Marca</th>
                         <th scope="col">Placa</th>
                         <th scope="col">Data Revisão</th>
+                        <th scope="col">Visualizar</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <?php if(empty($auto) == null){ ?>
                     <?php foreach($auto as $data){ ?>
-                        <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                        <tr>
                             <td>{{$data->client}}</td>
                             <td>{{$data->brand}}</td>
                             <td>{{$data->board}}</td>
                             <td>{{date("d/m/Y", strtotime($data->dateReview))}}</td>
-                            <td><a href="{{ route('service.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                            <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="{{ route('automobiles.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                            <td><a href="{{ route('automobiles.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="{{ route('automobiles.destroy', $data->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja arquivar este registro?')"><i class="fa fa-trash"></i></a></td>
                         </tr>
                     <?php }?>
                 <?php }?>
             </table>
         </div>
-
+<!--
 <script>
    $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
@@ -91,5 +93,5 @@
   modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
-</script>
+</script>-->
 @stop

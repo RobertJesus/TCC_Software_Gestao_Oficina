@@ -23,7 +23,6 @@ class AutomobilesController extends Controller
 
     public function store(Request $request, Automobile $auto)
     {
-        
         $insert = $auto->create($request->all());
         
         if($insert){
@@ -35,6 +34,46 @@ class AutomobilesController extends Controller
                     ->back()
                     ->with('error', 'Falha ao inserir');
         }
+    }
+    public function edit($id)
+    {
+        $auto = Automobile::where('id', '=', $id)->get();
+        return view('automobiles.edit', compact('auto'));
+    }
+    public function update(Request $request, $id){ 
+        $auto = Automobile::find($id);
+        
+        $result = $auto->update($request->all());
+
+        if($result){
+            return redirect()
+                    ->route('automobiles.index')
+                    ->with('success', 'Veiculo atualizado com sucesso!');
+        }else{
+            return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao atualizar!');
+        }
+    }
+    public function destroy($id){
+
+        $auto = Automobile::findOrFail($id);
+        $result = $auto->delete();
+
+        if($result){
+            return redirect()
+                    ->route('automobiles.index')
+                    ->with('success', 'Veiculo excluido com sucesso!!!');
+        }else{
+            return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao excluir');
+        }
+    }
+    public function view($id)
+    {   
+        $auto = Automobile::where('id', '=', $id)->get();
+        return view('automobiles.view', compact('auto'));
     }
     public function getClient($idclient)
     {

@@ -60,7 +60,7 @@
             </div>
         </div><hr>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -77,7 +77,7 @@
             </thead>
             <?php if(empty($list) == null){ ?>
                 <?php foreach($list as $provider){ ?>
-                    <tr style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
+                    <tr>
                         <td>{{$provider->name}}</td>
                         <td>{{$provider->email}}</td>
                         <td>{{$provider->record}}</td>

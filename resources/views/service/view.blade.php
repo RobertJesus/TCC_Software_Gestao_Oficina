@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="register-box-body">
-    <p class="login-box-msg">Cadastrar Ordens de Serviço</p>
+    <p class="login-box-msg">Editar Ordem de Serviço</p>
     @if(session('success'))
         <div class="alert alert-info">
             {{ session('success') }}
@@ -21,83 +21,93 @@
                 <button type="submit" class="btn btn-info" >Voltar</button>
             </a>
         </div>
-        <div class="pai" id="pai">
-        <table class="table table-hover">
-            <tbody>
-                <?php foreach($order as $data){ ?>
-                <tr class="float-left">
-                    <td>Protocolo:</td>
-                    <td>{{$data->protocol}}</td>
-                </tr>
-                <tr class="float-left">
-                    <td>Nome Cliente:</td>
-                    <td>{{$data->name}}</td>
-                </tr>
-                <tr class="float-left">
-                    <td>Serviço:</td>
-                    <td>{{$data->service}}</td>
-                    <td>Prioridade:</td>
-                    <td>{{$data->priority}}</td>
-                    <td>Status:</td>
-                    <td>{{$data->status}}</td>
-                    <td>Responsavel:</td>
-                    <td>{{$data->responsible}}</td>
-                </tr>
-                <tr class="float-left">
-                    <td>Descrição:</td>
-                    <td>
-                        {{$data->description}}
-                    </td>
-                    <td>Data Execução:</td>
-                    <td>
-                        {{date("d/m/Y", strtotime($data->dateExec))}}
-                    </td>
-                </tr>
-                <?php }?>
-        </div><hr>
-        <!--
-        <button type="submit" class="btn btn-secondary" onclick="fechar_div();">Cadastrar Veiculo</button>
-        <div class="pai" id="filho" style="display:none;">
-        <p class="login-box-msg">Veiculos</p>
-        <?php if(empty($id) == null){ ?>
-            <form action="{{ route('service.store', $id)}}" method="post">
+    <div class="pai" id="pai">
+        <?php foreach($order as $data){ ?>
+            <form action="{{ route('service.update', $data->id) }}" method="post">
                 {!! csrf_field() !!}
-                <?php }?>
-                <div class="row d-flex justify-content-center">
-                    <div class="form-group col-md-2">
-                        <label>Quilometro Entrada</label>
-                        <input type="text" name="km" class="form-control">
+                <fieldset disabled>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label>Protocolo</label>
+                        <input type="text" name="protocol" class="form-control" value="{{$data->protocol}}">
                     </div>
-                    <div class="form-group col-md-2">
-                        <label>Média dia</label>
-                        <input type="text" name="kmDay" class="form-control">
-                    </div>
-                    <div class="form-group col-md-2">
-                       <label>Placa</label>
-                       <input type="text" name="board" class="form-control">
-                    </div>
-                    <div class="form-group col-md-2">
-                       <label>Marca</label>
-                       <input type="text" name="brand" class="form-control">
+                    <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                        <label for="inputCity">Cliente</label>
+                        <input type="text" name="name" class="form-control" value="{{$data->name}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cidade'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cidade') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                <div class="form-row">
+                    <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                        <label for="inputCity">Setor</label>
+                        <input type="text" name="service" class="form-control" value="{{$data->service}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cidade'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cidade') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                        <label for="inputCity">Prioridade</label>
+                        <input type="text" name="priority" class="form-control" value="{{$data->priority}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cidade'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cidade') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-2 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                        <label for="inputCity">Status</label>
+                        <input type="text" name="status" class="form-control" value="{{$data->status}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cidade'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cidade') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                        <label for="inputCity">Responsavel</label>
+                        <input type="text" name="responsible" class="form-control" value="{{$data->responsible}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('cidade'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('cidade') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Descrição do serviço</label>
+                        <textarea type="text" name="descriptionSer" id="description" class="form-control">{{$data->description}}</textarea>
+                    </div>
+                    <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
+                        <label>Data de Execução</label>
+                        <input type="date" name="dateExec" class="form-control" value="{{$data->dateExec}}">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        @if ($errors->has('data'))
+                            <span class="help-block">
+                                <strong class="error">{{ $errors->first('data') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                </fieldset>
             </form>
-        </div>-->
+        <?php }?>
+        </div><hr>
     </div>
+</div>
     <!-- /.form-box -->
-    @section('post-script')
     <script>
-        $('select[name=name]').change(function () {
-            var id = $(this).val();
-            $.get('get-auto/' + id, function (autos) {
-                $('select[name=brand]').empty();
-                $.each(autos, function (key, value) {
-                    $('select[name=brand]').append('<option value=' + value.id + '>' + value.brand + '</option>');
-                });
-            });
-        });
-        
         function fechar_div(){
             var x = document.getElementById('filho');
             var y = document.getElementById('pai');
@@ -110,5 +120,4 @@
             }
         }
     </script>
-@endsection
 @stop
