@@ -11,7 +11,7 @@
         </div>
     @endif
     <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
-    <div class="table-responsive">
+    <div class="table-responsive" style="width: 100%;margin-bottom : .5em;table-layout: fixed;text-align: center;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -35,6 +35,9 @@
             <?php } ?>
             </tbody>
         </table>
+    </div>
+    <div class="pai">
+        {{ $list->links() }}
     </div>
 </div>
     <!-- /.form-box -->

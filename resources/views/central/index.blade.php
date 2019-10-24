@@ -175,6 +175,9 @@
                             <?php } ?>
                         </table>
                     </div>
+                    <div class="pai">
+                        {{ $list->links() }}
+                    </div>
                 </div>
             </div>
         </div>

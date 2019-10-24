@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $list = Product::all();
+        $list = Product::paginate(10);
         return view('product.search', compact('list'));
     }
 

@@ -107,6 +107,9 @@
                 <?php }?>
             </table>
         </div>
+        <div class="pai">
+            {{ $os->links() }}
+        </div>
     </div>
 <!--
 <script>

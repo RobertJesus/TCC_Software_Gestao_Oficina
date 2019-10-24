@@ -15,7 +15,7 @@ class ProviderController extends Controller
 {
     public function index()
     {
-        $list = Provider::all();
+        $list = Provider::paginate(10);
         return view('provider.search', compact('list'));
     }
 

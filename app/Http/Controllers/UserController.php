@@ -19,8 +19,8 @@ class UserController extends Controller
     public function index()
     {
         $id = auth()->user()->id;
-        $list = User::where('id', '<>', $id)->get();
-        return view('users.new', compact('list'));
+        $list = User::where('id', '<>', $id)->paginate(10);
+        return view('users.index', compact('list'));
     }
     public function destroy($id)
     {

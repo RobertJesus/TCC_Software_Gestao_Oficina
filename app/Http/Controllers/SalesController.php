@@ -20,7 +20,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $list = Sales::all();
+        $list = Sales::paginate(10);
         
         return view('sales.index', compact('list'));
     }

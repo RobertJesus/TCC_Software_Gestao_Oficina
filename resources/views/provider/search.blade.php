@@ -92,6 +92,9 @@
             <?php } ?>
         </table>
     </div>
+    <div class="pai">
+        {{ $list->links() }}
+    </div>
 </div>
 <!-- /.form-box -->
 <script>

@@ -18,7 +18,7 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $list =  Client::where('status', '=',1)->get();
+        $list =  Client::where('status', '=',1)->paginate(10);
         return view('client.search', compact('list'));
     }
 

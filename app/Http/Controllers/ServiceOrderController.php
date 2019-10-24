@@ -13,7 +13,7 @@ use Nexmo\Laravel\Facade\Nexmo;
 
 class ServiceOrderController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -22,7 +22,7 @@ class ServiceOrderController extends Controller
     {   
         $client = Client::where('status','=', '1')->get();
         $user = User::where('type', '=', '2')->get();
-        $os = ServiceOrder::where('status', '<>', 'Fechado')->get();
+        $os = ServiceOrder::where('status', '<>', 'Fechado')->paginate(10);
     
         return view('service.search', compact('client', 'user', 'os'));
     }
