@@ -1,4 +1,4 @@
-<h1 align="center">Software de Gestão de Oficina Mecânica</h1><p align="center"> <img src="https://github.com/RobertJesus/TCC_Software_Gestao_Oficina/public/img/logo.png" style="width:200px!important;"></p>
+<h1 align="center">Software de Gestão de Oficina Mecânica</h1><p align="center"> <img src="https://github.com/RobertJesus/TCC_Software_Gestao_Oficina/tree/master/public/img/logo.png" style="width:200px!important;"></p>
 
 ## Sobre o Projeto
 
