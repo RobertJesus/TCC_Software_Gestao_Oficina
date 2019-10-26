@@ -46,7 +46,7 @@
                                                 <option>Manutenção</option>
                                         </select>
                                     </div>
-                                    <div class="form-group" style="width:350px;">
+                                    <div class="form-group" style="width:300px;">
                                         <label for="message-text" class="col-form-label">Responsavel:</label>
                                         <select name="responsible" class="form-control">
                                             <option class="form-control" select></option>
@@ -57,7 +57,7 @@
                                             <?php }?>
                                         </select>
                                     </div>
-                                    <div class="form-group" style="width:350px;">
+                                    <div class="form-group" style="width:300px;">
                                         <label for="message-text" class="col-form-label">Cliente:</label>
                                         <select name="name" class="form-control">
                                             <option class="form-control" name="name"></option>
@@ -99,8 +99,8 @@
                             <td>{{$data->name}}</td>
                             <td>{{$data->service}}</td>
                             <td>{{$data->responsible}}</td>
-                            <td><a href="{{ route('service.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
-                            <td><a href="{{ route('service.pdf', $data->id)}}" class="text-success"><i class="fa fa-file-pdf-o"></i></a></td>
+                            <td><a href="{{ route('service.view', $data->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
+                            <td><a href="{{ route('service.pdf', $data->id)}}" class="text-warning"><i class="fa fa-file-pdf-o"></i></a></td>
                             <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <?php }?>

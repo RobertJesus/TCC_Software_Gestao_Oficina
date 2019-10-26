@@ -36,7 +36,7 @@
                         </div>
                         <form action="{{ route('provider.search') }}" method="post">
                         {!! csrf_field() !!}
-                        <div class="modal-body" style="width:350px;">
+                        <div class="modal-body" style="width:300px;">
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Nome Fantasia:</label><br>
                                 <input type="text" class="form-control" name="nameFant">
@@ -82,9 +82,9 @@
                         <td>{{$provider->email}}</td>
                         <td>{{$provider->record}}</td>
                         <td>{{$provider->phoneP}}</td>
-                        <td><a href="{{ route('provider.products', $provider->id)}}" classs="text-success"><i class="fa fa-barcode"></i></a></td>              </td>
-                        <td><a href="{{ route('provider.pdfProdcts', $provider->id)}}" classs="text-success" style="padding-left:15px"><i class="fa fa-file-pdf-o"></i></a></td>
-                        <td><a href="{{ route('provider.view', $provider->id)}}" class="text-success"><i class="fa fa-eye"></i></a></td>
+                        <td><a href="{{ route('provider.products', $provider->id)}}" class="text-secondary"><i class="fa fa-barcode"></i></a></td>              </td>
+                        <td><a href="{{ route('provider.pdfProdcts', $provider->id)}}" class="text-warning" style="padding-left:15px"><i class="fa fa-file-pdf-o"></i></a></td>
+                        <td><a href="{{ route('provider.view', $provider->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
                         <td><a href="{{ route('provider.edit', $provider->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('provider.destroy', $provider->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>
@@ -97,15 +97,4 @@
     </div>
 </div>
 <!-- /.form-box -->
-<script>
-   $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
-</script>
 @stop

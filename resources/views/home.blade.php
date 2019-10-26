@@ -9,6 +9,18 @@
 @section('title', 'Software para Gestão de Oficina')
 @section('content_header')
 <div class="row">
+  <div class="col-md-12">
+    @if(session('success'))
+      <div class="alert alert-info">
+          {{ session('success') }}
+      </div>
+    @endif
+    @if(session('error'))
+      <div class="alert alert-danger">
+          {{ session('error') }}
+      </div>
+    @endif
+  </div>
   @if(session('success'))
     <div class="col-lg-12">
       <div class="alert alert-success alert-dismissible fade show" role="alert">

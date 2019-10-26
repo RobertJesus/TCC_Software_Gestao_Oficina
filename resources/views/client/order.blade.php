@@ -79,8 +79,8 @@
                         <td>{{$data->status}}</td>
                         <td>{{$data->responsible}}</td>
                         <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="{{ route('service.notes', $data->id)}}" class="text-success"><i class="fa fa-eye"></i></td>
-                        <td><a href="{{ route('service.pdf', $data->id)}}" class="text-success"><i class="fa fa-file-pdf-o"></i></a></td>
+                        <td><a href="{{ route('service.notes', $data->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></td>
+                        <td><a href="{{ route('service.pdf', $data->id)}}" class="text-warning"><i class="fa fa-file-pdf-o"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

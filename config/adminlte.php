@@ -116,7 +116,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Novo',
-                    'url'  => 'register',
+                    'route'  => 'user.register',
                     'icon' => 'user-plus',
                 ],
                 [

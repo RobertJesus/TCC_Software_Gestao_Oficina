@@ -57,11 +57,11 @@ class ServiceOrderController extends Controller
         
         if($insert){
             return view('service.new')
-                    ->with('success', 'Usuário Cadastrado com sucesso!');
+                    ->with('success', 'Usuário cadastrado com sucesso!');
         }else{
         return redirect()
                     ->back()
-                    ->with('error', 'Falha ao inserir');
+                    ->with('error', 'Falha ao cadastrar!');
         }
     }
 
@@ -148,15 +148,15 @@ class ServiceOrderController extends Controller
 
     public function search(Request $request)
     {   
-        $list = ServiceOrder::where('name', 'like', '%'.$request['name'].'%')
+        $os = ServiceOrder::where('name', 'like', '%'.$request['name'].'%')
                     ->Orwhere('responsible', 'like', '%'.$request['responsible'].'%')
                     ->Orwhere('service', 'like', '%'.$request['service'].'%')
-                    ->Orwhere('protocol', 'like', '%'.$request['protocol'].'%')->get();
+                    ->Orwhere('protocol', 'like', '%'.$request['protocol'].'%')->paginate(10);
 
-        $result = $list;
+        $result = $os;
         
         if($result){
-            return view('service.search', compact('list'));
+            return view('service.search', compact('os'));
         }else{
             return redirect()
                     ->route('search')

@@ -21,14 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Rotas User
-Route::prefix('user')->group(function(){
+Route::group([ 'prefix' => 'user', 'middleware' => 'check.user'],function(){
+    Route::get('/new', 'UserController@create')->name('user.register');
     Route::get('/index', 'UserController@index')->name('user.index');
+    Route::get('/destroy/{id}', 'UserController@destroy')->name('user.destroy');
     Route::get('/edit', 'UserController@edit')->name('user.edit');
     Route::post('/update', 'UserController@update')->name('user.update');
-    Route::get('/destroy/{id}', 'UserController@destroy')->name('user.destroy');
 });
 //Rotas Client
-Route::prefix('client')->group(function(){
+Route::group([ 'prefix' => 'client', 'middleware' => 'check.user'],function(){
     Route::get('/new', 'ClientController@create')->name('client.new');
     Route::get('/index', 'ClientController@index')->name('client.index');
     Route::post('/store', 'ClientController@store')->name('client.store');
@@ -43,7 +44,7 @@ Route::prefix('client')->group(function(){
     Route::get('/pdf', 'ClientController@pdf')->name('client.pdf');
 });
 //Rotas Fornecedor
-Route::prefix('provider')->group(function(){
+Route::group([ 'prefix' => 'provider', 'middleware' => 'check.user'],function(){
     Route::post('/store', 'ProviderController@store')->name('provider.store');
     Route::get('/new', 'ProviderController@create')->name('provider.new');
     Route::post('/search', 'ProviderController@search')->name('provider.search');
@@ -57,11 +58,8 @@ Route::prefix('provider')->group(function(){
     Route::get('/pdf/{id}', 'ProviderController@pdfProduct')->name('provider.pdfProdcts');
 });
 
-// Rotas mecanico
-Route::get('/newMe', 'MechanicalController@create')->name('newMe');
-Route::post('/store', 'MechanicalController@store')->name('store');
 // Rotas Produtos
-Route::prefix('product')->group(function(){
+Route::group([ 'prefix' => 'product', 'middleware' => 'check.user'],function(){
     Route::get('/index', 'ProductController@index')->name('product.index');
     Route::get('/new', 'ProductController@create')->name('product.new');
     Route::post('/store', 'ProductController@store')->name('product.store');
@@ -87,7 +85,7 @@ Route::prefix('product')->group(function(){
  });
 
 //Rotas Vendas
-Route::prefix('sales')->group(function(){
+Route::group([ 'prefix' => 'sales', 'middleware' => 'check.user'],function(){
     Route::get('/new', 'SalesController@create')->name('sales.new');
     Route::get('/index', 'SalesController@index')->name('sales.index');
     Route::post('/store', 'SalesController@store')->name('sales.store');
@@ -95,6 +93,7 @@ Route::prefix('sales')->group(function(){
     Route::get('/destroy/{id}', 'SalesController@destroy')->name('sales.destroy');
     Route::get('/pdfSales/{id}', 'SalesController@pdfSales')->name('sales.pdfSales');
     Route::get('/pdf', 'SalesController@pdf')->name('sales.pdf');
+    Route::post('/search', 'SalesController@search')->name('sales.search');
 });
 Route::prefix('automobiles')->group(function(){
     Route::get('/inde', 'AutomobilesController@index')->name('automobiles.index');

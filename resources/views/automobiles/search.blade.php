@@ -74,7 +74,7 @@
                             <td>{{$data->brand}}</td>
                             <td>{{$data->board}}</td>
                             <td>{{date("d/m/Y", strtotime($data->dateReview))}}</td>
-                            <td><a href="{{ route('automobiles.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                            <td><a href="{{ route('automobiles.view', $data->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
                             <td><a href="{{ route('automobiles.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                             <td><a href="{{ route('automobiles.destroy', $data->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja arquivar este registro?')"><i class="fa fa-trash"></i></a></td>
                         </tr>

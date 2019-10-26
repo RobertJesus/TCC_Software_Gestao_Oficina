@@ -52,7 +52,7 @@ class ClientController extends Controller
         }else{
         return redirect()
                     ->back()
-                    ->with('error', 'Falha ao inserir');
+                    ->with('error', 'Falha ao cadastrar');
         }
     }
 
@@ -119,7 +119,7 @@ class ClientController extends Controller
     {
         $list = Client::where('name', '=', $request['name'])
                     ->Orwhere('record', '=', $request['name'])
-                    ->Orwhere('status','=', $request['status'])->get();
+                    ->Orwhere('status','=', $request['status'])->paginate(10);
                     
         $result = $list;
         
@@ -133,7 +133,7 @@ class ClientController extends Controller
     }
 
     public function msg(Request $request)
-    {    
+    {   
         $id = $request->id;
             
         $result = Nexmo::message()->send([

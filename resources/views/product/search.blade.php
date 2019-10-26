@@ -41,7 +41,7 @@
                                 <label for="message-text" class="col-form-label">Codigo:</label><br>
                                 <input type="text" class="form-control" name="cod">
                             </div>
-                            <div class="form-group" style="width:350px;">
+                            <div class="form-group" style="width:300px;">
                                 <label for="message-text" class="col-form-label">Descrição:</label><br>
                                 <input type="text" class="form-control" name="name">
                             </div>
@@ -84,7 +84,7 @@
                         <td>R$ {{$data->priceNew}}</td>
                         <td>R$ {{$data->priceOld}}</td>
                         <td>{{$data->amount}}</td>
-                        <td><a href="{{ route('product.view', $data->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('product.view', $data->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
                         <td><a href="{{ route('product.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('product.destroy', $data->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja deletar este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>

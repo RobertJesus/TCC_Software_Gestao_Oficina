@@ -43,11 +43,11 @@ class ProductController extends Controller
         if($insert){
             return redirect()
                     ->route('product.new')
-                    ->with('success', 'Produto Cadastrado com sucesso!');
+                    ->with('success', 'Produto cadastrado com sucesso!');
         }else{
         return redirect()
                     ->back()
-                    ->with('error', 'Falha ao inserir');
+                    ->with('error', 'Falha ao cadastrar!');
         }
     }
 
@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         $list = Product::where('description', '=', $request['name'])
                     ->Orwhere('brand', '=', $request['brand'])
-                    ->Orwhere('cod', '=', $request['name'])->get();
+                    ->Orwhere('cod', '=', $request['name'])->paginate(10);
                     
         $result = $list;
         

@@ -11,7 +11,7 @@ class AutomobilesController extends Controller
 {
     public function index()
     {
-        $auto = Automobile::all();
+        $auto = Automobile::paginate(10);
         return view('automobiles.search', compact('auto'));
     }
 
@@ -28,11 +28,11 @@ class AutomobilesController extends Controller
         if($insert){
             return redirect()
                     ->route('automobiles.new')
-                    ->with('success', 'Usuário Cadastrado com sucesso!');
+                    ->with('success', 'Veiculo cadastrado com sucesso!');
         }else{
         return redirect()
                     ->back()
-                    ->with('error', 'Falha ao inserir');
+                    ->with('error', 'Falha ao cadastrar');
         }
     }
     public function edit($id)
@@ -83,7 +83,7 @@ class AutomobilesController extends Controller
     public function search(Request $request)
     {
         $auto = Automobile::where('client', '=', $request['client'])
-                        ->Orwhere('board', '=', $request['board'])->get();
+                        ->Orwhere('board', '=', $request['board'])->paginate(10);
         return view('automobiles.search', compact('auto'));
     }
 }

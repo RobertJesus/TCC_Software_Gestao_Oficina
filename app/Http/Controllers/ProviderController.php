@@ -31,7 +31,7 @@ class ProviderController extends Controller
         if($insert){
             return redirect()
                     ->route('provider.new')
-                    ->with('success', 'Usuário Cadastrado com sucesso!');
+                    ->with('success', 'Usuário cadastrado com sucesso!');
         }else{
         return redirect()
                     ->back()
@@ -43,7 +43,7 @@ class ProviderController extends Controller
 
         $list = Provider::where('name', '=', $request['name'])
                     ->Orwhere('record', '=', $request['record'])
-                    ->Orwhere('nameFant','=',$request['nameFant'])->get();
+                    ->Orwhere('nameFant','=',$request['nameFant'])->paginate(10);
                 
         $result = $list;
         

@@ -59,6 +59,7 @@ class CentralController extends Controller
     $protocol = DB::table('sales_products')->where('protocol','=', $id)->first();// $sales['protocol'];
     
     $total = Sales::where('protocol', '=', $id)->get();
+    
     return \PDF::loadView('sales.pdfSales', compact('sales', 'total', 'protocol'))
           ->download('vendas.pdf');
     }

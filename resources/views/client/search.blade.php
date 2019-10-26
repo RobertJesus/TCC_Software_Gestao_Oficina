@@ -37,7 +37,7 @@
                         <form action="{{ route('client.search') }}" method="post">
                         {!! csrf_field() !!}
                             <div class="modal-body">
-                                <div class="form-group" style="width:350px;">
+                                <div class="form-group" style="width:300px;">
                                     <label for="message-text" class="col-form-label">Nome:</label><br>
                                     <input type="text" class="form-control" name="name">
                                 </div>
@@ -45,7 +45,7 @@
                                     <label for="message-text" class="col-form-label">CPF/CNPJ</label><br>
                                     <input type="text" class="form-control" name="record">
                                 </div>
-                                <div class="form-group" style="width:350px;">
+                                <div class="form-group" style="width:300px;">
                                     <label for="message-text" class="col-form-label">Status</label><br><br>
                                     <select class="selectOffice" name="status" id="exampleFormControlSelect1">
                                         <option value="1">Ativo</option>
@@ -73,8 +73,8 @@
                     <th scope="col">Telefone</th>
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
                     <th scope="col">OS</th>
+                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,10 +85,10 @@
                         <td>{{$client->email}}</td>
                         <td>{{$client->address}}</td>
                         <td>{{$client->phoneP}}</td>
-                        <td><a href="{{ route('client.view', $client->id)}}" class="text-success"><i class="fa fa-file-text-o"></i></a></td>
+                        <td><a href="{{ route('client.view', $client->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
                         <td><a href="{{ route('client.edit', $client->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="{{ route('client.orders', $client->id)}}" class="text-warning"><i class="fa fa-file-text-o"></i></a></td>
                         <td><a href="{{ route('client.toFile', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja arquivar este registro?')"><i class="fa fa-trash"></i></a></td>
-                        <td><a href="{{ route('client.orders', $client->id)}}" class="text-danger"><i class="fa fa-file-text-o"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

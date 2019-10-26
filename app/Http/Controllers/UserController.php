@@ -22,6 +22,10 @@ class UserController extends Controller
         $list = User::where('id', '<>', $id)->paginate(10);
         return view('users.index', compact('list'));
     }
+    public function create()
+    {
+        return view('auth.register');
+    }
     public function destroy($id)
     {
         $users = User::findOrFail($id);

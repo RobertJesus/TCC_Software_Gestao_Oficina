@@ -22,7 +22,7 @@ class SalesController extends Controller
     {
         $list = Sales::paginate(10);
         
-        return view('sales.index', compact('list'));
+        return view('sales.search', compact('list'));
     }
 
     /**
@@ -33,7 +33,7 @@ class SalesController extends Controller
     public function create()
     {   
         $client = Client::all();
-        $product = Product::all();
+        $product = Product::where('amount', '>', 0)->get();
 
         return view('sales.new', compact('client', 'product'));
     }
@@ -93,7 +93,7 @@ class SalesController extends Controller
 
         if($result){
             return redirect()
-                    ->route('sales.index')
+                    ->route('sales.search')
                     ->with('success', 'Venda cadastrada com sucesso!');
         }else{
         return redirect()
@@ -154,12 +154,27 @@ class SalesController extends Controller
 
         if($result){
             return redirect()
-                    ->route('sales.index')
+                    ->route('sales.search')
                     ->with('success', 'Venda excluida com sucesso!!!');
         }else{
             return redirect()
                     ->back()
                     ->with('error', 'Falha ao excluir');
+        }
+    }
+    public function search(Request $request)
+    {
+        $list = Sales::where('client_id', '=', $request['client'])
+                    ->Orwhere('protocol', '=', $request['protocol'])->paginate(10);
+                    
+        $result = $list;
+        
+        if($result){
+            return view('sales.search', compact('list'));
+        }else{
+            return redirect()
+                    ->route('sales.search')
+                    ->with('error', 'Não foi possivel encontrar registro');
         }
     }
 
