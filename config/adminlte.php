@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Soflware de Gestão                                              ',
+    'title' => 'Software de Gestão                                              ',
 
     'title_prefix' => '',
 
@@ -164,27 +164,6 @@ return [
                 ],
             ],
         ],
-        /*[
-            'text'    => 'Mecanico',
-            'icon'    => 'wrench',
-            'submenu' => [
-                [
-                    'text' => 'Buscar',
-                    'url'  => 'index',
-                    'icon' => 'search',
-                ],
-                [
-                    'text' => 'Novo',
-                    'url'  => 'newMe',
-                    'icon' => 'user-plus',
-                    ],
-                [
-                    'text' => 'Relatorio',
-                    'url'  => '#',
-                    'icon' => 'line-chart',
-                ],
-            ],
-        ],*/
         [
             'text' => 'Fornecedor',
             'url'  => '#',
@@ -204,7 +183,6 @@ return [
         ],
         [
             'text' => 'Produto ',
-            'icon_color' => 'yellow',
             'icon' => 'barcode',
             'submenu' => [
                 [

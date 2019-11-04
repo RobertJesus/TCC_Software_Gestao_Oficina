@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('cod');
             $table->string('description');
             $table->string('brand');
-            $table->double('priceNew', 5, 2);
-            $table->double('priceOld', 5, 2);
+            $table->double('priceNew', 8, 2);
+            $table->double('priceOld', 8, 2);
             $table->string('invoice');
             $table->string('provider');
             $table->string('amount');

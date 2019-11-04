@@ -23,8 +23,8 @@
             <div class="form-group">
                 <label class="office">Cargo</label><br>
                 <select class="selectOffice" name="type" id="exampleFormControlSelect1" style="margin-top: 8px;">
-                    <option value="1">Administrador</option>
-                    <option value="2">Mecânico</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Mecânico">Mecânico</option>
                 </select>
             </div>
             <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">

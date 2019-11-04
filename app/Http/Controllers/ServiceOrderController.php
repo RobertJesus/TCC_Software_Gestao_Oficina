@@ -21,7 +21,7 @@ class ServiceOrderController extends Controller
     public function index()
     {   
         $client = Client::where('status','=', '1')->get();
-        $user = User::where('type', '=', '2')->get();
+        $user = User::where('type', '=', 'Mecânico')->get();
         $os = ServiceOrder::where('status', '<>', 'Fechado')->paginate(10);
     
         return view('service.search', compact('client', 'user', 'os'));
@@ -35,7 +35,7 @@ class ServiceOrderController extends Controller
     public function create()
     {   
         $client = Client::where('status','=', '1')->get();
-        $user = $user = User::where('type', '=', '2')->get();
+        $user = $user = User::where('type', '=', 'Mecânico')->get();
         return view('service.new', compact('client', 'user'));
     }
 
@@ -86,7 +86,7 @@ class ServiceOrderController extends Controller
     {
         $order = ServiceOrder::where('id', '=', $id)->get();
         $client = Client::all();
-        $user = User::where('type', '=', '2')->get();
+        $user = User::where('type', '=', 'Mecânico')->get();
         
         return view('service.edit', compact('order', 'client','user'));
     }

@@ -19,7 +19,7 @@ class Sales extends Model
         'totalPay',
     ];
     protected $guarded = ['id', 'created_at', 'update_at'];
-    protected $table = 'Sales';
+    protected $table = 'sales';
     public function Clientsales()
     {
         return $this->hasMany(client::class);

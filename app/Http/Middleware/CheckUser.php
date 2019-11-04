@@ -20,7 +20,7 @@ class CheckUser
         
         $type = auth()->user()->type;
         
-        if($type == 2){
+        if($type == 'Mecânico'){
             return redirect()->route('home')->with('error', 'Usuario não autorizado!');
         }
         return $next($request);

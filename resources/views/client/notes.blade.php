@@ -23,10 +23,10 @@
                                             <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->responsible}}">
                                         </th>
                                         <th>
-                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->priority}}">
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Prioridade: {{$data->priority}}">
                                         </th>
                                         <th>
-                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->status}}">
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Status: {{$data->status}}">
                                         </th>
                                     </tr>
                                 </table>
@@ -58,10 +58,10 @@
                                             <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->responsible}}">
                                         </th>
                                         <th>
-                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->priority}}">
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Prioridade: {{$data->priority}}">
                                         </th>
                                         <th>
-                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Funcionario: {{$data->status}}">
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Status: {{$data->status}}">
                                         </th>
                                     </tr>
                                 </table>
