@@ -23,12 +23,12 @@
             </a>
         </div>
         <div class="pai">
-            <form action="{{ route('provider.store') }}" method="post" name="form_consulta">
+            <form action="{{ route('provider.store') }}" method="post" name="form_consulta" onsubmit="return valida_form_prov(this)">
                 {!! csrf_field() !!}
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label>Razão Social</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" id="name" name="name" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Nome Fantasia</label>
-                        <input type="text" name="nameFant" class="form-control">
+                        <input type="text" id="nameFant" name="nameFant" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('data'))
                             <span class="help-block">
@@ -49,9 +49,9 @@
                     <div class="form-group col-md-3 has-feedback {{ $errors->has('CPF/CNPJ') ? 'has-error' : '' }}">
                         <label>
                         
-                            <input type="radio" value="cnpj" name="rad" onClick =0 checked="checked">CNPJ
+                            <input type="radio" value="cnpj" id="rad" name="rad" onClick =0 checked="checked">CNPJ
                         </label>
-                        <input type="text" class="form-control" name="record" size="18" OnKeyUp="cnpj_cpf(this.name,this.value,'form_consulta',this.form)" onKeypress="campo_numerico()" maxlength="18" value=''>
+                        <input type="text" class="form-control" id="record" name="record" size="18" OnKeyUp="cnpj_cpf(this.name,this.value,'form_consulta',this.form)" onKeypress="campo_numerico()" maxlength="18" value=''>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('CPF/CNPJ'))
                             <span class="help-block">
@@ -63,7 +63,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                         <label>E-mail</label>
-                        <input type="text" name="email" class="form-control">
+                        <input type="text" name="email" id="email" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{ $errors->has('celular') ? 'has-error' : '' }}">
                         <label>Celular 1</label>
-                        <input type="text" name="phoneP" class="form-control">
+                        <input type="text" name="phoneP" id="phoneP" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('celular'))
                             <span class="help-block">
@@ -89,7 +89,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
                         <label for="inputCity">Endereço</label>
-                        <input type="text" name="address" class="form-control" id="inputCity">
+                        <input type="text" name="address" class="form-control" id="address">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('endereco'))
                             <span class="help-block">
@@ -99,7 +99,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('bairro') ? 'has-error' : '' }}">
                         <label>Bairro</label>
-                        <input type="text" name="bai" class="form-control" id="inputCity">
+                        <input type="text" name="bai" class="form-control" id="bai">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('bairro'))
                             <span class="help-block">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group col-md-2 {{$errors->has('numero') ? 'has-error' : '' }}">
                         <label>Numero</label>
-                        <input type="text" name="numberHouse" class="form-control" min="1">
+                        <input type="text" name="numberHouse" id="numberHouse" class="form-control" min="1">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('numero'))
                             <span class="help-block">
@@ -125,7 +125,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Cidade</label>
-                        <input type="text" name="city" class="form-control" id="inputCity">
+                        <input type="text" name="city" class="form-control" id="city">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cidade'))
                             <span class="help-block">
@@ -135,7 +135,7 @@
                     </div>
                     <div class="form-group col-md-3 has-feedback {{$errors->has('uf') ? 'has-error' : '' }}">
                         <label for="inputState">Estado</label>
-                        <select id="inputState" name="state" class="form-control">
+                        <select id="state" name="state" class="form-control">
                             <option selected>Acre</option>
                             <option>Alagoas</option>
                             <option>Amapá</option>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cep') ? 'has-error' : '' }}">
                         <label for="inputZip">CEP</label>
-                        <input type="number" name="cep" class="form-control" id="inputZip">
+                        <input type="number" id="cep" name="cep" class="form-control" id="inputZip">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cep'))
                             <span class="help-block">

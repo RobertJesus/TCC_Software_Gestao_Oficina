@@ -40,11 +40,17 @@ class CentralController extends Controller
            $cpf['record'] = $data['record'];
            $name = $data['name'];
         }
+        $sales = DB::table('sales')->where('client_id','=', $name)->first();
         
         if($cpf == null){
             return redirect()
                 ->route('central.central')
                 ->with('error', 'Registro não encontrado!');
+        }
+        if($sales == null){
+            return redirect()
+                ->route('central.central')
+                ->with('error', 'Cliente não possui ordem de serviço!');
         }
         if($request['record'] == $cpf['record']){
             //return view('central.index', compact('name'))->with('success', 'Seja bem vindo a central do assinante!');

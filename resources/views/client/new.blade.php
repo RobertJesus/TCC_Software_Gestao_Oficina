@@ -26,10 +26,9 @@
             <form action="{{ route('client.store') }}" method="post" name="form_consulta" onsubmit="return valida_form(this)">
                 {!! csrf_field() !!}
                 <div class="form-row">
-                    <div class="form-group col-md-4 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-3 has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label>Nome/Razão Social</label>
-                        <input type="text" name="name" id="name" class="form-control"
-                            placeholder="{{ trans('adminlte::adminlte.full_name') }}">
+                        <input type="text" name="name" id="name" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('name'))
                             <span class="help-block">
@@ -37,7 +36,7 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group col-md-3 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-2 has-feedback {{ $errors->has('data') ? 'has-error' : '' }}">
                         <label>Data de Nascimento</label>
                         <input type="date" name="date" id="date" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -47,12 +46,12 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group col-md-3 has-feedback {{ $errors->has('CPF/CNPJ') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-2 has-feedback {{ $errors->has('CPF/CNPJ') ? 'has-error' : '' }}">
                         <label>
                             <input type="radio" value="cpf" name="rad" onClick =0>CPF
                             <input type="radio" value="cnpj" name="rad" onClick =0 >CNPJ
                         </label>
-                        <input type="text" class="form-control" name="record" id="record" size="18" OnKeyUp="cnpj_cpf(this.name,this.value,'form_consulta',this.form)" onKeypress="campo_numerico()" maxlength="18" value='' placeholder="CPF ou CNPJ do assinante">
+                        <input type="text" class="form-control" name="record" id="record" size="18" OnKeyUp="cnpj_cpf(this.name,this.value,'form_consulta',this.form)" onKeypress="campo_numerico()" maxlength="18" value=''>
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('CPF/CNPJ'))
                             <span class="help-block">
@@ -68,12 +67,17 @@
                             </select>
                         </label>
                     </div>
+                    <div class="form-group col-md-2">
+                        <label>Status</label>
+                        <select class="form-control" name="status" id="sex">
+                                <option value="1">Ativo</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-5 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-3 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                         <label>E-mail</label>
-                        <input type="text" name="email" id="email" class="form-control"
-                            placeholder="{{ trans('adminlte::adminlte.email') }}">
+                        <input type="text" name="email" id="email" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -83,7 +87,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{ $errors->has('celular') ? 'has-error' : '' }}">
                         <label>Celular 1</label>
-                        <input type="text" name="phoneP" id="phoneP" class="form-control" placeholder="19-99121-0699">
+                        <input type="text" name="phoneP" id="phoneP" class="form-control">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('celular'))
                             <span class="help-block">
@@ -93,17 +97,17 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label name="celular2">Celular 2</label>
-                        <input type="text" name="phoneS" class="form-control" placeholder="19-99121-0699">
+                        <input type="text" name="phoneS" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label name="telefone">Telefone</label>
-                        <input type="text" name="tell" class="form-control" placeholder="19-3866-0000">
+                        <input type="text" name="tell" class="form-control">
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-5 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-4 has-feedback {{$errors->has('endereco') ? 'has-error' : '' }}">
                         <label for="inputCity">Endereço</label>
-                        <input type="text" name="address" id="address" class="form-control" id="inputCity" placeholder="Endereço">
+                        <input type="text" name="address" id="address" class="form-control" id="inputCity">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('endereco'))
                             <span class="help-block">
@@ -113,7 +117,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('bairro') ? 'has-error' : '' }}">
                         <label for="inputCity">Bairro</label>
-                        <input type="text" name="district" id="district" class="form-control" id="inputCity" placeholder="Bairro">
+                        <input type="text" name="district" id="district" class="form-control" id="inputCity">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('bairro'))
                             <span class="help-block">
@@ -123,7 +127,7 @@
                     </div>
                     <div class="form-group col-md-2 {{$errors->has('numero') ? 'has-error' : '' }}">
                         <label>Numero</label>
-                        <input type="text" name="numberHouse" id="numberHouse" class="form-control" placeholder="123" min="1">
+                        <input type="text" name="numberHouse" id="numberHouse" class="form-control" min="1">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('numero'))
                             <span class="help-block">
@@ -133,13 +137,13 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label name="complemento">Complemento</label>
-                        <input type="text" name="comp" class="form-control" placeholder="Complemento">
+                        <input type="text" name="comp" class="form-control">
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
+                    <div class="form-group col-md-3 has-feedback {{$errors->has('cidade') ? 'has-error' : '' }}">
                         <label for="inputCity">Cidade</label>
-                        <input type="text" name="city" id="city" class="form-control" id="inputCity" placeholder="Cidade">
+                        <input type="text" name="city" id="city" class="form-control" id="inputCity">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cidade'))
                             <span class="help-block">
@@ -181,7 +185,7 @@
                     </div>
                     <div class="form-group col-md-2 has-feedback {{$errors->has('cep') ? 'has-error' : '' }}">
                         <label for="inputZip">CEP</label>
-                        <input type="number" name="cep" id="cep" class="form-control" id="inputZip" placeholder="13835-000">
+                        <input type="number" name="cep" id="cep" class="form-control" id="inputZip">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         @if ($errors->has('cep'))
                             <span class="help-block">

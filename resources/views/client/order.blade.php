@@ -5,7 +5,7 @@
 @section('content')
     
 <div class="register-box-body">
-    <p class="login-box-msg">Lista de Clientes</p>
+    <p class="login-box-msg">Ordens de Serviço</p>
     @if(session('success'))
         <div class="alert alert-info">
             {{ session('success') }}
@@ -17,6 +17,9 @@
             {{ session('error') }}
         </div>
     @endif
+    <a href="{{route('client.index')}}"> 
+        <button type="submit" class="btn btn-info" >Voltar</button>
+    </a>
     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Filtro Avançado</button><br>
     <div class="pai">
         <div class="form-row">

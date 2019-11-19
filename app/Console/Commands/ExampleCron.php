@@ -50,7 +50,7 @@ class ExampleCron extends Command
         }
         $client = Client::where('name', '=', $id)->get();
         
-        foreach($auto as $data){
+        foreach($client as $data){
             $msg['id'] = $data['id'];
             $msg['num'] = $data['phoneP'];
         }
@@ -58,7 +58,7 @@ class ExampleCron extends Command
         $msg['msg'] = ('A revisao do seu veiculo esta proximo fique atento e agende uma visita em nossa oficina!!!');
             
         Nexmo::message()->send([
-            'to'   => 5519991210699,//$msg['num'],
+            'to'   => 5519991702008,//$msg['num'],
             'from' => '16105552344',
             'text' => $msg['msg'],
         ]);

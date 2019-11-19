@@ -17,7 +17,7 @@ class CreateSalesProductsTable extends Migration
             $table->increments('id');
             $table->string('protocol');
             $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('name');
             $table->string('amount');
             $table->string('desc');

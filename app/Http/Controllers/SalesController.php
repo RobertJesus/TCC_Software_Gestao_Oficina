@@ -67,9 +67,10 @@ class SalesController extends Controller
         //$id = Client::where('name', '=', $request['name'])->find();//->select('id')->first()->get();
         unset($request['produto']);
         unset($request['totalPro']);
-
+        
         $this->sales = new Sales();
         $this->salesProduct = new SalesProduct();
+        
         $result = $this->sales->create([
             'client_id' => $request->client_id,
             'typePay' => $request->typePay,
@@ -90,10 +91,9 @@ class SalesController extends Controller
                     'total' => $request->total[$i],
             ]);
         } 
-
         if($result){
             return redirect()
-                    ->route('sales.search')
+                    ->route('sales.index')
                     ->with('success', 'Venda cadastrada com sucesso!');
         }else{
         return redirect()
@@ -154,7 +154,7 @@ class SalesController extends Controller
 
         if($result){
             return redirect()
-                    ->route('sales.search')
+                    ->route('sales.index')
                     ->with('success', 'Venda excluida com sucesso!!!');
         }else{
             return redirect()
@@ -173,7 +173,7 @@ class SalesController extends Controller
             return view('sales.search', compact('list'));
         }else{
             return redirect()
-                    ->route('sales.search')
+                    ->route('sales.index')
                     ->with('error', 'Não foi possivel encontrar registro');
         }
     }

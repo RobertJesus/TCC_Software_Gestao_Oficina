@@ -56,8 +56,9 @@ class ServiceOrderController extends Controller
         $insert = $serviceOrder->create($request->all());
         
         if($insert){
-            return view('service.new')
-                    ->with('success', 'Usuário cadastrado com sucesso!');
+            return redirect()
+                    ->route('service.index')
+                    ->with('success', 'Ordem de serviço aberta com sucesso!');
         }else{
         return redirect()
                     ->back()
@@ -127,8 +128,8 @@ class ServiceOrderController extends Controller
         
         if($result){
             return redirect()
-                    ->route('client.index')
-                    ->with('success', 'Ordem de serviço finalizada com sucesso!');
+                    ->route('service.index')
+                    ->with('success', 'Ordem de serviço atualizada com sucesso!');
         }else{
             return redirect()
                     ->back()

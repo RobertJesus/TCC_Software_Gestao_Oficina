@@ -68,6 +68,22 @@ CREATE TABLE `clients` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Extraindo dados da tabela `clients`
+--
+
+INSERT INTO `clients` (`id`, `name`, `date`, `record`, `status`, `sex`, `email`, `phoneP`, `phoneS`, `tell`, `address`, `district`, `numberHouse`, `comp`, `city`, `state`, `cep`, `created_at`, `updated_at`) VALUES
+(1, 'Lavinia Dias Barros', '1953-04-26', '847.788.476-52', '1', 'Feminino', 'laviniaDiasBarros@armyspy.com', '19992333132', NULL, NULL, 'Rua Altino Arantes', 'Centro', '152', NULL, 'Conchal', 'São Paulo', '13835000', '2019-11-05 03:48:26', '2019-11-05 03:48:26'),
+(2, 'Emilly Barbosa Fernandes', '1962-08-22', '694.426.126-03', '1', 'Feminino', 'emillyBarbosaFernandes@rhyta.com', '19000009866', NULL, NULL, 'Praça João Oliveira Guerra', 'Centro', '970', NULL, 'Guaruja', 'São Paulo', '13835000', '2019-11-05 03:51:23', '2019-11-05 03:51:23'),
+(3, 'João Gomes Cardoso', '1959-04-03', '995.609.569-90', '1', 'Masculino', 'joaoGomesCardoso@armyspy.com', '19-8809-3984', NULL, NULL, 'Rua Quintanilha', 'Zona Leste', '1231', NULL, 'Rio de Janeiro', 'Rio de Janeiro', '13835000', '2019-11-05 03:52:47', '2019-11-05 03:52:47'),
+(4, 'Gustavo Dias Melo', '1964-08-17', '896.995.508-99', '1', 'Masculino', 'gustavoDiasMelo@teleworm.us', '1962152521', NULL, NULL, 'Viela Arnaldo Ricardo Ventura Nitão', 'Planalto', '152', NULL, 'Osasco', 'São Paulo', '13835000', '2019-11-05 03:54:12', '2019-11-05 03:54:12'),
+(5, 'Sofia Cardoso Lima', '0035-12-05', '246.415.772-42', '1', 'Masculino', 'sofiaCardosoLima@teleworm.us', '1982627212', NULL, NULL, 'Rua Ricardo M. da Silva', 'Centro', '1991', NULL, 'Barbacena', 'Minas Gerais', '13835000', '2019-11-05 03:55:23', '2019-11-05 03:55:23'),
+(6, 'Daniel Rocha Pereira', '1997-04-11', '293.865.067-18', '1', 'Masculino', 'danielRochaPereira@dayrep.com', '1972524142', NULL, NULL, 'Rua José Balbino Negrão', 'Zona Norte', '1221', NULL, 'Avare', 'São Paulo', '13835000', '2019-11-05 03:56:41', '2019-11-05 03:56:41'),
+(7, 'José Sousa Barbosa', '1973-02-01', '872.295.916-51', '1', 'Masculino', 'joseSousaBarbosa@teleworm.us', '16251425112', NULL, NULL, 'Rua Manoel Pedro de Campos', 'centro', '1732', NULL, 'Três Lagoas', 'Mato Grosso do Sul', '13835000', '2019-11-05 03:58:00', '2019-11-05 03:58:00'),
+(8, 'Tomás Fernandes Goncalves', '1970-04-28', '146.358.365-68', '1', 'Masculino', 'TomasFernandesGoncalves@jourrapide.com', '16251425112', NULL, NULL, 'Rua Trinta e Sete', 'Esperança III', '124', NULL, 'Resende', 'Rio de Janeiro', '13835000', '2019-11-05 03:59:04', '2019-11-05 03:59:04'),
+(9, 'Douglas Silva Fernandes', '1965-08-02', '423.908.083-52', '1', 'Masculino', 'DouglasSilvaFernandes@teleworm.us', '1972524142', NULL, NULL, 'Quadra QE 44 Conjunto S', 'Novo Horizonte', '125', NULL, 'Guara', 'Distrito Federal', '13835000', '2019-11-05 04:00:24', '2019-11-05 04:00:24'),
+(10, 'Vitor Castro Melo', '1969-02-19', '845.816.035-87', '1', 'Masculino', 'VitorCastroMelo@armyspy.com', '1972524142', NULL, NULL, 'Rua 27', 'Centro', '1213', NULL, 'Luziania', 'Goiás', '13835000', '2019-11-05 04:01:27', '2019-11-05 04:01:27'),
+(11, 'Vitória Cavalcanti Almeida', '1997-09-19', '904.875.120-90', '2', 'Masculino', 'VitoriaCavalcantiAlmeida@rhyta.com', '1972524142', NULL, NULL, '1ª Travessa Doutor Expedito Lopes', 'Morumbi', '1213', NULL, 'Conchal', 'São Paulo', '13835000', '2019-11-05 04:02:21', '2019-11-07 01:15:15');
 -- --------------------------------------------------------
 
 --
@@ -258,6 +274,12 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `type`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', 'Administrador', 'admin@admin.com', NULL, '$2y$10$jpBuoevz3HCjE2as7KvTQ.I2sLdJC/CWHg4gVlf6NWVvLVb8fIfT2', 'vkO75vN4WIQCKr8FBZhGNtZ0xAxFlw62g6hlXmd5z1UJNYx1N7z7si7WKD5l', '2019-11-05 03:45:35', '2019-11-05 03:45:35');
 --
 -- Indexes for dumped tables
 --

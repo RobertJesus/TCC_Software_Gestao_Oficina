@@ -118,6 +118,7 @@ function valida_form_for (){
         }
 }
 function valida_form_prod (){
+
     if(document.getElementById("cod").value.length < 2){
         alert('Por favor, preencha o campo codigo do produto');
         document.getElementById("cod").focus();
@@ -154,7 +155,7 @@ function valida_form_prod (){
         return false
     }
     if(document.getElementById("invoice").value.length < 3){
-        alert('Por favor, preencha o campo quantidade');
+        alert('Por favor, preencha o campo nota fiscal');
         document.getElementById("invoice").focus();
         return false
     }
@@ -236,6 +237,63 @@ function valida_form_auto(){
         alert('Por favor, preencha o campo marca');
         document.getElementById("brand").focus();
         return false
+    }
+}
+function valida_form_prov (){
+    if(document.getElementById("name").value.length < 3){
+    alert('Por favor, preencha o campo Razão social');
+    document.getElementById("name").focus();
+    return false
+    }
+    if(document.getElementById("nameFant").value.length < 3){
+    alert('Por favor, preencha o campo Nome fantasia');
+    document.getElementById("nameFant").focus();
+    return false
+    }
+    if(document.getElementById("record").value.length < 3){
+    alert('Por favor, preencha o campo CNPJ');
+    document.getElementById("record").focus();
+    return false
+    }
+    if(document.getElementById("email").value.length < 3){
+    alert('Por favor, preencha o campo email');
+    document.getElementById("email").focus();
+    return false
+    }
+    if(document.getElementById("phoneP").value.length < 3){
+    alert('Por favor, preencha o campo Telefone');
+    document.getElementById("phoneP").focus();
+    return false
+    }
+    if(document.getElementById("address").value.length < 3){
+    alert('Por favor, preencha o campo rua');
+    document.getElementById("address").focus();
+    return false
+    }
+    if(document.getElementById("bai").value.length < 3){
+    alert('Por favor, preencha o campo bairro');
+    document.getElementById("bai").focus();
+    return false
+    }
+    if(document.getElementById("numberHouse").value.length < 2){
+    alert('Por favor, preencha o campo numero');
+    document.getElementById("numberHouse").focus();
+    return false
+    }
+    if(document.getElementById("city").value.length < 3){
+    alert('Por favor, preencha o campo cidade');
+    document.getElementById("city").focus();
+    return false
+    }
+    if(document.getElementById("state").value.length < 3){
+    alert('Por favor, preencha o campo estado');
+    document.getElementById("state").focus();
+    return false
+    }
+    if(document.getElementById("cep").value.length < 3){
+    alert('Por favor, preencha o campo cep');
+    document.getElementById("cep").focus();
+    return false
     }
 }
 function campo_numerico (){

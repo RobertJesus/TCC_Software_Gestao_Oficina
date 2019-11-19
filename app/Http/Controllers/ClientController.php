@@ -28,20 +28,7 @@ class ClientController extends Controller
 
     public function store(Request $request, Client $client)
     {   
-        /*$request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255'],
-            'data' => ['required', 'max:11'],
-            'CPF/CNPJ' => ['required', 'max:14'],
-            'celular' => ['required', 'max:11'],
-            'telefone' => ['required', 'max:10'],
-            'endereco' => ['required', 'max:255'],
-            'numero' => ['required', 'max:5'],
-            'cidade' => ['required', 'max:255'],
-            'cep' => ['required', 'max:8'],
-        ]);*/
         unset($request['rad']);
-        $request['status'] = 1;
         
         $insert = $client->create($request->all());
 
@@ -118,9 +105,8 @@ class ClientController extends Controller
     public function search(Request $request)
     {
         $list = Client::where('name', '=', $request['name'])
-                    ->Orwhere('record', '=', $request['name'])
+                    ->Orwhere('record', '=', $request['record'])
                     ->Orwhere('status','=', $request['status'])->paginate(10);
-                    
         $result = $list;
         
         if($result){

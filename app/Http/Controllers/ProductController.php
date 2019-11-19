@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function store(Request $request, Product $product, ProvandProd $ProvandProd){
         
-        $id = Provider::where('name', '=', $request['provider'])->get();
+        $id = Provider::where('nameFant', '=', $request['provider'])->get();
 
         $insert = $product->create($request->all());
         foreach($id as $data){
@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         $list = Product::where('description', '=', $request['name'])
                     ->Orwhere('brand', '=', $request['brand'])
-                    ->Orwhere('cod', '=', $request['name'])->paginate(10);
+                    ->Orwhere('cod', '=', $request['cod'])->paginate(10);
                     
         $result = $list;
         

@@ -48,6 +48,7 @@
                                 <div class="form-group" style="width:300px;">
                                     <label for="message-text" class="col-form-label">Status</label><br><br>
                                     <select class="selectOffice" name="status" id="exampleFormControlSelect1">
+                                        <option></option>
                                         <option value="1">Ativo</option>
                                         <option value="2">Arquivado</option>
                                     </select>
@@ -88,7 +89,7 @@
                         <td><a href="{{ route('client.view', $client->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
                         <td><a href="{{ route('client.edit', $client->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         <td><a href="{{ route('client.orders', $client->id)}}" class="text-warning"><i class="fa fa-file-text-o"></i></a></td>
-                        <td><a href="{{ route('client.toFile', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja arquivar este registro?')"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="{{ route('client.toFile', $client->id)}}" class="text-danger" onclick="return confirm('Tem certeza que deseja arquiva este registro?')"><i class="fa fa-trash"></i></a></td>
                     </tr>
                 <?php } ?>
             <?php } ?>

@@ -60,10 +60,8 @@ Route::group([ 'prefix' => 'provider', 'middleware' => 'check.user'],function(){
 
 // Rotas Produtos
 Route::group([ 'prefix' => 'product', 'middleware' => 'check.user'],function(){
-    Route::get('/index', 'ProductController@index')->name('product.index');
     Route::get('/new', 'ProductController@create')->name('product.new');
     Route::post('/store', 'ProductController@store')->name('product.store');
-    Route::post('/search', 'ProductController@search')->name('product.search');
     Route::get('/view/{id}', 'ProductController@view')->name('product.view');
     Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
     Route::post('/update/{id}', 'ProductController@update')->name('product.update');
@@ -117,3 +115,5 @@ Route::get('sales/get-product/{idProduct}', 'SalesController@getProduct');
 Route::get('sales/get-client/{idclient}', 'SalesController@getClient');
 Route::get('automobiles/get-client/{idclient}', 'AutomobilesController@getClient');
 Route::get('/service/get-auto/{id}', 'ServiceOrderController@getAuto');
+Route::get('/index', 'ProductController@index')->name('product.index');
+Route::post('/search', 'ProductController@search')->name('product.search');

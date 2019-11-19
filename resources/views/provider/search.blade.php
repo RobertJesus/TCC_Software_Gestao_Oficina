@@ -65,7 +65,7 @@
             <thead>
                 <tr>
                     <th scope="col">Razão Social</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Nome Fantasia</th>
                     <th scope="col">CNPJ</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Produtos</th>
@@ -79,7 +79,7 @@
                 <?php foreach($list as $provider){ ?>
                     <tr>
                         <td>{{$provider->name}}</td>
-                        <td>{{$provider->email}}</td>
+                        <td>{{$provider->nameFant}}</td>
                         <td>{{$provider->record}}</td>
                         <td>{{$provider->phoneP}}</td>
                         <td><a href="{{ route('provider.products', $provider->id)}}" class="text-secondary"><i class="fa fa-barcode"></i></a></td>              </td>

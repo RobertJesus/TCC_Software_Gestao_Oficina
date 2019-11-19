@@ -72,7 +72,7 @@
                     <th scope="col">Quantidade</th>
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Exclui</th>
+                    <th scope="col">Excluir</th>
                 </tr>
             </thead>
             <?php if(empty($list) == null){ ?>

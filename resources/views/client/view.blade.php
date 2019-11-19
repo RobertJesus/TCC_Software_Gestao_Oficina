@@ -103,10 +103,10 @@
                                 {!! csrf_field() !!}
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label for="message-text" class="col-form-label">Mensagem</label>
+                                            <label for="message-text" class="col-form-label">Mensagem:</label>
                                             <textarea class="form-control" id="message-text" name="msg"></textarea>
-                                            <label class="col-form-label">Telefone</label>
-                                            <input type="tel" class="form-control" name="num" value="55{{$data->phoneP}}">
+                                            <label class="col-form-label">Telefone:</label>
+                                            <input type="tel" class="form-control" name="num" value="{{$data->phoneP}}" readonly> 
                                         </div>
                                     </div>
                                     <div class="modal-footer">

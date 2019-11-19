@@ -31,7 +31,7 @@ class ProviderController extends Controller
         if($insert){
             return redirect()
                     ->route('provider.new')
-                    ->with('success', 'Usuário cadastrado com sucesso!');
+                    ->with('success', 'Fornecedor cadastrado com sucesso!');
         }else{
         return redirect()
                     ->back()
@@ -86,7 +86,7 @@ class ProviderController extends Controller
         if($result){
             return redirect()
                     ->route('provider.index')
-                    ->with('success', 'Cliente excluido com sucesso!');
+                    ->with('success', 'Fornecedor excluido com sucesso!');
         }else{
             return redirect()
                     ->back()

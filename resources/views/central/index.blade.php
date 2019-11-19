@@ -37,27 +37,30 @@
                                             <th>Preço Venda</th>
                                         </tr>
                                     </thead>
-                                    @forelse($salesProduct as $data)
-                                    <tr>
-                                        <td>{{$data->protocol}}</td>
-                                        <td>{{$data->name}}</td>
-                                        <td>{{$data->amount}}</td>
-                                        <td>R$ {{$data->price}}</td>
-                                        <td>R$ {{$data->desc}}</td>
-                                        <td>R$ {{$data->priceV}}</td>
-                                    </tr>
-                                    @empty
-                                    @endforelse
+                                    <?php if(empty($salesProduct) == null){ ?>
+                                        <?php foreach($salesProduct as $data){ ?>
+                                        <tr>
+                                            <td>{{$data->protocol}}</td>
+                                            <td>{{$data->name}}</td>
+                                            <td>{{$data->amount}}</td>
+                                            <td>R$ {{$data->price}}</td>
+                                            <td>R$ {{$data->desc}}</td>
+                                            <td>R$ {{$data->priceV}}</td>
+                                        </tr>
+                                        <?php } ?>
+                                    <?php } ?>
                                 </table>
                                     <label style="padding-left:10px;" >Total R$ {{$total}}</label>
                                 </table>
                             </div>
                             <div class="modal-footer">
-                            <a href="{{ route('central.pdf', $protocol)}}">
-                                <button type="button" class="btn btn-success">
-                                Gerar PDF
-                                </button>
-                            </a>
+                            <?php if(empty($protocol) == null){ ?>
+                                <a href="{{ route('central.pdf', $protocol)}}">
+                                    <button type="button" class="btn btn-success">
+                                    Gerar PDF
+                                    </button>
+                                </a>
+                            <?php } ?>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
@@ -80,13 +83,14 @@
                                 <fieldset disabled>
                                     <table class="table">
                                         <tr class="form-group">
-                                        @forelse($list as $data)
-                                            <td>
-                                                <label>Descrição de abertura da OS:</label>
-                                                <textarea type="text" id="disabledTextInput" class="form-control">{{$data->description}}</textarea>
-                                            </td>
-                                            @empty
-                                        @endforelse
+                                        <?php if(empty($list) == null){ ?>
+                                            <?php foreach($list as $data){ ?>
+                                                <td>
+                                                    <label>Descrição de abertura da OS:</label>
+                                                    <textarea type="text" id="disabledTextInput" class="form-control">{{$data->description}}</textarea>
+                                                </td>
+                                            <?php }?>
+                                        <?php }?>
                                         </tr>
                                     </table>
                                 </fieldset>

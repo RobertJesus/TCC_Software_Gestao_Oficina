@@ -213,7 +213,7 @@
         produto.qtde = $('#amount').val();
         produto.preco = $('#priceOld').val();
         produto.preco_venda = $('#totalPro').val();
-        produto.nome = $('#produto').text();
+        produto.nome = $('#produto :selected').text();
         produto.desc = $('#desc').val();
         produto.id = $('#produto').val();
         $('#produto').val(0);
