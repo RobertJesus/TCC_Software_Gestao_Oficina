@@ -195,9 +195,9 @@ class ServiceOrderController extends Controller
     public function pdf($id)
     {
         $client = Client::where('id', '=', $id)->get();
-        $order = ServiceOrder::where('id', '=', $id)->get();
+        $order = ServiceOrder::where('client_id', '=', $id)->get();
         return \PDF::loadView('service.pdf', compact('order', 'client'))
                 // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
-          ->download('produtos.pdf');
+          ->download('ordem.pdf');
     }
 }

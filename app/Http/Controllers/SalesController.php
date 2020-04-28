@@ -62,6 +62,8 @@ class SalesController extends Controller
         for($i=0; $i < count($request->amount); $i++){
             $produtos = Product::find($request['product_id']);
             $produtos[$i]['amount'] = $produtos[$i]['amount'] - $request->amount[$i];
+            dd($produtos[$i]);
+            exit();
             $produtos[$i]->save();
         }
         //$id = Client::where('name', '=', $request['name'])->find();//->select('id')->first()->get();

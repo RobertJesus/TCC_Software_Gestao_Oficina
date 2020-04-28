@@ -100,7 +100,7 @@
                             <td>{{$data->service}}</td>
                             <td>{{$data->responsible}}</td>
                             <td><a href="{{ route('service.view', $data->id)}}" class="text-info"><i class="fa fa-file-word-o"></i></a></td>
-                            <td><a href="{{ route('service.pdf', $data->id)}}" class="text-warning"><i class="fa fa-file-pdf-o"></i></a></td>
+                            <td><a href="{{ route('service.pdf', $data->client_id)}}" class="text-warning"><i class="fa fa-file-pdf-o"></i></a></td>
                             <td><a href="{{ route('service.edit', $data->id)}}" class="text-success"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <?php }?>

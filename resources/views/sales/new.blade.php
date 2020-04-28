@@ -147,7 +147,7 @@
                             <th>Quantidade</th>
                             <th>Preço</th>
                             <th>Desconto</th>
-                            <th>Total</th>
+                            <th>Total Produto</th>
                         </tr>
                     </thead>
                     <tbody id="items"></tbody>
@@ -246,7 +246,7 @@
                 '<td style="text-align:right;">' + produto.qtde + '</td>'+
                 '<td style="text-align:right;">' + produto.preco + '</td>'+
                 '<td style="text-align:right;">' + produto.desc + '</td>'+
-                '<td style="text-align:right;">' + produto.total + '</td>' +
+                '<td style="text-align:right;">' + produto.preco_venda + '</td>' +
                 '<td><button type="button" class="btn btn-danger btn-xs btn-remover" data-codigo="' + produto.id + '">Remover</button></td>'
             '</tr>';
             $('#items').append(template);
@@ -255,9 +255,9 @@
             if (!confirm('Remover o produto?')) {
                 return;
             }
-
-            var prodId = $(e.target).data('codigo');
             
+            var prodId = $(e.target).data('codigo');
+        
             produtos = produtos.filter(function(x) {
                 return x.id != prodId;
             });
